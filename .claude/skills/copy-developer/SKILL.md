@@ -1,0 +1,291 @@
+---
+name: copy-developer
+description: Develop an approved content idea into a full LinkedIn post draft in the client's documented voice. The most-used production skill. Runs hook-generator first, selects the right post structure, writes in voice, and hands off to post-grader. Triggers include "develop this idea", "write a post for [topic]", "copy development", or any request to turn an idea into a post.
+---
+
+# Skill: Copy Developer
+
+PRE-FLIGHT REQUIRED
+Run preflight.md before proceeding.
+Client: [name provided by user]
+Required: Voice Profile. Cannot write in voice without it.
+Load also: ICP (audience targeting), content pillars (positioning).
+
+---
+
+## Quality Gate
+
+Missing Voice Profile → stop. State what's missing. Ask: proceed with reduced quality and flag gaps, or wait?
+Never invent, fabricate, or assume. Flag gaps with [INSERT REAL DATA] and move on.
+
+---
+
+## ENTRY ROUTING
+
+Load in this order before writing anything:
+
+1. `linkedin-framework.md` — platform principles active throughout session
+2. `templates-library.md` — identify category, select template
+3. Client folder → `formatting-profile.md` — exists? Apply as override to all defaults. Missing? Apply defaults: short sentences, white space, punchy, high scannability.
+4. Client Voice Profile — apply from word one, not after drafting
+
+Then ask:
+
+```
+Standard post or lead magnet post?
+```
+
+Standard post → continue below.
+Lead magnet post → route to lead-magnet-writer + lead-magnet-builder. Stop here.
+
+---
+
+## STEP 0 — HOOK FIRST (required)
+
+Do not write the post body. Run hook-generator first.
+
+Pass to hook-generator:
+- Topic and angle from the approved idea
+- Category: [Teach / Lead / Prove / Connect / Respond]
+- ICP tier: Tier 1 / Tier 2 / Tier 3
+- Specific numbers, results, or stories available
+
+Present top 5 hooks with a recommendation. Wait for selection before proceeding.
+
+---
+
+## STEP 1 — SELECT CATEGORY AND STRUCTURE
+
+Identify category. Select matching template from `templates-library.md`. State the category, template name, and structure before writing.
+
+| Category | Post Types | Structure |
+|---|---|---|
+| Teach/Educational | How-to, common mistakes, tool recommendations, behind-the-scenes process | Problem → Framework → Steps → Insight |
+| Lead/Thought Leadership | Contrarian takes, pattern recognition, market observations, framework breakdowns | Contrarian hook → Common belief → Why it's wrong → Better way |
+| Prove/Social Proof | Client success stories, results announcements, case studies | Before → Challenge → What we did → Result (specific) → Takeaway |
+| Connect/Relationship | Personal stories, mistakes and lessons, question starters, journey posts | Scene → What happened → What I learned → What you can take from it |
+| Respond/Amplify | Industry responses, event recaps, milestone updates, fresh learning drops | Signal → POV → Why it matters now → What to do with it |
+
+---
+
+## STEP 2 — VOICE APPLICATION
+
+Read the Voice Profile AI Prompt Framework (Part 3) and Writing Rules DO's/DON'Ts before writing. Keep the Words to Use / Words to Avoid table open. Scan every paragraph against it.
+
+**Sentence length:**
+Profile says "short and punchy" → no sentence over 12 words. One idea per sentence.
+Profile says "long and winding" → let sentences breathe. No paragraph over 3 lines.
+Profile says "mixed" → short for impact moments. Longer for context-setting.
+
+**Vocabulary:**
+Every meaningful noun/verb → pull from their "Use This" list where applicable.
+After each paragraph → scan for banned words. Remove every instance. Not reduce. Remove.
+
+**Storytelling:**
+Profile says "story then insight" → open with a scene. Lesson at the end.
+Profile says "insight then story" → state the point first. Story proves it.
+
+**Qualification:**
+Profile says "flat statements" → cut every hedge word: possibly, perhaps, might, could, tends to.
+Profile says "qualified statements" → keep nuance with specifics: "In B2B services specifically" not "sometimes."
+
+**Humor:**
+Profile documents humor → include one moment. Not forced. One.
+No humor documented → include none.
+
+---
+
+## STEP 3 — POST STRUCTURE RULES
+
+**Hook (2 lines max):**
+Line 1: specific claim, observation, or story opening.
+Line 2: tension, gap, or setup that earns the "see more" click.
+
+Hook fails if:
+- Starts with "I" → rewrite
+- Opens with a question → rewrite
+- Contains a vague claim ("many", "most", "often") with no number → add the number or cut the claim
+
+**Body:**
+- One idea per line
+- White space every 2–3 lines
+- Paragraphs: 1–3 lines maximum
+- Claim has a number → use the number. "47% of founders" not "most founders."
+- Framework present → name it. Don't describe an unnamed system.
+- Passive voice → rewrite active.
+- Em dash present → replace with period or line break.
+
+**CTA:**
+- One CTA. Never two.
+- Do not end with: "What do you think?" / "Thoughts?" / "Drop a comment below."
+- Do not end with a summary of the post.
+
+Category-specific:
+- Teach → "Try this in [specific context]" or "DM me for the template."
+- Lead → one question only your ICP would have a strong opinion on. You respond to every reply.
+- Prove → invite similar situation or direct follow: "If you're dealing with [situation], let's talk."
+- Connect → resonance only: "If this hit home, I'd love to know why." No sales CTA.
+- Respond → state the implication. Hard CTA is rarely earned.
+
+**Hashtags:** 3 maximum. End of post only. Voice profile says no hashtags → use none.
+
+**External links:** Never in the post body. Note at draft end: "Link goes in first comment."
+
+---
+
+## STEP 4 — FAILURE PATTERN CHECK
+
+Correct before delivery:
+
+**Generic opener:**
+Wrong: "In today's competitive landscape, it's more important than ever to..."
+Right: "Three months ago, a client told me her pipeline was completely dry. Here's what we found."
+
+**Starts with "I":**
+Wrong: "I've been thinking about something lately..."
+Right: "Something I keep seeing in B2B founders:" / "Five clients told me the same thing this month."
+
+**Generic advice:**
+Wrong: "Here are 5 tips for better LinkedIn content."
+Right: "5 things I stopped doing on LinkedIn after hitting 500K impressions — and what I do instead."
+Test: could a direct competitor post this exact draft? Yes → find what only this person can say.
+
+**Hedge language:**
+Wrong: "It might be worth considering whether your content strategy could potentially..."
+Right: "Your content strategy is broken. Here's why."
+
+**Summary ending:**
+Wrong: "In conclusion, consistent content creation is key to building a pipeline on LinkedIn."
+Right: End on the sharpest insight, a direct question, or the strongest example.
+
+**AI vocabulary — remove every instance:**
+in today's landscape / in today's fast-paced world / it's important to note / as we navigate / leverage (verb) / utilize / game-changer / next-level / deep dive / in conclusion / make no mistake / let that sink in / the reality is / here's the thing / synergies / circle back / groundbreaking / transformative / cutting-edge / robust / scalable / best practices / touch base
+
+---
+
+## STEP 4B — SELF-EDITING CHECKLIST
+
+Run before presenting the draft. Fix every failed item.
+
+**Hook:**
+```
+□ Specific claim, not vague? Yes → pass. No → rewrite.
+□ Earns "see more" without opening with a question? Yes → pass. No → rewrite.
+□ Avoids starting with "I"? Yes → pass. No → rewrite.
+□ Would stop your scroll in a crowded feed? Yes → pass. No → rewrite.
+```
+
+**Body:**
+```
+□ One idea per line? Yes → pass. No → break up.
+□ No paragraph over 3 lines? Yes → pass. No → split.
+□ Claim with a number uses the number? Yes → pass. No → add it.
+□ Zero em dashes? Yes → pass. No → replace with period or line break.
+□ Active voice throughout? Yes → pass. No → rewrite passive sentences.
+□ Zero AI vocabulary? Yes → pass. No → remove every instance.
+□ Each section follows logically from the one before? Yes → pass. No → reorder.
+```
+
+**Style:**
+```
+□ Sounds like this specific person, not polished-generic? Yes → pass. No → find what's missing from the Voice Profile.
+□ Zero banned words from the Voice Profile? Yes → pass. No → remove all of them.
+□ Swap test: competitor could NOT post this? Yes → pass. No → make it more specific to this person's experience.
+```
+
+**CTA:**
+```
+□ One CTA only? Yes → pass. No → cut to one.
+□ Appropriate for category? (Connect = engagement only. Respond = soft or none.) Yes → pass. No → fix.
+□ Avoids "What do you think?" / "Thoughts?" / "Drop a comment below"? Yes → pass. No → rewrite.
+□ Post earned the ask? Yes → pass. No → either add more value or soften the CTA.
+```
+
+---
+
+## STEP 5 — DELIVER THE DRAFT
+
+**1. Full post draft**
+Formatted as it appears on LinkedIn — with line breaks as written.
+
+**2. Two alternative hooks**
+Different opening energy. If main hook uses desire → alternatives use curiosity and fear.
+
+**3. Template and voice log**
+- Category: [Teach / Lead / Prove / Connect / Respond]
+- Structure used: [name] — why: [1 sentence]
+- Voice rules applied: the 2–3 most relevant rules from their profile that shaped this draft
+- Tension points: any rule that was hard to apply or created a trade-off
+
+**4. Missing content flags**
+Idea required a specific number, result, or story that wasn't provided → flag with [INSERT REAL STAT/RESULT] in the draft. Do not invent. Do not guess.
+
+---
+
+## STEP 6 — PRE-GRADER GATE
+
+Confirm before handing to post-grader:
+
+```
+□ Hook confirmed by user
+□ All [INSERT REAL STAT/RESULT] placeholders filled or acknowledged
+□ Voice Profile applied — not just referenced
+□ Post does not start with "I"
+□ Zero AI vocabulary
+□ External links noted for first comment
+□ Hashtags at end only, 3 maximum
+□ One CTA
+□ No summary ending
+```
+
+All confirmed → run post-grader.
+
+---
+
+## STEP 7 — REVISION HANDLING
+
+User says "this doesn't sound like me":
+→ Ask: which specific word, tone, or sentence structure feels wrong?
+→ Revise with that specific rule. Generic feedback produces generic revision.
+
+User wants different structure:
+→ Name the closest template. Rewrite using it.
+
+User approves with no changes:
+→ Confirm post-grader has run. If not, remind once.
+
+---
+
+## Verification
+
+Run before delivering. All checks are binary.
+
+**Correctness:**
+```
+□ Post starts with a specific claim or scene — not "I", not a question, not a vague statement? Yes → pass. No → rewrite hook.
+□ Every number in the post body uses a numeral, not a word ("7 clients" not "several clients")? Yes → pass. No → fix.
+□ Zero em dashes in the draft? Yes → pass. No → replace each one.
+```
+
+**Completeness:**
+```
+□ Hook selected by user before body was written? Yes → pass. No → go back to STEP 0.
+□ Template and voice log included in delivery? Yes → pass. No → add.
+□ All [INSERT REAL STAT/RESULT] flags either filled or explicitly acknowledged? Yes → pass. No → flag them now.
+```
+
+**Context-fit:**
+```
+□ Would the client say this exact sentence in a conversation? (Pick the most "written" line — if no: rewrite it.) Yes → pass. No → rewrite.
+□ Does the CTA match the category rule? (Connect = no promotional CTA. Respond = soft or none.) Yes → pass. No → fix.
+□ Swap test passed — a direct competitor cannot post this draft unchanged? Yes → pass. No → add specificity.
+```
+
+**Consequence:**
+If this post goes live right now: what is the most likely failure?
+→ Answer this before delivery. If the answer is "it reads as AI-generated" or "it could be from anyone in the niche" — fix it before sending.
+
+---
+
+Draft complete. Running post-grader now.
+[post-grader runs automatically]
