@@ -177,7 +177,7 @@ Paste your brand reference block at the start of every generation prompt.
 If set, offer to generate the visual in-session using Gemini:
 
 ```
-POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent?key={GOOGLE_API_KEY}
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key={GOOGLE_API_KEY}
 {
   "contents": [{
     "parts": [{

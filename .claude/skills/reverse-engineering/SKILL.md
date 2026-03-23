@@ -37,16 +37,14 @@ Always surface the gap, name the impact, suggest the fix.
 ## Step 1 — Fetch Viral Posts (one call, used for both scenarios)
 
 ```
-POST /acts/apify~linkedin-post-search-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
+POST /acts/datadoping~linkedin-posts-search-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
 {
-  "searchQuery": "[keyword string from pre-flight]",
-  "datePosted": "past-week",
-  "sortBy": "top",
-  "maxResults": 25
+  "keywords": ["[keyword string from pre-flight]"],
+  "maxItems": 25
 }
 ```
 
-Sort all results by `commentsCount + repostsCount` combined.
+Sort all results by `comments + reposts` combined.
 
 If Apify call fails:
 
@@ -58,7 +56,7 @@ Apify call failed for reverse-engineering — cannot pull post data. Method stop
 
 ## Scenario A — Text Post Reverse Engineering
 
-Filter: posts where `images` array is empty.
+Filter: posts where `image_url` is null or empty.
 Take top 10–15 text posts by engagement score.
 
 Select 2–3 posts with the clearest structural framework. Skip opinion dumps — look for posts where you can see a replicable skeleton.
@@ -79,7 +77,7 @@ Map the extracted template to one of the client's content pillars. Generate one 
 
 ## Scenario B — Visual Post Reverse Engineering
 
-Filter: posts where `images` array is non-empty.
+Filter: posts where `image_url` is non-empty.
 Take top 10–15 visual posts by engagement score.
 
 If fewer than 3 visual posts found in results:

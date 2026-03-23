@@ -37,14 +37,14 @@ Always surface the gap, name the impact, suggest the fix.
 ## Step 1 — Pull Post History
 
 ```
-POST /acts/apify~linkedin-profile-posts-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
+POST /acts/datadoping~linkedin-profile-posts-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
 {
-  "profileUrl": "[LinkedIn URL from client folder Header block]",
-  "maxResults": 100
+  "profiles": ["[LinkedIn URL from client folder Header block]"],
+  "maxPosts": 100
 }
 ```
 
-Returns: post text, likesCount, commentsCount, repostsCount, postedAt.
+Returns: post text, total_reactions, comments, reposts, posted_at.
 
 If Apify call fails:
 
@@ -66,7 +66,7 @@ Run all four analyses silently. Present results together.
 - Flag any topic covered 3+ times (risk of repetition; refresh angle needed, not a repeat)
 
 **Engagement ranking:**
-- Rank all posts by `commentsCount + repostsCount` combined
+- Rank all posts by `comments + reposts` combined
 - Identify top 3 posts by this metric
 - For each top post: note the hook type, post structure (story / list / framework / contrarian), and format
 

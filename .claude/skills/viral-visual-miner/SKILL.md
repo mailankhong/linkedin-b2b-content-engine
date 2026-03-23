@@ -66,7 +66,9 @@ Search LinkedIn, Google Images, and comparable B2B accounts for high-performing 
 - High engagement signals (comments, shares, saves mentioned)
 - Visually structured — a framework, comparison, breakdown, or system (not just a photo)
 - Relevant to the client's ICP — not just the niche in general
-- Published in the last 90 days where possible
+- Published in the last 7–14 days — discard anything older than 2 weeks
+
+**Search recency rule:** Always append `after:[date 14 days ago YYYY-MM-DD]` to WebSearch queries. If results are thin, extend to 21 days maximum — never beyond that.
 
 Find 3–5 strong candidates. For each: source/account, what made it stop the scroll, estimated engagement quality.
 

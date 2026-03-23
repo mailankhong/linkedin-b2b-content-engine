@@ -3,6 +3,11 @@
 .env.local
 .env.production
 
+# Claude Code local settings — contains API keys, never commit
+.claude/settings.json
+.claude/settings.local.json
+.mcp.json
+
 # macOS
 .DS_Store
 

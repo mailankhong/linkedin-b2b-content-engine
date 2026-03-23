@@ -58,6 +58,13 @@ Running 6 research methods in parallel — this takes a moment.
 Each worker receives: client name, keyword string from pre-flight, content pillars.
 Each worker returns a standardized METHOD RESULT block.
 
+**RECENCY RULE — applies to all 6 workers without exception:**
+- All WebSearch queries must include `after:[date 7 days ago YYYY-MM-DD]`
+- All Apify LinkedIn searches filter to past week only
+- Discard any signal, post, thread, debate, or video older than 14 days
+- If a search returns only old results, flag it as FAILED — do not surface stale angles as if they are fresh
+- This is a B2B AI/tech niche. 2 weeks is already old news. 4 weeks is history.
+
 After all workers complete:
 - Collect all METHOD RESULT blocks
 - Note any workers that returned FAILED or PARTIAL status

@@ -38,27 +38,24 @@ Always surface the gap, name the impact, suggest the fix.
 
 ---
 
-## Source A — Apify X/Twitter Tweet Scraper
+## Source A — X/Twitter Signal via WebSearch
 
+Use WebSearch with the following query format to find live X/Twitter debates:
 ```
-POST /acts/apify~twitter-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
-{
-  "searchTerms": ["[keyword string from pre-flight]"],
-  "maxItems": 30,
-  "sort": "Latest",
-  "dateFrom": "[7 days ago — ISO 8601]",
-  "dateTo": "[today — ISO 8601]"
-}
+site:x.com OR site:twitter.com "[keyword string from pre-flight]" after:[date 7 days ago YYYY-MM-DD]
 ```
 
-If `X_COOKIES` is set: include as `cookie` parameter for authenticated access.
-
-Filter returned tweets by `replyCount` descending — replies signal active debate more than likes.
-Keep posts with high reply counts: these are where real conversation is happening.
-
-If Apify X/Twitter call fails:
+Also run a supplemental search:
 ```
-Apify X/Twitter call failed for real-time-signal Source A. X/Twitter signals unavailable.
+"[keyword string from pre-flight]" debate OR "hot take" OR "unpopular opinion" after:[date 7 days ago YYYY-MM-DD]
+```
+
+Filter results to posts with high engagement signals in the snippet (replies, retweets mentioned).
+Keep only results from the past 7 days — discard anything older.
+
+If WebSearch returns no recent X/Twitter results:
+```
+X/Twitter WebSearch returned no results for real-time-signal Source A. X/Twitter signals unavailable.
 Proceeding with LinkedIn signals only.
 ```
 
@@ -67,16 +64,14 @@ Proceeding with LinkedIn signals only.
 ## Source B — Apify LinkedIn Post Search Scraper
 
 ```
-POST /acts/apify~linkedin-post-search-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
+POST /acts/datadoping~linkedin-posts-search-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
 {
-  "searchQuery": "[keyword string from pre-flight]",
-  "datePosted": "past-week",
-  "sortBy": "top",
-  "maxResults": 20
+  "keywords": ["[keyword string from pre-flight]"],
+  "maxItems": 20
 }
 ```
 
-Filter returned posts by `commentsCount` descending. Keep top 5 posts with >10 comments.
+Filter returned posts by `comments` descending. Keep top 5 posts with >10 comments.
 High comment count on LinkedIn = active debate signal.
 
 If Apify LinkedIn call fails:

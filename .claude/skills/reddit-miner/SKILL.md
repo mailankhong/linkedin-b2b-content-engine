@@ -56,9 +56,10 @@ Turn a Reddit thread into 5 LinkedIn post ideas grounded in real audience pain.
 Go to Reddit. Find a post that your ICP would write or engage with — a question, frustration, debate, or rant in their niche.
 
 **How to find it:**
-- Search `reddit [niche keyword]` in Google (often better than Reddit's own search)
-- Sort by "Top" → "This Month" or "This Week"
-- Look for: posts with 50+ upvotes and active comment sections
+- Use WebFetch on `https://www.reddit.com/r/[subreddit]/top.json?limit=10&t=week` to get this week's top posts directly — no search needed
+- Or use WebSearch: `site:reddit.com [niche keyword] after:[date 7 days ago YYYY-MM-DD]`
+- Sort by "Top" → "This Week" only — never "This Month" or older
+- Look for: posts with 50+ upvotes and active comment sections from the past 7 days
 - The thread quality matters more than the post itself — the best content is in the replies
 
 **Good subreddits by client type:**
