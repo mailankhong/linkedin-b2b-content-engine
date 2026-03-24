@@ -40,7 +40,7 @@ Always surface the gap, name the impact, suggest the fix.
 POST /acts/datadoping~linkedin-posts-search-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
 {
   "keywords": ["[keyword string from pre-flight]"],
-  "maxItems": 25
+  "maxResults": 25
 }
 ```
 
