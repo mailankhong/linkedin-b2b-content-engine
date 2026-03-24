@@ -53,9 +53,13 @@ Turn a specific YouTube video into 3–5 LinkedIn post ideas grounded in real fr
 
 Either the user shares a URL, or find one.
 
-**How to find relevant videos:**
-- Search YouTube for: `[niche keyword] [problem or topic]` — sort by View Count or Upload Date
-- Look for: 50K+ views, posted in the last 12 months, educational content
+**IMPORTANT — YouTube access rule:** Never use WebFetch on YouTube URLs directly. YouTube serves a consent redirect page in headless mode that blocks content. Use WebSearch with `site:youtube.com` to find video URLs via Google's index — this bypasses the consent wall. Once you have a URL, pass it directly to Gemini MCP tools which handle YouTube natively without browser auth.
+
+**How to find relevant videos in headless mode:**
+- Use WebSearch: `site:youtube.com [niche keyword] [problem or topic] after:[date 30 days ago YYYY-MM-DD]`
+- Examples: `site:youtube.com "cold email" B2B 2026`, `site:youtube.com linkedin content strategy ghostwriter`
+- From search results: extract the YouTube URL from the result link (format: `youtube.com/watch?v=...`)
+- Look for: high view count signals in the snippet, educational titles, posted in the last 4 weeks
 - Strong candidates: "how to", "why X doesn't work", "X things about Y", frameworks, case study breakdowns
 - Avoid: generic motivational content, brand videos with no substance
 
@@ -118,29 +122,26 @@ Rules: no fabricated data — flag as [INSERT REAL STAT]. No generic takes — e
 
 Find what is actually trending in the client's niche right now, then extract from the most relevant result.
 
-### Step 1: Find trending videos via Apify
+### Step 1: Find trending videos
+
+Use WebSearch to find what is trending right now — this is more reliable than Apify for YouTube in headless mode:
 
 ```
-POST /acts/apify~youtube-scraper/run-sync-get-dataset-items?token={APIFY_API_KEY}
-{
-  "searchKeywords": "[keyword string from pre-flight]",
-  "maxResults": 20,
-  "sortBy": "viewCount",
-  "uploadDate": "week"
-}
+WebSearch: site:youtube.com "[keyword string from pre-flight]" after:[date 7 days ago YYYY-MM-DD]
+WebSearch: site:youtube.com "[niche keyword]" views after:[date 14 days ago YYYY-MM-DD]
 ```
 
-> Note: verify actor ID against Apify marketplace before first run — `apify~youtube-scraper` is the standard actor; a dedicated trending actor may be available.
+Run 2–3 search queries with different keyword angles. From results, collect 5–10 YouTube URLs with their titles and any view count signals visible in the Google snippet.
 
-Returns: video titles, view counts, upload dates, channel names, URLs.
+**Filtering for trending signal:**
+- Prefer videos with view counts mentioned in snippet (e.g., "1.2M views")
+- Prefer recently uploaded (title or snippet mentions date/week)
+- Prefer educational titles over brand/promo content
 
-If Apify call fails:
+If WebSearch returns fewer than 3 relevant YouTube videos:
 ```
-Apify YouTube call failed for Scenario B.
-Falling back to Scenario A — provide a URL or I will search manually.
+WebSearch fallback limited — proceeding to Scenario A with best available URL or manual search.
 ```
-
-This is the one acceptable fallback in this system: Scenario A produces valid output independently.
 
 ### Step 2: Select the most relevant video
 

@@ -60,15 +60,30 @@ Build 3–5 specific search angles. Examples:
 
 ### Step 2: Search for Viral Visual Posts
 
-Search LinkedIn, Google Images, and comparable B2B accounts for high-performing visual posts in this niche.
+**IMPORTANT — LinkedIn auth rule:** Never use WebFetch on LinkedIn URLs directly. LinkedIn requires authentication and will return a login wall. Use WebSearch only — Google indexes LinkedIn post previews without requiring auth.
+
+Use WebSearch with these query patterns (always include `after:[date 14 days ago YYYY-MM-DD]`):
+- `"linkedin" "[niche keyword]" carousel infographic after:[date]`
+- `site:linkedin.com/posts "[niche keyword]" carousel after:[date]`
+- `"[niche keyword]" linkedin visual framework breakdown after:[date]`
+- `"[niche keyword]" linkedin infographic "comments" after:[date]`
+
+If LinkedIn search returns thin results, expand to platforms where people share LinkedIn screenshots:
+- `"[niche keyword]" carousel framework site:twitter.com after:[date]`
+- `"[niche keyword]" linkedin post screenshot infographic after:[date]`
 
 **Worth analyzing:**
-- High engagement signals (comments, shares, saves mentioned)
+- High engagement signals (comments, shares, saves mentioned in the Google preview snippet)
 - Visually structured — a framework, comparison, breakdown, or system (not just a photo)
 - Relevant to the client's ICP — not just the niche in general
 - Published in the last 7–14 days — discard anything older than 2 weeks
 
-**Search recency rule:** Always append `after:[date 14 days ago YYYY-MM-DD]` to WebSearch queries. If results are thin, extend to 21 days maximum — never beyond that.
+**Search recency rule:** Always append `after:[date 14 days ago YYYY-MM-DD]` to all WebSearch queries. If results are thin, extend to 21 days maximum — never beyond that.
+
+**If fewer than 3 LinkedIn visual posts found after exhausting search queries:**
+- Do not substitute unrelated industry sources
+- Flag: "PARTIAL — only [N] LinkedIn visual posts found in recency window. Proceeding with available posts + extending framework analysis."
+- Proceed with what is available rather than fabricating or substituting
 
 Find 3–5 strong candidates. For each: source/account, what made it stop the scroll, estimated engagement quality.
 
