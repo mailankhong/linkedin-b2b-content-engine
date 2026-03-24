@@ -113,7 +113,7 @@ Or bring angles to weekly-idea-session if part of a larger batch.
 
 **Correctness:**
 ```
-□ Top posts ranked by commentsCount + repostsCount combined — not by likes alone? Yes → pass. No → re-rank using the correct engagement signal.
+□ Top posts ranked by comments + reposts combined — not by likes alone? Yes → pass. No → re-rank using the correct engagement signal.
 □ Refresh angles propose a genuinely different angle (different ICP tier, different format, different POV) — not a rephrased repeat of the original? Yes → pass. No → find the distinct new angle or discard.
 □ Gap-fill topics are missing from the post history — not just underrepresented (covered once or twice)? Yes → pass. No → reclassify as refresh angles, not gaps.
 ```
