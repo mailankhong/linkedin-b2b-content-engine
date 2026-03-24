@@ -57,11 +57,11 @@ Go to Reddit. Find a post that your ICP would write or engage with — a questio
 
 **How to find it — try in this order:**
 
-**Recency note for Reddit:** Reddit threads are sources of ICP pain language — a 3-week-old complaint about a real problem is still a valid signal. Do NOT apply the 14-day recency rule here. Use a 30-day window.
+**Recency note for Reddit:** Reddit threads are sources of ICP pain language — do NOT apply the 7-day recency rule here. Use a 15-day window.
 
 **Attempt 1 — WebSearch with site restriction:**
 ```
-site:reddit.com [niche keyword] after:[date 30 days ago YYYY-MM-DD]
+site:reddit.com [niche keyword] after:[date 15 days ago YYYY-MM-DD]
 site:reddit.com [subreddit name] [niche keyword]
 ```
 Run 2–3 queries with different keyword angles. Extract any Reddit post URLs from the results.

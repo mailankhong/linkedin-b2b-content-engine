@@ -61,8 +61,8 @@ Each worker returns a standardized METHOD RESULT block.
 **RECENCY RULE:**
 - **real-time-signal, reverse-engineering, viral-visual-miner:** All WebSearch queries must include `after:[date 7 days ago YYYY-MM-DD]`. Discard LinkedIn posts and live debates older than 14 days. This is a B2B AI/tech niche — 2 weeks is already old news, 4 weeks is history.
 - **All Apify LinkedIn searches:** filter to past week only.
-- **reddit-miner:** Use a 30-day window. Reddit threads are ICP pain sources, not breaking news. A 3-week-old complaint is still a valid signal. Do not apply the 14-day rule here.
-- **youtube-miner:** Use a 60-day window. YouTube videos are framework sources. Frameworks don't expire in 14 days. Do not apply the 14-day rule here.
+- **reddit-miner:** Use a 15-day window. Reddit threads are ICP pain sources, not breaking news. Do not apply the 7-day rule here.
+- **youtube-miner:** Use a 30-day window. YouTube videos are framework sources. Do not apply the 14-day rule here.
 - **repurposing-archive:** No recency filter — pulls client's full post history by design.
 - If a worker finds nothing after exhausting its window, flag FAILED. Do not substitute industry press, blogs, or news articles for any worker.
 

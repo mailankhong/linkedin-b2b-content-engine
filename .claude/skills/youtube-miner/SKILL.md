@@ -55,13 +55,13 @@ Either the user shares a URL, or find one.
 
 **IMPORTANT — YouTube access rule:** Never use WebFetch on YouTube URLs directly. YouTube serves a consent redirect page in headless mode that blocks content. Use WebSearch with `site:youtube.com` to find video URLs via Google's index — this bypasses the consent wall. Once you have a URL, pass it directly to Gemini MCP tools which handle YouTube natively without browser auth.
 
-**Recency note for YouTube:** YouTube videos are sources of frameworks and ICP insight — a 6-week-old educational video contains the same frameworks as a 3-day-old one. Do NOT apply the 14-day recency rule here. Use a 60-day window.
+**Recency note for YouTube:** YouTube videos are sources of frameworks and ICP insight. Do NOT apply the 14-day recency rule here. Use a 30-day window.
 
 **How to find relevant videos in headless mode:**
 Run these searches in order until a usable URL is found:
 
 ```
-site:youtube.com [niche keyword] [problem or topic] after:[date 60 days ago YYYY-MM-DD]
+site:youtube.com [niche keyword] [problem or topic] after:[date 30 days ago YYYY-MM-DD]
 site:youtube.com "[keyword]" how to 2026
 site:youtube.com "[keyword]" framework strategy
 ```
