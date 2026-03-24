@@ -55,9 +55,36 @@ Turn a Reddit thread into 5 LinkedIn post ideas grounded in real audience pain.
 
 Go to Reddit. Find a post that your ICP would write or engage with — a question, frustration, debate, or rant in their niche.
 
-**How to find it:**
-- Use WebFetch on `https://www.reddit.com/r/[subreddit]/top.json?limit=10&t=week` to get this week's top posts directly — no search needed
-- Or use WebSearch: `site:reddit.com [niche keyword] after:[date 7 days ago YYYY-MM-DD]`
+**How to find it — try in this order:**
+
+**Attempt 1 — WebSearch (primary, works in headless mode):**
+```
+site:reddit.com [niche keyword] after:[date 7 days ago YYYY-MM-DD]
+```
+Also try without site restriction if Attempt 1 returns nothing:
+```
+reddit [niche keyword] [subreddit name] after:[date 7 days ago YYYY-MM-DD]
+```
+From search results: extract any Reddit post URL (format: `reddit.com/r/[sub]/comments/...`). Use the snippet text as signal for which threads have active discussion.
+
+**Attempt 2 — WebFetch JSON (fallback, works in interactive sessions):**
+If a Reddit URL was found in Attempt 1, append `/.json` and fetch:
+```
+WebFetch: https://www.reddit.com/r/[subreddit]/comments/[id]/[slug]/.json
+```
+Or fetch the subreddit top directly:
+```
+WebFetch: https://www.reddit.com/r/[subreddit]/top.json?limit=10&t=week
+```
+Note: WebFetch to reddit.com may be blocked in headless/sandbox mode. If blocked, proceed with the snippet text from Attempt 1.
+
+**If both attempts fail or return no results:**
+```
+Reddit unavailable this session — WebSearch returned no Reddit threads and WebFetch is blocked.
+Reddit miner FAILED. Proceeding without Reddit signal.
+```
+Do not substitute with unrelated sources. Flag it and move on.
+
 - Sort by "Top" → "This Week" only — never "This Month" or older
 - Look for: posts with 50+ upvotes and active comment sections from the past 7 days
 - The thread quality matters more than the post itself — the best content is in the replies
@@ -73,22 +100,18 @@ Go to Reddit. Find a post that your ICP would write or engage with — a questio
 
 ---
 
-### Step 2: Pull the full thread as JSON
+### Step 2: Pull the full thread
 
-This is the key unlock. Reddit exposes any public thread as structured JSON — including the post, all comments, reply chains, upvote counts, and metadata.
-
-**How:**
-1. Copy the Reddit post URL
-2. Add `/.json` to the end of the URL
-3. Open it in your browser → copy all the JSON text
-
-**Example:**
+**If a Reddit URL was found and WebFetch is available:**
+Add `/.json` to the end of the URL and fetch it:
 ```
 Before: https://www.reddit.com/r/sales/comments/abc123/cold_email_is_dead/
 After:  https://www.reddit.com/r/sales/comments/abc123/cold_email_is_dead/.json
 ```
-
 The JSON contains the full thread with upvote counts. Higher-upvoted comments = more validated pain.
+
+**If WebFetch is blocked (headless/sandbox mode):**
+Work from the search snippet text collected in Step 1. Snippets contain the post title and a fragment of the top comments — enough to identify the core pain and generate angles. Flag the output as PARTIAL — snippet-only, not full thread analysis. Proceed to Step 3 using the snippet text as input instead of full JSON.
 
 ---
 
