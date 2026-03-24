@@ -55,13 +55,29 @@ Either the user shares a URL, or find one.
 
 **IMPORTANT — YouTube access rule:** Never use WebFetch on YouTube URLs directly. YouTube serves a consent redirect page in headless mode that blocks content. Use WebSearch with `site:youtube.com` to find video URLs via Google's index — this bypasses the consent wall. Once you have a URL, pass it directly to Gemini MCP tools which handle YouTube natively without browser auth.
 
+**Recency note for YouTube:** YouTube videos are sources of frameworks and ICP insight — a 6-week-old educational video contains the same frameworks as a 3-day-old one. Do NOT apply the 14-day recency rule here. Use a 60-day window.
+
 **How to find relevant videos in headless mode:**
-- Use WebSearch: `site:youtube.com [niche keyword] [problem or topic] after:[date 30 days ago YYYY-MM-DD]`
-- Examples: `site:youtube.com "cold email" B2B 2026`, `site:youtube.com linkedin content strategy ghostwriter`
-- From search results: extract the YouTube URL from the result link (format: `youtube.com/watch?v=...`)
-- Look for: high view count signals in the snippet, educational titles, posted in the last 4 weeks
+Run these searches in order until a usable URL is found:
+
+```
+site:youtube.com [niche keyword] [problem or topic] after:[date 60 days ago YYYY-MM-DD]
+site:youtube.com "[keyword]" how to 2026
+site:youtube.com "[keyword]" framework strategy
+```
+
+- From search results: extract the YouTube URL (`youtube.com/watch?v=...`)
+- Look for: educational titles, view count signals in snippet, relevant channel names
 - Strong candidates: "how to", "why X doesn't work", "X things about Y", frameworks, case study breakdowns
-- Avoid: generic motivational content, brand videos with no substance
+- Avoid: generic motivational content, brand promos, podcasts without substance
+
+**If no YouTube URL found after 3 search queries:**
+```
+METHOD RESULT: YouTube Miner
+Status: FAILED
+Reason: No YouTube video URL found via WebSearch within 60-day window.
+```
+Return this block and stop. Do NOT substitute industry press, blog posts, or news articles. FAILED is the correct and honest result. Industry press is never an acceptable replacement for a YouTube video.
 
 ### Step 2: Get a structured summary
 

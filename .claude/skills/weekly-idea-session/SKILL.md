@@ -58,12 +58,13 @@ Running 6 research methods in parallel — this takes a moment.
 Each worker receives: client name, keyword string from pre-flight, content pillars.
 Each worker returns a standardized METHOD RESULT block.
 
-**RECENCY RULE — applies to all 6 workers without exception:**
-- All WebSearch queries must include `after:[date 7 days ago YYYY-MM-DD]`
-- All Apify LinkedIn searches filter to past week only
-- Discard any signal, post, thread, debate, or video older than 14 days
-- If a search returns only old results, flag it as FAILED — do not surface stale angles as if they are fresh
-- This is a B2B AI/tech niche. 2 weeks is already old news. 4 weeks is history.
+**RECENCY RULE:**
+- **real-time-signal, reverse-engineering, viral-visual-miner:** All WebSearch queries must include `after:[date 7 days ago YYYY-MM-DD]`. Discard LinkedIn posts and live debates older than 14 days. This is a B2B AI/tech niche — 2 weeks is already old news, 4 weeks is history.
+- **All Apify LinkedIn searches:** filter to past week only.
+- **reddit-miner:** Use a 30-day window. Reddit threads are ICP pain sources, not breaking news. A 3-week-old complaint is still a valid signal. Do not apply the 14-day rule here.
+- **youtube-miner:** Use a 60-day window. YouTube videos are framework sources. Frameworks don't expire in 14 days. Do not apply the 14-day rule here.
+- **repurposing-archive:** No recency filter — pulls client's full post history by design.
+- If a worker finds nothing after exhausting its window, flag FAILED. Do not substitute industry press, blogs, or news articles for any worker.
 
 After all workers complete:
 - Collect all METHOD RESULT blocks

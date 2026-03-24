@@ -57,36 +57,42 @@ Go to Reddit. Find a post that your ICP would write or engage with — a questio
 
 **How to find it — try in this order:**
 
-**Attempt 1 — WebSearch (primary, works in headless mode):**
-```
-site:reddit.com [niche keyword] after:[date 7 days ago YYYY-MM-DD]
-```
-Also try without site restriction if Attempt 1 returns nothing:
-```
-reddit [niche keyword] [subreddit name] after:[date 7 days ago YYYY-MM-DD]
-```
-From search results: extract any Reddit post URL (format: `reddit.com/r/[sub]/comments/...`). Use the snippet text as signal for which threads have active discussion.
+**Recency note for Reddit:** Reddit threads are sources of ICP pain language — a 3-week-old complaint about a real problem is still a valid signal. Do NOT apply the 14-day recency rule here. Use a 30-day window.
 
-**Attempt 2 — WebFetch JSON (fallback, works in interactive sessions):**
-If a Reddit URL was found in Attempt 1, append `/.json` and fetch:
+**Attempt 1 — WebSearch with site restriction:**
+```
+site:reddit.com [niche keyword] after:[date 30 days ago YYYY-MM-DD]
+site:reddit.com [subreddit name] [niche keyword]
+```
+Run 2–3 queries with different keyword angles. Extract any Reddit post URLs from the results.
+
+**Attempt 2 — WebSearch without site restriction (if Attempt 1 returns nothing):**
+```
+reddit [niche keyword] [subreddit name]
+"reddit.com/r/[subreddit]" [niche keyword]
+```
+Google indexes Reddit even when `site:` filter returns nothing. Often returns the same threads through different query paths.
+
+**Attempt 3 — WebFetch JSON (works in interactive sessions, may be blocked in headless):**
+If a Reddit URL was found in Attempts 1–2, append `/.json` and fetch:
 ```
 WebFetch: https://www.reddit.com/r/[subreddit]/comments/[id]/[slug]/.json
 ```
 Or fetch the subreddit top directly:
 ```
-WebFetch: https://www.reddit.com/r/[subreddit]/top.json?limit=10&t=week
+WebFetch: https://www.reddit.com/r/[subreddit]/top.json?limit=10&t=month
 ```
-Note: WebFetch to reddit.com may be blocked in headless/sandbox mode. If blocked, proceed with the snippet text from Attempt 1.
+If WebFetch is blocked: proceed with snippet text from Attempts 1–2.
 
-**If both attempts fail or return no results:**
+**If all three attempts return nothing:**
 ```
-Reddit unavailable this session — WebSearch returned no Reddit threads and WebFetch is blocked.
-Reddit miner FAILED. Proceeding without Reddit signal.
+METHOD RESULT: Reddit Miner
+Status: FAILED
+Reason: No Reddit threads found via WebSearch and WebFetch blocked.
 ```
-Do not substitute with unrelated sources. Flag it and move on.
+Return this block and stop. Do NOT substitute industry press, blog posts, news articles, or any non-Reddit source. FAILED is the correct and honest result.
 
-- Sort by "Top" → "This Week" only — never "This Month" or older
-- Look for: posts with 50+ upvotes and active comment sections from the past 7 days
+- Look for: posts with active comment sections — engagement matters more than post date
 - The thread quality matters more than the post itself — the best content is in the replies
 
 **Good subreddits by client type:**
