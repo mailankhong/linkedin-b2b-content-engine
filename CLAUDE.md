@@ -93,6 +93,26 @@ All miners return a standardized METHOD RESULT block when called by weekly-idea-
 
 ---
 
+## Skill Design Standards
+
+When creating a new skill or updating an existing one, apply these principles (from the Vibe Skill Creator framework):
+
+**Voice:** Write like a domain expert, not a documentation page. Open every skill with 2-3 sentences of domain expertise — why this process matters, what most people get wrong, what good looks like. "Most LinkedIn hooks fail because they describe the topic instead of earning the click" — not "This skill generates hooks."
+
+**Principles with WHY:** Every rule must explain WHY it exists. "Don't start with 'I'" is weak. "Don't start with 'I' — LinkedIn truncates after 2 lines on mobile, and 'I' signals self-focus before the reader has any reason to care" transfers thinking. Claude can adapt rules with WHY; it can only follow rules without WHY.
+
+**Anti-patterns:** Telling Claude what NOT to do is as important as what to do. Name the specific failure patterns, show wrong vs right examples, and list banned vocabulary/phrases.
+
+**Ruthless focus:** Every section must earn its place. Test: "Does removing this section make the output worse?" If no, remove it. Target under 500 lines per skill. No "just in case" sections.
+
+**No boilerplate bloat:** Quality gate = one compact line ("Insufficient input → stop. State gap, impact, fix option."). Pre-flight = one line. No repeated "You can enter the pipeline here directly" blocks.
+
+**Real examples:** Before/after transformations, not theoretical descriptions. Show the contrast between bad output and good output.
+
+**Self-test:** Before finalizing any new or updated skill, compare output with the skill vs Claude's default output without the skill. If there's no meaningful difference, the skill isn't teaching Claude anything new.
+
+---
+
 ## Working Principles
 
 - Before any skill that requires client context, run `preflight.md`. It locates the client folder, validates required fields, extracts keywords and profile data, and surfaces exactly what is missing. Never proceed with incomplete context.
