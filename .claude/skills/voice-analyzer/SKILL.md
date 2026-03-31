@@ -1,28 +1,14 @@
-# Skill: Voice Analyzer
+# Voice Analyzer
 
-**Purpose:** Build a complete Voice Profile for the user. Three scenarios depending on what the user brings. Outputs: Voice DNA, Writing Rules, and an AI Prompt Framework ready to use in any content session.
+Most AI-generated content fails for one reason: it sounds like AI. Not because the ideas are bad, but because the voice is wrong. Every person has a vocabulary signature — words they reach for, rhythms they fall into, emotions they avoid. A Voice Profile captures these patterns so precisely that AI output sounds like the person wrote it on a good day.
 
-**Trigger phrases:**
-- "Build my voice profile"
-- "Run voice analyzer"
-- "Analyze my voice"
-- "Make Claude sound like me"
-- "Capture my writing style"
-- Any variation referencing voice capture, voice profile, or making AI write like the user
+Three scenarios depending on what the user brings. Outputs: Voice DNA, Writing Rules, and an AI Prompt Framework ready to use in any content session.
 
----
+**Triggers:** "Build my voice profile", "Run voice analyzer", "Analyze my voice", "Make Claude sound like me", or any reference to voice capture or making AI write like the user.
 
-## Quality Gate Rule
+## Quality Gate
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State exactly what's missing, what it limits, and what input would fix it. Never invent, fabricate, or assume.
 
 ---
 

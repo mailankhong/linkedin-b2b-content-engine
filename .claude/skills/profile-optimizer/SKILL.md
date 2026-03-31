@@ -3,30 +3,18 @@ name: profile-optimizer
 description: Turn any LinkedIn profile into a conversion machine. Use this skill when the user wants to optimize their LinkedIn profile, rewrite their headline, improve their About section, or audit their profile for conversions. Triggers include requests to "fix my profile", "optimize my LinkedIn", "rewrite my headline", "audit my profile", or when onboarding a new client. Scores each section and delivers copy-paste-ready rewrites for headline, About, Experience, Featured, and banner.
 ---
 
-# LinkedIn Profile Optimizer
+# Profile Optimizer
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: Voice Profile (to rewrite in the client's voice), ICP (to optimise for the right audience), and content pillars (to align the profile positioning with content strategy).
+Your LinkedIn profile isn't a resume — it's a landing page. Every visitor makes a follow/ignore decision in 7 seconds. Most profiles describe what someone does. Optimized profiles make the visitor think "I need to talk to this person." The difference is conversion copy vs. job description copy — and most people are writing job descriptions.
 
----
+This skill audits every section of a LinkedIn profile and rewrites it to convert visitors into followers, connections, and DMs.
 
-Turn your LinkedIn profile into a conversion machine. Most profiles describe what someone does. Optimized profiles make the visitor think "I need to talk to this person." This skill audits every section of your profile and rewrites it to convert visitors into followers, connections, and DMs.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile (rewrites in client's voice), ICP (optimizes for the right audience), content pillars (aligns positioning).
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

@@ -3,26 +3,16 @@ name: pattern-recognition
 description: Reads the full learning log for a client and identifies patterns across sessions — what consistently gets changed, which hook types get rewritten, which post types underperform, and where voice drift is occurring. Outputs two things: recommended client folder updates (applies with confirmation) and recommended skill file updates (presents for review only, never applies automatically). Triggers after every 5 sessions automatically, or manually with "run pattern recognition for [client]".
 ---
 
-# Skill: Pattern Recognition
+# Pattern Recognition
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: learning-log.md (required — this skill cannot run without it).
+Individual feedback captures are noise. Patterns across 5+ sessions are signal. This skill reads the full learning log and identifies what consistently gets changed, which hook types get rewritten, which post types underperform, and where voice drift is occurring. The output isn't a report — it's a specific list of recommended updates to the client folder (applied with confirmation) and suggested skill improvements (presented for review only, never auto-applied).
 
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** learning-log.md (cannot run without it). Triggers after every 5 sessions automatically, or manually.
 
-## Quality Gate Rule
+## Quality Gate
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Missing learning-log.md → stop. State gap, impact, fix option.
 
 ---
 

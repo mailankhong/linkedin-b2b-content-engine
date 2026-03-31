@@ -3,20 +3,20 @@ name: copy-developer
 description: Develop an approved content idea into a full LinkedIn post draft in the client's documented voice. The most-used production skill. Runs hook-generator first, selects the right post structure, writes in voice, and hands off to post-grader. Triggers include "develop this idea", "write a post for [topic]", "copy development", or any request to turn an idea into a post.
 ---
 
-# Skill: Copy Developer
+# Copy Developer
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Required: Voice Profile. Cannot write in voice without it.
-Load also: ICP (audience targeting), content pillars (positioning).
+The most common failure in LinkedIn ghostwriting isn't bad writing — it's writing that sounds like "good content" instead of sounding like a specific person. Generic posts get scrolled past. Voice-matched posts get DMs.
+
+This skill turns an approved idea into a full post draft. It runs hook-generator first, selects the right structure, writes in the client's documented voice, and hands off to post-grader. It is the most-used production skill in the pipeline.
+
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile (cannot write in voice without it). Also load: ICP, content pillars.
 
 ---
 
 ## Quality Gate
 
-Missing Voice Profile → stop. State what's missing. Ask: proceed with reduced quality and flag gaps, or wait?
-Never invent, fabricate, or assume. Flag gaps with [INSERT REAL DATA] and move on.
+Missing Voice Profile → stop. State gap, impact, fix option. Never invent or fabricate — flag with [INSERT REAL DATA].
 
 ---
 
@@ -102,23 +102,23 @@ Line 1: specific claim, observation, or story opening.
 Line 2: tension, gap, or setup that earns the "see more" click.
 
 Hook fails if:
-- Starts with "I" → rewrite
-- Opens with a question → rewrite
-- Contains a vague claim ("many", "most", "often") with no number → add the number or cut the claim
+- Starts with "I" → rewrite. Why: "I" signals self-focus before the reader has any reason to care. LinkedIn truncates after 2 lines on mobile — the hook must earn attention for the reader, not announce the author.
+- Opens with a question → rewrite. Why: Questions are passive — they ask the reader to think before giving them a reason to. Statements with tension earn the click; questions hope for it.
+- Contains a vague claim ("many", "most", "often") with no number → add the number or cut the claim. Why: Vague quantifiers are the hallmark of AI-generated content. "47% of founders" stops the scroll; "most founders" gets skipped because it could be anyone's guess.
 
 **Body:**
-- One idea per line
-- White space every 2–3 lines
-- Paragraphs: 1–3 lines maximum
-- Claim has a number → use the number. "47% of founders" not "most founders."
-- Framework present → name it. Don't describe an unnamed system.
-- Passive voice → rewrite active.
-- Em dash present → replace with period or line break.
+- One idea per line. Why: LinkedIn is read on phones at scroll speed. Dense paragraphs get skipped entirely — each line needs to earn the next.
+- White space every 2–3 lines. Why: White space is a visual pause. On mobile, a wall of text triggers the "too long" reflex before a single word is read.
+- Paragraphs: 1–3 lines maximum.
+- Claim has a number → use the number. "47% of founders" not "most founders." Why: Specificity is the fastest trust signal. Numbers prove you counted; vague claims prove you didn't.
+- Framework present → name it. Don't describe an unnamed system. Why: Named frameworks are saveable. "The 3-Layer Pipeline" gets screenshotted; "here's how I think about it" gets forgotten.
+- Passive voice → rewrite active. Why: Passive voice hides the actor and weakens the claim. "Revenue was increased" vs "We increased revenue" — the second has a person behind it.
+- Em dash present → replace with period or line break. Why: Em dashes are Claude's signature punctuation. Even one signals AI-generated content to anyone who reads LinkedIn regularly.
 
 **CTA:**
-- One CTA. Never two.
-- Do not end with: "What do you think?" / "Thoughts?" / "Drop a comment below."
-- Do not end with a summary of the post.
+- One CTA. Never two. Why: Multiple CTAs create decision paralysis. The reader does nothing instead of choosing. One clear action converts; two competing actions cancel each other.
+- Do not end with: "What do you think?" / "Thoughts?" / "Drop a comment below." Why: These are the laziest CTAs on LinkedIn. They signal the author ran out of ideas. Strong CTAs emerge from the content — they feel earned, not bolted on.
+- Do not end with a summary of the post. Why: Summary endings kill momentum. The reader already read the post. End on the sharpest insight or the strongest example — the thing they'll remember.
 
 Category-specific:
 - Teach → "Try this in [specific context]" or "DM me for the template."

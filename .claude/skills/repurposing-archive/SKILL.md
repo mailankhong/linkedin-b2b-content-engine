@@ -3,30 +3,18 @@ name: repurposing-archive
 description: Pull a client's LinkedIn post history via Apify, identify signature themes and engagement patterns, surface content gaps, and generate refresh angles. Use when you want to repurpose what already worked or identify what's missing from the content mix. Part of the weekly research pipeline. Triggers include "run repurposing archive for [client]", "what should I repurpose?", "what have I not covered yet?", or when called by weekly-idea-session.
 ---
 
-# Skill: Repurposing Archive
+# Repurposing Archive
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: LinkedIn URL (required — hard stop without it), Content Pillars (required for theme grouping and gap analysis).
+Most creators think they need new ideas every week. They don't. They need to find which of their existing ideas landed and repackage them from a different angle. A post that got 50 comments 3 months ago has a proven hook and a proven topic — the audience already told you they care. The job is to find the next version, not start from scratch.
 
----
+This skill pulls the client's LinkedIn post history, identifies what actually worked (not just what they liked writing), surfaces content gaps, and generates refresh angles. It's the difference between "what should I write about?" and "what did my audience already tell me they want more of?"
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Client LinkedIn URL (hard stop), content pillars (for theme grouping and gap analysis).
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Missing LinkedIn URL → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

@@ -3,34 +3,19 @@ name: real-time-signal
 description: Find current LinkedIn and X/Twitter debates in a client's niche and surface 2-3 POV post angles grounded in live industry conversation. Uses Apify for both X/Twitter and LinkedIn post search. Part of the weekly research pipeline. Triggers include "run real-time signal for [client]", "what's being debated right now in [niche]", or when called by weekly-idea-session.
 ---
 
-# Skill: Real-Time Signal
+# Real-Time Signal
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: keyword string from Content Pillars (required — hard stop without it).
+The highest-performing LinkedIn posts aren't timeless advice — they're timely takes. When your ICP is already talking about something, a well-timed POV post rides existing attention instead of competing for it. The window is 48-72 hours — after that, the take is stale.
 
-**Environment variables required:**
-- `APIFY_API_KEY` — all Apify calls
-- `X_COOKIES` — X/Twitter search may require authenticated cookies for full results. If not set, Apify will attempt unauthenticated search; results may be limited.
+This skill finds what's being debated right now on LinkedIn and X/Twitter in the client's niche, then surfaces 2-3 POV post angles grounded in live conversation. The goal isn't news aggregation — it's finding the debate where the client's expertise gives them a distinctive angle.
 
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Keyword string from content pillars (hard stop without it).
+**Env vars:** `APIFY_API_KEY` required. `X_COOKIES` optional (improves X/Twitter results).
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+## Quality Gate
 
----
-
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Missing keyword string → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

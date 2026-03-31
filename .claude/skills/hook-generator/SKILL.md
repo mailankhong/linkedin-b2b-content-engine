@@ -5,19 +5,18 @@ description: Generate 20+ hook variations for any LinkedIn post topic using 50 b
 
 # Hook Generator
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Required: Voice Profile (hooks in client's voice), ICP (match hooks to audience pain points).
+The hook does 80% of the work on LinkedIn. Mobile shows 2 lines before "see more" — if those 2 lines don't create a gap the reader needs to close, the post is dead. Doesn't matter how good the body is. The hook is the entire audition.
 
-You can enter here directly. If prerequisite context is missing, ask for only what is needed.
+This skill generates 20+ variations using 50 battle-tested templates organized by emotional trigger, then filters ruthlessly and ranks the top 3-5 with reasoning.
+
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile (hooks must sound like the client), ICP (hooks must target their pain points).
 
 ---
 
 ## Quality Gate
 
-Missing Voice Profile or ICP → state what's missing. State what that limits. Ask: proceed with reduced quality and flag gaps, or wait for better input?
-Never invent, fabricate, or assume.
+Missing Voice Profile or ICP → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 
@@ -185,11 +184,11 @@ Best triggers: Curiosity, Fear (of missing the implication)
 
 Run every candidate hook through all 5. Only hooks passing 4/5 make the shortlist.
 
-1. **Specific beats clever** — Uses a concrete number, name, timeframe, or fact? Yes → pass. No → cut or add the specific.
-2. **No puns or wordplay** — Requires decoding? Yes → cut. No → pass.
-3. **No negatives** — Written as "X doesn't work"? → reframe: "Here's what works instead."
-4. **News words where natural** — Contains "new", "finally", "announcing", or a specific date/event? → signals novelty. Not required but check.
-5. **Swap test** — Could a direct competitor post this exact hook? Yes → make it specific to this author's experience, result, or POV. No → pass.
+1. **Specific beats clever** — Uses a concrete number, name, timeframe, or fact? Yes → pass. No → cut or add the specific. Why: The brain processes concrete details 40% faster than abstract claims. "143 cold emails" is visual; "many cold emails" is noise.
+2. **No puns or wordplay** — Requires decoding? Yes → cut. No → pass. Why: LinkedIn audiences skim at scroll speed. Anything that requires a second read to decode gets scrolled past. Puns reward insiders and punish everyone else.
+3. **No negatives** — Written as "X doesn't work"? → reframe: "Here's what works instead." Why: Negative framing ("don't do X") leaves the reader with nothing to act on. Positive reframes give them something to try — and saveable content always offers a path forward.
+4. **News words where natural** — Contains "new", "finally", "announcing", or a specific date/event? → signals novelty. Not required but check. Why: The brain is wired for novelty detection. "New" and "finally" trigger the same dopamine response as actual news — they signal this is worth reading now, not later.
+5. **Swap test** — Could a direct competitor post this exact hook? Yes → make it specific to this author's experience, result, or POV. No → pass. Why: If a competitor can post the same hook unchanged, the hook is commodity content. The only hooks that build a personal brand are ones that contain the author's specific numbers, stories, or named experience.
 
 ---
 
@@ -210,11 +209,11 @@ Why: [contrarian angle, distinctive]
 
 ## Customization Rules
 
-- Use specific numbers, not vague claims: "$10M+" not "significant revenue."
-- Use concrete timeframes: "in 90 days" not "quickly."
-- Voice profile present → match hook to their sentence rhythm and vocabulary.
-- Short hooks (1 line) outperform long hooks (3+ lines).
-- Best hooks make you curious enough to click "see more" — that is the only test.
+- Use specific numbers, not vague claims: "$10M+" not "significant revenue." Why: Specificity is proof of experience. Anyone can say "significant revenue." Only someone who was there says "$10M+."
+- Use concrete timeframes: "in 90 days" not "quickly." Why: Timeframes matching a buyer's planning cycle carry 3x more weight in B2B. "In one quarter" means something to a VP; "quickly" means nothing.
+- Voice profile present → match hook to their sentence rhythm and vocabulary. Why: A hook that doesn't sound like the author creates a jarring disconnect when the reader clicks through. Voice mismatch between hook and body is a top-3 reason posts underperform.
+- Short hooks (1 line) outperform long hooks (3+ lines). Why: On mobile, 3+ line hooks push the tension below the fold. The reader has to click "see more" just to find out what the post is about — that's a double ask.
+- Best hooks make you curious enough to click "see more" — that is the only test. Everything else is preference.
 
 **B2B Rules:**
 - "B2B founders" beats "people." "Closed 14 deals" beats "grew revenue."

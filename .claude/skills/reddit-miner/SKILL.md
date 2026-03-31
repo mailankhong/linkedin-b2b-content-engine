@@ -3,32 +3,22 @@ name: reddit-miner
 description: Turn a Reddit thread into 5 ready-to-develop LinkedIn post ideas using audience pain points. Use this skill when generating content ideas from Reddit — especially when no fresh call transcript is available. Triggers include "mine Reddit for ideas", "use Reddit for content", "Reddit mining for [client]", or "find content on Reddit". Full pipeline: Reddit JSON → pain extraction → hooks → LinkedIn post drafts.
 ---
 
-# Skill: Reddit Content Miner
+# Reddit Content Miner
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: ICP pain points and content pillars (for mapping extracted angles).
+Reddit is the only platform where your ICP complains honestly. On LinkedIn they perform; on Reddit they vent. The best Reddit threads for content aren't the highest-upvoted — they're the ones where commenters describe their situation before asking for help. That's unfiltered ICP language you can't get from a sales call, because on sales calls people use their "professional" vocabulary. On Reddit they say what they actually mean.
 
----
+The thread quality matters more than the post itself. A mediocre question with 200 passionate replies is gold. A brilliant question with 3 surface-level answers is worthless. High-upvote comments = validated pain that dozens of people felt strongly enough to click an arrow. Low-upvote comments = noise.
 
-## Quality Gate Rule
+This skill turns a Reddit thread into 5 LinkedIn post ideas grounded in real audience pain — not paraphrased marketing language, but the actual words your ICP uses when nobody's watching.
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** ICP pain points and content pillars (for mapping extracted angles).
 
 ---
 
-Turn a Reddit thread into 5 LinkedIn post ideas grounded in real audience pain.
+## Quality Gate
 
-**What's different from the old approach:** The old method said "find subreddits and read comments." This skill goes further — it uses Reddit's built-in JSON export to pull the full thread (posts + all replies) as structured data, then runs it through a specific pipeline to extract pain points, generate hooks, and develop LinkedIn post drafts. Everything stays inside Claude — no Grok required.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 
@@ -123,35 +113,20 @@ Work from the search snippet text collected in Step 1. Snippets contain the post
 
 ### Step 3: Extract pain points and generate hooks
 
-Paste the JSON into Claude with the prompt below. Claude will pull out the real frustrations, limitations, and needs — and generate 5 hook options in the 2-line format.
+Analyze the thread (JSON or snippet) and extract content intelligence:
 
-**Pain Extraction + Hook Prompt:**
+**Pain extraction rules:**
+- Pull 5-8 distinct pain points from comments, prioritizing highest-upvoted
+- Use the commenter's actual language — not marketing paraphrases. If they said "our CRM is a dumpster fire," that's the pain point, not "CRM adoption challenges"
+- Distinguish between symptoms (what they're complaining about) and root causes (why it's actually happening). The best posts address the root cause while naming the symptom
+- Discard generic complaints ("everything sucks") — keep specific situational frustrations ("we spent 3 months migrating and lost half our pipeline data")
 
-```
-Here's the JSON of a Reddit thread about: "[DESCRIBE THE TOPIC IN 1 SENTENCE]"
+**Hook generation from pain points:**
+For each usable pain point, generate a 2-line LinkedIn hook:
+- Line 1: Bold claim, counter-take, or striking observation drawn from the pain
+- Line 2: Set up tension or promise that earns the "see more" click
 
-Step 1: Extract the top pain points, frustrations, limitations, and unmet needs from this thread. Focus on what people are actually saying in the comments — especially the most upvoted ones. List 5–8 distinct pain points in plain language.
-
-Step 2: Generate 5 LinkedIn hook options based on these pain points. Each hook is exactly 2 lines. Format:
-Line 1: Bold claim, counter-take, or striking observation
-Line 2: Set up the tension or the promise
-
-Match the style, format, and tone of these 3 hooks that have gotten results:
-
-///Hook 1
-[PASTE REAL HOOK THAT PERFORMED WELL]
-
-///Hook 2
-[PASTE REAL HOOK THAT PERFORMED WELL]
-
-///Hook 3
-[PASTE REAL HOOK THAT PERFORMED WELL]
-
-JSON thread data:
-[PASTE THE REDDIT JSON HERE]
-```
-
-**Where to get example hooks:** Use the client's best-performing posts from their content history, or hooks that got strong engagement on their LinkedIn profile.
+Match hooks to the client's voice profile and documented hook style. Reference their best-performing posts for rhythm and energy — but the ideas, wording, and angles must be new.
 
 ---
 
@@ -171,50 +146,19 @@ Pick 1–3 hooks to develop into posts.
 
 ### Step 5: Develop into LinkedIn posts
 
-Take the selected hook(s) and develop them into full post drafts.
+Take selected hooks and develop into full post drafts using copy-developer principles:
 
-**Post Development Prompt:**
-
-```
-Act as a LinkedIn ghostwriter who writes posts that get saved and shared.
-
-Goal: Write [NUMBER] LinkedIn posts based on the pain points and hooks below.
-
-Use the 4 example posts below as your style reference. Match their structure, pacing, formatting (short lines + whitespace + list elements where relevant), and voice — but the ideas, wording, and hooks must be completely new.
-
-Rules:
-- Each post starts with the hook provided (or a refined version of it)
-- Keep it skimmable
+**Development rules:**
+- Start with the selected hook (or a refined version)
 - Include 1 clear takeaway + 1 framework (steps, a list, or a before/after)
-- End with a CTA that earns the ask — it should feel natural, not bolted on
-- No fluff, no generic advice, no repeated angles across posts
-- Do NOT copy phrases or lines from the examples
-- Grounded in real experience — if data is needed, use [INSERT REAL STAT] as placeholder
+- Keep it skimmable — one idea per line, white space every 2-3 lines
+- End with a CTA that earns the ask — natural, not bolted on
+- Ground in the client's real experience — use [INSERT REAL STAT] for any data you don't have
+- Do NOT recycle phrases from the client's existing posts — structural patterns yes, exact wording no
+- Apply the client's Voice Profile from word one — not as a polish pass after drafting
 
-Example posts (study these for structure and voice):
-
-///Example Post 1
-[PASTE CLIENT'S BEST-PERFORMING POST]
-
-///Example Post 2
-[PASTE CLIENT'S BEST-PERFORMING POST]
-
-///Example Post 3
-[PASTE CLIENT'S BEST-PERFORMING POST]
-
-///Example Post 4
-[PASTE CLIENT'S BEST-PERFORMING POST]
-
-Selected hooks to develop:
-[PASTE CHOSEN HOOKS FROM STEP 4]
-
-Audience pain context (from Reddit):
-[PASTE THE 5–8 PAIN POINTS FROM STEP 3]
-
-Client: [CLIENT NAME]
-Niche: [CLIENT NICHE]
-ICP: [WHO THEY WRITE FOR]
-```
+**The Reddit-to-LinkedIn translation:**
+Reddit pain is raw. LinkedIn content is structured. The skill is preserving the emotional truth of the Reddit thread while repackaging it in the client's voice and expertise. Don't sanitize the pain — channel it through the client's authority.
 
 ---
 
@@ -240,17 +184,6 @@ Drafts that pass → move to content-copy-developer for refinement, or send dire
 | Selected hooks | Add to the client's content idea batch |
 | Post drafts | Content copy developer → client review |
 | Reddit post URL | Note the source in the content idea batch for reference |
-
----
-
-## Notes
-
-- The JSON trick works on any public Reddit thread — it doesn't require an API or tools
-- The more comments in the thread, the richer the pain extraction
-- High-upvote comments = validated pain; low-upvote = noise
-- This method is strongest for TOFU content — awareness-stage posts that tap broad audience frustration
-- For MOFU/BOFU content, combine Reddit pain with the client's own client stories and data
-- This skill replaces Method 1 (Reddit Mining) in the content-idea-batch skill — use this for the full workflow, not the abbreviated version
 
 ---
 

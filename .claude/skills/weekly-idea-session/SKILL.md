@@ -3,19 +3,16 @@ name: weekly-idea-session
 description: Self-serve weekly content planning session. Spawns 6 parallel research workers, merges results, runs quality gate and ICP tier check, adds personal material, outputs a sized and prioritized idea batch. Triggers include "start my weekly session", "generate ideas for this week", "weekly idea batch", "what should I post this week".
 ---
 
-# Skill: Weekly Idea Session
+# Weekly Idea Session
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Do not begin Phase 1 until pre-flight confirms client folder is located and Content Pillars are present.
+The hardest part of LinkedIn consistency isn't writing — it's knowing what to write. Most creators stare at a blank page and default to whatever's on their mind, which produces random content that doesn't compound. This skill replaces randomness with a system: 6 parallel research workers mine different sources, results get merged and quality-gated, personal material gets layered in, and you end up with a sized, prioritized batch of ideas that are ICP-targeted and ready to develop.
 
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Content pillars must be present — hard stop without them.
 
 ## Quality Gate
 
-Missing Content Pillars → stop. State what's missing. State what that limits. Ask: proceed with reduced quality and flag gaps, or wait?
-Never invent, fabricate, assume, or produce work silently from insufficient input.
+Missing content pillars → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

@@ -3,34 +3,18 @@ name: lead-magnet-writer
 description: Write high-converting LinkedIn lead magnet posts that give away a free resource in exchange for comments and connections. Use this skill when the user wants to create a post promoting a free resource, playbook, template, tool, or system. Triggers include "write a lead magnet post", "I'm giving away a free resource", "write a post for my lead magnet", "create a giveaway post", or any post designed to capture leads through comments and connections. Uses 10 proven templates from 40+ viral posts with psychological trigger system.
 ---
 
-# Lead Magnet Post Writer
+# Lead Magnet Writer
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: Voice Profile (to write the post in the client's voice) and ICP (to frame the resource around the right audience's pain points).
+Lead magnet posts are the highest-converting post type on LinkedIn — but only when the promise is specific and the ask is low. "DM me 'GUIDE' and I'll send you my playbook" works because it's frictionless. "Schedule a call to learn more" doesn't — that's a sales pitch disguised as generosity. The post must give away something genuinely useful, and the reader must believe they're getting value before any commitment.
 
----
+This skill writes the post that promotes the resource. Uses 10 proven templates extracted from 40+ viral lead magnet posts, organized by psychological trigger.
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile (post in client's voice), ICP (frame around audience pain points).
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
-
----
-
-Write high-converting LinkedIn posts that give away a free resource in exchange for comments and connections. Uses proven structures from 40+ viral lead magnet posts.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

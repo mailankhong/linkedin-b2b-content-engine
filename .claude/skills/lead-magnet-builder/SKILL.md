@@ -3,34 +3,18 @@ name: lead-magnet-builder
 description: Build the actual resource behind a lead magnet post. Use this skill when the user needs to create the deliverable they promised in a lead magnet post - playbooks, guides, templates, checklists, swipe files, or system blueprints. Triggers include "build the resource for this post", "create the playbook", "make the template", "I need to deliver on my lead magnet", or when the user has a lead magnet post but hasn't built the resource yet. 6 format options with complete structure templates.
 ---
 
-# Lead Magnet Resource Builder
+# Lead Magnet Builder
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: Voice Profile (to write the resource in the client's voice) and ICP (to structure the resource around the right audience's pain points and desired outcomes).
+The post creates a public promise. This skill builds the actual resource behind it. The most common failure: the resource is comprehensive but not useful. Nobody wants a 30-page guide. They want a 2-page checklist they can use today. The best lead magnets are tools, not textbooks — something the reader applies to their own situation within 10 minutes of opening it.
 
----
+6 format options: playbooks, guides, templates, checklists, swipe files, system blueprints.
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile, ICP (structure around audience pain points and desired outcomes).
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
-
----
-
-Build the actual resource behind your lead magnet post. Helps you build playbooks, guides, templates, checklists, swipe files, and systems that people actually use and share.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

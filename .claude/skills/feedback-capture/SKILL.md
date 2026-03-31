@@ -3,25 +3,15 @@ name: feedback-capture
 description: Runs automatically at the end of every content production session. Captures what was produced, what was changed and why, what was rejected, and any engagement data. Appends a structured entry to learning-log.md in the client folder. Never interrupts a session — runs at the end only. Triggers automatically at session end, or manually with "capture feedback for [client]".
 ---
 
-# Skill: Feedback Capture
+# Feedback Capture
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name from current session context]
+Every content session produces invisible data: what got changed, what got rejected, why the client rewrote the hook, which post type they gravitated toward. Without capturing this, you repeat the same mistakes and miss the same preferences every week. This skill runs silently at the end of every production session and logs the session's learning — so the system gets smarter over time, not just the person.
 
----
+**Pre-flight:** Run preflight.md. Client: [name from current session context].
 
-## Quality Gate Rule
+## Quality Gate
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

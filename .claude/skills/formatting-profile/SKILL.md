@@ -3,31 +3,17 @@ name: formatting-profile
 description: Capture a client's LinkedIn visual formatting preferences — how posts look on the feed. Covers line breaks, sentence length, punctuation, emphasis, post length, structure, CTA style, and emoji. Does NOT cover voice, tone, or content — those live in voice-analyzer. Optional Foundation skill, runs after profile-optimizer. Triggers include "run formatting-profile for [client]", "capture formatting preferences", or when a client has strong formatting opinions.
 ---
 
-# Skill: Formatting Profile
+# Formatting Profile
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
+Voice is what you say. Formatting is how it looks on the feed. Two posts with identical words can perform completely differently based on line breaks, sentence length, white space, and punctuation patterns. This skill captures a client's visual formatting preferences — the stuff that makes their posts recognizable at scroll speed before a single word is read.
 
----
+Does NOT cover voice, tone, or content — those live in voice-analyzer. This is purely visual rhythm on the feed.
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
-
-**Formatting-specific quality rule:** If any answer is vague, show a concrete example of what each option looks like in a real post. Ask for clarification on that dimension only. Never guess formatting preferences.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

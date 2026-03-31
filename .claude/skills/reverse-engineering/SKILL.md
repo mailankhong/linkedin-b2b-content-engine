@@ -3,30 +3,18 @@ name: reverse-engineering
 description: Fetch high-performing LinkedIn posts in a client's niche, reverse-engineer structural frameworks from text posts (Scenario A) and visual posts (Scenario B), and map reusable templates to the client's content pillars. One Apify call powers both scenarios. Part of the weekly research pipeline. Triggers include "run reverse engineering for [client]", "what post structures are working in [niche]?", or when called by weekly-idea-session.
 ---
 
-# Skill: Reverse Engineering
+# Reverse Engineering
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: keyword string from Content Pillars (required — hard stop without it).
+The best LinkedIn creators don't invent post structures — they pattern-match. Every viral post has a structural framework underneath: the hook type, the body architecture, the tension mechanics, the CTA placement. Most people see a great post and think "nice idea." This skill sees the skeleton and extracts it as a reusable template.
 
----
+Two scenarios: A — reverse-engineer text post structures. B — reverse-engineer visual post frameworks. One Apify call powers both. The output isn't "here's what worked" — it's "here's the template you can load into your content pillars and reuse."
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Keyword string from content pillars (hard stop without it).
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Missing keyword string → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

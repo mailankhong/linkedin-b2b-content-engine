@@ -3,23 +3,17 @@ name: content-pillars
 description: Define 3-5 strategic content pillars and generate dozens of specific post ideas within each pillar. Use this skill when the user wants to figure out what to post about, needs content ideas, wants to define their content strategy, or is running out of topics. Triggers include "what should I post about", "give me post ideas", "define my content pillars", "I don't know what to write", or when building a content strategy from scratch. Generates 10-15 ideas per pillar with draft hooks.
 ---
 
-# Content Pillar + Post Ideas Generator
+# Content Pillars
 
-Define 3-5 content pillars based on your expertise, offer, and ICP. Then generate dozens of specific post ideas within each pillar that you can rotate for months without repeating yourself.
+The biggest mistake in content strategy is trying to post about everything you know. Your audience doesn't follow you for breadth — they follow you for a specific lens on a specific set of problems. Content pillars are that lens: 3-5 territories where your expertise, your offer, and your ICP's pain overlap. Everything else is noise.
 
----
+This skill defines 3-5 strategic content pillars and generates 10-15 specific post ideas within each — enough to rotate for months without repeating yourself. Every idea is mapped to the ICP and tagged by post type.
 
-## Quality Gate Rule
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
+## Quality Gate
 
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

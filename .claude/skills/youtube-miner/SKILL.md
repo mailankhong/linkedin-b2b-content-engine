@@ -3,33 +3,21 @@ name: youtube-miner
 description: Two scenarios. Scenario A (default): Gemini analyzes a specific YouTube video to extract frameworks, insights, and audience pain points. Scenario B (trending-first): Apify finds what is actually trending in the client's niche right now, Claude selects the most relevant video and runs extraction. Triggers include "mine YouTube for ideas", "analyze this YouTube video for [client]", "find trending videos for [client]", "what is blowing up in [niche]", or "YouTube mining for [client]".
 ---
 
-# Skill: YouTube Miner
+# YouTube Miner
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: ICP and content pillars (for mapping extracted insights to relevant angles).
+Long-form YouTube content is the richest source of frameworks that haven't reached LinkedIn yet. A 45-minute podcast interview contains 3-5 transferable frameworks that most viewers absorb passively. This skill extracts those frameworks explicitly — names them, maps their structure, and turns them into LinkedIn-native angles.
 
-**Tool dependency:** Scenario A requires the Gemini MCP (`mcp__gemini__gemini-youtube` and `mcp__gemini__gemini-youtube-summary`).
-**Environment variable:** `APIFY_API_KEY` required for Scenario B.
+The difference between a good YouTube mine and a bad one: bad mining summarizes the video. Good mining extracts the underlying mental model and repackages it for a completely different audience. Your client's ICP doesn't watch 45-minute videos — but they'll save a post that distills the framework in 150 words.
 
----
+Two scenarios: A (default) — analyze a specific video via Gemini. B (trending-first) — Apify finds what's actually trending in the niche, then runs extraction on the most relevant hit.
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** ICP and content pillars (for mapping insights to relevant angles).
+**Tools:** Scenario A requires Gemini MCP. Scenario B requires `APIFY_API_KEY`.
 
----
+## Quality Gate
 
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

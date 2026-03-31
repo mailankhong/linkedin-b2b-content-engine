@@ -1,27 +1,13 @@
-# Skill: Visual Brief Generator
+# Visual Brief Generator
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: Voice Profile (for brand tone in copy elements) and content pillars (for visual positioning and messaging alignment).
+Most LinkedIn visuals are pretty but pointless — they look designed but don't communicate a single clear idea at scroll speed. The visual brief isn't about aesthetics. It's about information architecture: what's the one thing someone should understand in 2 seconds of looking at this image? If you can't answer that, the visual needs restructuring before it needs design.
 
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Voice Profile (for brand tone in copy elements), content pillars (for visual positioning).
 
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
+## Quality Gate
 
----
-
-## Quality Gate Rule
-
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 
@@ -174,19 +160,60 @@ Paste your brand reference block at the start of every generation prompt.
 
 **Requires:** `GOOGLE_API_KEY` environment variable.
 
-If set, offer to generate the visual in-session using Gemini:
+If set, offer to generate the visual in-session using Gemini with structured JSON prompting.
+
+### 4A — Build the structured image prompt
+
+Do NOT send a plain-text prompt. Build a structured JSON prompt from the brief sections. Pull brand values directly from the client's `brand-guidelines.md` (or `visual-style.md`).
+
+```json
+{
+  "subject": "[Visual concept from Section 1 — what this image shows]",
+  "text_content": {
+    "headline": "[Main headline from Section 2, slide 1 or primary zone]",
+    "subtext": "[Supporting text — keep short]",
+    "body_points": ["[bullet 1]", "[bullet 2]", "[bullet 3]"]
+  },
+  "style": "[From client brand guidelines — e.g., 'Dark corporate infographic, near-black background, electric blue accents']",
+  "colors": {
+    "background": "[hex from brand-guidelines.md]",
+    "primary_accent": "[hex]",
+    "text_color": "[hex]",
+    "secondary_accents": ["[hex]", "[hex]"]
+  },
+  "typography": "[From brand-guidelines.md — e.g., 'Bold geometric sans-serif headlines, clean sans-serif body']",
+  "composition": "[From Section 5 Visual Hierarchy — reading flow, what eye sees first/second/third]",
+  "format": "portrait, 1080x1350px",
+  "negative_prompt": "[From Section 3 'What to avoid' + generic: 'blurry, low resolution, clip art, stock photo aesthetic, warped text, misspelled words']",
+  "visual_elements": "[From Section 2 visual notes — icons, diagrams, data viz, photos, etc.]"
+}
+```
+
+### 4B — Generate the image
+
+Convert the JSON into a single detailed prompt string and send to Gemini:
 
 ```
-POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key={GOOGLE_API_KEY}
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={GOOGLE_API_KEY}
 {
   "contents": [{
     "parts": [{
-      "text": "[Visual concept from Section 1. Full text content from Section 2. Branding from Section 4. Format: portrait, 1080×1350px. Style: [visual tone from brand reference].]"
+      "text": "Generate a LinkedIn visual image.\n\nSUBJECT: [subject]\nFORMAT: [format]\nSTYLE: [style]\nCOLORS: Background [background], primary accent [primary_accent], text [text_color], secondary accents [secondary_accents]\nTYPOGRAPHY: [typography]\nCOMPOSITION: [composition]\nTEXT CONTENT:\n- Headline: [headline]\n- Subtext: [subtext]\n- Body: [body_points joined]\nVISUAL ELEMENTS: [visual_elements]\nAVOID: [negative_prompt]\n\nThe image must render all text clearly and legibly. Portrait orientation, 1080x1350px."
     }]
   }],
   "generationConfig": {"responseModalities": ["IMAGE", "TEXT"]}
 }
 ```
+
+### 4C — Evaluate and iterate
+
+After generation, check:
+- Is all text legible and correctly spelled?
+- Does the color palette match the client's brand guidelines?
+- Is the visual hierarchy correct (eye path matches Section 5)?
+- Does it avoid everything listed in the negative prompt?
+
+If any check fails, adjust the prompt and regenerate (max 2 attempts). Note what was adjusted so the feedback loop improves future generations.
 
 If `GOOGLE_API_KEY` is not set: present the brief only. Note where to take it.
 

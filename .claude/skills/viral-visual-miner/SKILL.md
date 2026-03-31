@@ -3,46 +3,27 @@ name: viral-visual-miner
 description: Two scenarios. Scenario A: proactively search for viral visual posts in a client's niche, extract structural frameworks, and map them to the client's ICP and expertise. Scenario B: user drops a visual — analyze its structure and generate ideas from it. Triggers include "find viral visual ideas for [client]", "mine visual posts for [client]", "analyze this visual", "reverse engineer this image", or dropping an image for analysis.
 ---
 
-# Skill: Viral Visual Miner
+# Viral Visual Miner
 
-## SCENARIO ROUTING
+Visual posts on LinkedIn get 2-3x the engagement of text posts — but most people treat visuals as decoration. The real value of a viral visual isn't the design — it's the information architecture. How did they organize the idea? What's the hierarchy? Why does the eye move where it does? Those structural decisions are transferable even if the topic is completely different.
 
-```
-If the user has dropped or pasted a visual (screenshot, image, infographic, carousel):
-→ SCENARIO B — Analyze the visual they brought
+This skill does two things: proactively finds viral visual posts in the client's niche and reverse-engineers their structure (Scenario A), or analyzes a visual the user drops and generates ideas from it (Scenario B).
 
-If no visual is provided:
-→ SCENARIO A — Proactive search in client's niche
-```
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** ICP and content pillars.
 
----
+## Scenario Routing
 
-## Quality Gate Rule
+If the user has dropped or pasted a visual → SCENARIO B (analyze what they brought).
+If no visual is provided → SCENARIO A (proactive search in client's niche).
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
+## Quality Gate
 
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 
 ## SCENARIO A — PROACTIVE VISUAL SEARCH
-
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: ICP (pain points and audience profile) and content pillars (for mapping extracted frameworks to relevant angles).
-
----
-
-You can enter the pipeline here directly. Bring what you have. If prerequisite context is missing, I will ask for only what I need — I will not force you to start over.
-
----
 
 **Purpose:** Find high-performing visual posts in the client's niche. Extract the structural frameworks. Map them to the client's ICP. Output 3–5 content ideas with visual direction — ready to develop.
 
@@ -151,10 +132,6 @@ Flags: [any stops, or "None"]
 ## SCENARIO B — ANALYZE A DROPPED VISUAL
 
 **No pre-flight required.** Client context is optional — if provided, ideas are mapped to the client's niche and ICP. If not provided, ask before Step 2.
-
----
-
-You can use this scenario at any point, in any workflow. Drop a visual. Get the structure extracted and ideas generated.
 
 ---
 

@@ -5,18 +5,14 @@ description: Score any LinkedIn post across 5 dimensions using a clean rubric. P
 
 # Post Grader
 
-You can enter here directly. If prerequisite context is missing, ask for only what is needed.
+A post can feel good and still flop. Feeling is not a grading system. This skill scores posts across 5 dimensions using a clean rubric — hook strength, clarity, ICP relevance, voice match, and conversion intent. Pass threshold is 38/50. Below threshold triggers specific, actionable fixes per failing dimension — not "improve the hook" but "move line 7 to line 1 and cut the first paragraph."
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Required for: ICP (Dimension 3 — audience targeting) and Voice Profile (Dimension 4 — voice match).
-
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** ICP (Dimension 3) and Voice Profile (Dimension 4).
 
 ## Quality Gate
 
-Missing ICP or Voice Profile → state what's missing. State what that limits. Ask: proceed with reduced quality and flag gaps, or wait?
+Missing ICP or Voice Profile → stop. State gap, impact, fix option.
 
 ---
 

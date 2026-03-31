@@ -3,14 +3,17 @@ name: monthly-voice-refresh
 description: Every 4 weeks, pull fresh Fireflies transcripts for a client, analyze for new voice patterns, and produce a suggestion report for voice-profile.md updates. Never edits voice-profile.md automatically — human approval required. Can be triggered manually or called by cron.
 ---
 
-# Skill: Monthly Voice Refresh
+# Monthly Voice Refresh
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user or cron job]
-Required fields: client name, client niche, voice-profile.md present in client folder.
+People's voices evolve. A founder sounds different after raising a round, after losing a key hire, after landing their biggest client. A voice profile built 3 months ago might capture the right personality but miss the new confidence, the new frustration, or the new vocabulary. This skill pulls fresh Fireflies transcripts, analyzes for new voice patterns, and produces a suggestion report. Never edits voice-profile.md automatically — human approval required.
 
-**Trigger:** "run monthly voice refresh for [client]" OR called automatically by cron on the first Monday of each month
+**Pre-flight:** Run preflight.md. Client: [name provided by user or cron job].
+**Required:** Client name, niche, existing voice-profile.md.
+**Trigger:** Manual or cron (first Monday of each month). Always runs in HEADLESS MODE.
+
+## Quality Gate
+
+Missing voice-profile.md → stop. State gap, impact, fix option.
 
 ---
 

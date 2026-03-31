@@ -3,23 +3,17 @@ name: icp-analyzer
 description: Build a detailed Ideal Client Profile that makes every piece of content speak directly to the person most likely to buy. Use this skill when the user wants to define their audience, research their ideal client, understand buyer psychology, or create an ICP document. Triggers include requests to "build my ICP", "define my audience", "who is my ideal client", or when starting content strategy for a new niche. Goes beyond demographics to map how the audience thinks, talks, and makes buying decisions.
 ---
 
-# ICP Deep Dive Analyzer
+# ICP Analyzer
 
-Build a detailed Ideal Client Profile that makes every piece of content speak directly to the person most likely to buy. This skill goes beyond basic demographics and maps out how your audience thinks, talks, and makes buying decisions.
+Most content creators write for "founders" or "marketers." That's not an audience — that's a census category. Real ICP work maps how a specific person thinks, what keeps them up at 2am, what language they use when describing their problem to a colleague (not in a meeting — in Slack). When you know that, every hook writes itself because you're naming their situation before they've finished reading line 1.
 
----
+This skill goes beyond demographics to build a detailed Ideal Client Profile that maps buyer psychology, decision triggers, and the actual vocabulary your audience uses. The output makes every piece of content speak directly to the person most likely to buy.
 
-## Quality Gate Rule
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
+## Quality Gate
 
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 

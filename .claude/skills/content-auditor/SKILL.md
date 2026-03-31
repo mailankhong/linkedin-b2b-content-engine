@@ -3,26 +3,16 @@ name: content-auditor
 description: Monthly or quarterly maintenance session. Reviews learning log, checks pillar relevance, identifies performance patterns, flags if voice profile needs refreshing, and outputs a prioritized maintenance report with specific recommended updates to the client folder. Triggers include "run content audit for [client]", "quarterly audit for [client]", "is [client]'s strategy still working?".
 ---
 
-# Skill: Content Auditor
+# Content Auditor
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user]
-Methods requiring client context: full client folder (all sections) + learning-log.md if it exists.
+Strategy that doesn't evolve becomes stale. Pillars that were relevant 3 months ago might not match where the market has moved. A voice profile built from pre-product-launch interviews might not capture the founder's post-launch confidence. This skill runs a monthly or quarterly check on everything in the client folder — pillar relevance, voice freshness, performance patterns — and outputs a prioritized maintenance report.
 
----
+**Pre-flight:** Run preflight.md. Client: [name provided by user].
+**Required:** Full client folder + learning-log.md if it exists.
 
-## Quality Gate Rule
+## Quality Gate
 
-If input is insufficient to produce quality output:
-1. Stop immediately
-2. State exactly what is missing
-3. State what the limitation means for output quality
-4. Suggest the specific input needed to fix it
-5. Ask: Shall I proceed with reduced quality and flag the gaps, or wait for better input?
-
-Never invent, fabricate, assume, or produce work silently from insufficient input.
-Always surface the gap, name the impact, suggest the fix.
+Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
 
 ---
 
