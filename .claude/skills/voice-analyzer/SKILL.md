@@ -1,8 +1,13 @@
+---
+name: voice-analyzer
+description: Build a complete Voice Profile for any person. Three scenarios — online research, document input, or research-only audit. Uses a conversational interview (not a form) to extract voice DNA. Outputs a machine-readable profile with frequency-labeled rules, beliefs & editorial stance, anti-overfitting guidance, and an evidence bank. Triggers include "build my voice profile", "run voice analyzer", "analyze my voice", "make Claude sound like me", or any reference to voice capture.
+---
+
 # Voice Analyzer
 
-Most AI-generated content fails for one reason: it sounds like AI. Not because the ideas are bad, but because the voice is wrong. Every person has a vocabulary signature — words they reach for, rhythms they fall into, emotions they avoid. A Voice Profile captures these patterns so precisely that AI output sounds like the person wrote it on a good day.
+Most AI-generated content fails for one reason: it sounds like AI. Not because the ideas are bad, but because the voice is wrong. Every person has a vocabulary signature — words they reach for, rhythms they fall into, beliefs they hold, emotions they avoid. A Voice Profile captures these patterns so precisely that AI output sounds like the person wrote it on a good day.
 
-Three scenarios depending on what the user brings. Outputs: Voice DNA, Writing Rules, and an AI Prompt Framework ready to use in any content session.
+Three scenarios depending on what the user brings. Outputs a machine-readable Voice Profile: Voice DNA, Beliefs & Editorial Stance, Writing Rules with frequency labels, and an AI Prompt Framework with anti-overfitting guidance.
 
 **Triggers:** "Build my voice profile", "Run voice analyzer", "Analyze my voice", "Make Claude sound like me", or any reference to voice capture or making AI write like the user.
 
@@ -18,210 +23,337 @@ Detect which scenario to run before doing anything else. Do not ask the user whi
 
 ```
 If the user has provided a completed document at session start
-(a filled Voice Capture Framework, a transcript, a paste of written material with clear structure):
+(a transcript, voice memo transcript, paste of unscripted material):
 → SCENARIO B — Document Input
 
 If the user explicitly requests "audit my online presence", "research only", or equivalent:
 → SCENARIO C — Run Phases 1–3, deliver the sufficiency report, stop.
-  Do not proceed to Phase 4 (analysis) or Phase 5 (delivery of full profile).
 
 If the user has provided only their name, company, or a request to "build my voice profile"
 with no document attached and no research-only signal:
-→ SCENARIO A — Online Research + VCF for gaps
-  (also arrives here naturally if Phase 3 returns SUFFICIENT and no VCF is needed)
+→ SCENARIO A — Online Research + Interview for gaps
 ```
 
 ---
 
 ## SCENARIO B — DOCUMENT INPUT
 
-The user has provided a completed Voice Capture Framework or equivalent document.
-Skip online research. Skip the intake interview. Analyze the document directly.
+The user has provided a completed document (transcript, voice capture, etc.).
+Skip online research. Analyze the document directly.
 
 ### Step 1 — Read and map the document
 
-Read the full document provided. Map its contents against the five voice dimensions:
+Map contents against the six voice dimensions:
 
-| Dimension | Covered by | Status |
-|---|---|---|
-| How they actually talk | VCF Input 1 / raw transcripts / unscripted material | COVERED / PARTIAL / MISSING |
-| Who they are outside work | VCF Input 2 / personal segments | COVERED / PARTIAL / MISSING |
-| Communication values (what they value) | VCF Input 3A | COVERED / PARTIAL / MISSING |
-| Communication values (what they hate) | VCF Input 3B | COVERED / PARTIAL / MISSING |
-| Emotional calibration | VCF Input 4 | COVERED / PARTIAL / MISSING |
+| Dimension | Status |
+|---|---|
+| How they actually talk (unscripted speech patterns) | COVERED / PARTIAL / MISSING |
+| Beliefs & editorial stance (opinions, contrarian takes) | COVERED / PARTIAL / MISSING |
+| Aesthetic crimes (what they hate, what makes them cringe) | COVERED / PARTIAL / MISSING |
+| Writing mechanics (structure, rhythm, vocabulary) | COVERED / PARTIAL / MISSING |
+| Emotional calibration (default register, animation, restraint) | COVERED / PARTIAL / MISSING |
+| Hard NOs (lines they won't cross, topics they won't touch) | COVERED / PARTIAL / MISSING |
 
 ### Step 2 — Check for critical gaps
 
-Critical sections (without these, the Voice Profile will be too thin to be useful):
-- How they actually talk (VCF Input 1 or equivalent unscripted material)
-- Communication values — what they hate (VCF Input 3B)
+Critical (profile will be too thin without these):
+- How they actually talk (unscripted material)
+- Aesthetic crimes / what they hate
 
-If either critical section is missing or contains only 1–2 sentences with no real substance:
-Ask for that specific section only. Do not run the full interview. Use this message:
+If either is MISSING: run a targeted mini-interview (5-8 questions from the relevant round in Phase 4). Do not send a form.
 
-```
-I can see [section X] is missing or too thin to analyze reliably.
-Without it, the voice profile won't capture [specific dimension].
-
-Can you add this? [paste the relevant VCF Input section here]
-
-Everything else looks good — I'll proceed as soon as you send this.
-```
-
-If non-critical sections are missing: note the gap in the final output, proceed without blocking.
-
-### Step 3 — Proceed to Phase 4 (Voice Analysis)
-
-Run Phase 4 analysis directly on the document content.
-Note in the output: "Voice Profile built from provided document. No online sources were analyzed."
-
-If the document contains only written material (no spoken/unscripted content), flag it:
+If the document contains only written material (no spoken/unscripted content):
 ```
 ⚠️ This profile is based on written material only.
-Written content may be more polished or edited than how this person actually speaks.
-For stronger voice fidelity, supplement with a voice memo or podcast appearance when available.
+Written content tends to be more polished than how someone actually speaks.
+For stronger voice fidelity, supplement with a voice memo or podcast appearance.
 ```
 
-Then proceed to Phase 5 (Delivery).
+### Step 3 — Proceed to Voice Analysis
+
+Run Phase 5 (Voice Analysis) directly on the document content.
+Note: "Voice Profile built from provided document. No online sources analyzed."
 
 ---
 
-## SCENARIO A — ONLINE RESEARCH PATH
-*(becomes Scenario C if online material is sufficient and no VCF is needed)*
+## SCENARIO A — ONLINE RESEARCH + INTERVIEW PATH
 
-### PHASE 1 — DISCOVERY
+### PHASE 1 — INTAKE
 
-Search for publicly available sources featuring the user's authentic voice.
-
-First, ask: "What's your full name and company? Any LinkedIn, YouTube, or podcast links I should start with?"
-
-Then run these searches:
+Ask all of this in one message:
 
 ```
-"[NAME]" interview podcast 2023 OR 2024 OR 2025
+To build your voice profile, I need to understand how you actually think and talk.
+
+A few questions before we start:
+
+1. What's your full name and company?
+
+2. Do you have any links I should look at?
+   - Podcast appearances, YouTube videos, conference talks (MOST USEFUL)
+   - Any content where you're speaking naturally and unscripted
+
+3. Do you have any documents you can share directly?
+   - Voice memos, call transcripts, Slack messages, emails you wrote naturally
+
+4. Or would you prefer to skip research and go straight to a conversation?
+   Some people know they don't have much online — if that's you,
+   we can jump right into the interview. Works just as well.
+```
+
+**Routing after intake:**
+- User says "skip research" or "go straight to interview" → jump to Phase 4 (Voice Interview)
+- User provides links or wants you to search → proceed to Phase 2
+- User provides documents → route to Scenario B
+
+---
+
+### PHASE 2 — DISCOVERY
+
+Search for publicly available sources. **Prioritize spoken/unscripted material only.**
+
+Search queries:
+```
+"[NAME]" interview podcast 2023 OR 2024 OR 2025 OR 2026
 "[NAME]" "[COMPANY]" YouTube talk keynote
 "[NAME]" site:youtube.com
 "[NAME]" Forbes OR TechCrunch OR Inc interview
-"[NAME]" LinkedIn article written
 "[NAME]" podcast transcript
 ```
 
 For each result, note:
-- Title, URL, format (YouTube / Podcast / Article / LinkedIn / Talk)
+- Title, URL, format (YouTube / Podcast / Talk)
 - Approximate date
 - Length: Short (<5 min) / Medium / Long (>20 min)
 - Authenticity signal: Scripted / Semi-scripted / Unscripted/Conversational
 
-Present findings grouped into two categories:
+**Written material policy — SKIP BY DEFAULT:**
 
+Do NOT include blog posts, LinkedIn posts, articles, or newsletters in the results. Explain why:
+
+```
+I found some written content (blog posts, LinkedIn posts, articles) but I'm not including
+those. Written material is often edited, ghostwritten, or AI-assisted — even slightly —
+and those patterns contaminate the voice analysis. We want how YOU actually communicate,
+not a polished version.
+
+If any of those were 100% written by you with zero AI help or heavy editing,
+let me know and I'll add them back in.
+```
+
+**Present spoken sources only:**
 ```
 ✅ SPOKEN / HIGH-TRUST (unscripted video, podcast, conversational interview)
-[list]
+[list with title, URL, date, length, authenticity signal]
 
-⚠️ WRITTEN / NEEDS CONFIRMATION (articles, blog posts, LinkedIn posts — may be AI-assisted)
-[list]
-
-Total found: [X]
-Gaps noted: [e.g., "No long-form unscripted audio found" / "Most content is from 2022, nothing recent"]
+Total spoken sources found: [X]
+Gaps: [e.g., "No long-form audio found" / "Most content is pre-2024"]
 ```
 
-Ask the user: "Which of these should I analyze? For spoken sources, I'll process all unless you say otherwise. For written content, tell me which ones you personally wrote without heavy editing."
+**If NO spoken sources found:**
+```
+I didn't find any spoken/unscripted content online. That's totally fine — it means
+the voice interview becomes our primary source. This actually produces great results
+because I can push for depth on every answer.
 
-Wait for confirmation before proceeding.
+Ready to start the conversation?
+```
+→ Jump to Phase 4.
+
+Wait for user to confirm which sources to analyze before proceeding.
 
 ---
 
-### PHASE 2 — CONTENT EXTRACTION
+### PHASE 3 — EXTRACTION + SUFFICIENCY
 
 Extract text from each approved source.
 
-**For YouTube videos:** Use the youtube_transcript_api if available. If not, note the video URL and ask the user: "I can't auto-extract this one — can you paste the transcript or a summary of what you said?"
+**YouTube:** Use transcript API or Gemini video analysis. If unavailable: "I can't auto-extract this one — can you paste the transcript?"
 
-**For articles and written content:** Fetch the full text. Strip navigation and ads. Keep only the main body.
+**Multi-speaker sources:** Extract only the user's lines. Discard host/interviewer entirely.
 
-**For multi-speaker sources (podcasts, interviews):** Extract only the user's lines. Discard host and interviewer lines entirely.
-
-Tag each piece of content:
-
+Tag each:
 ```
 SOURCE: [Title]
-FORMAT: [YouTube / Podcast / Article / LinkedIn]
+FORMAT: [YouTube / Podcast / Talk]
 DATE: [Year]
-AUTHENTICITY: [Scripted / Unscripted]
+AUTHENTICITY: [Unscripted / Semi-scripted]
 ---
 [Extracted text]
----
 ```
 
-Report: "Extraction complete. [X] sources processed. ~[X] total words. Ready for analysis."
+**Sufficiency check** against the six voice dimensions:
 
----
-
-### PHASE 3 — DATA SUFFICIENCY CHECK
-
-Before analyzing, assess whether the collected material covers the five dimensions of voice:
-
-| Dimension | Covered by | Status |
-|---|---|---|
-| How they actually talk | Long-form unscripted spoken sources | COVERED / PARTIAL / MISSING |
-| Who they are outside work | Personal segments in interviews | COVERED / PARTIAL / MISSING |
-| Communication values (what they value) | Patterns across written + spoken | COVERED / PARTIAL / MISSING |
-| Communication values (what they hate) | Rarely stated online | ALMOST ALWAYS MISSING |
-| Emotional calibration | Tone patterns across sources | COVERED / PARTIAL / MISSING |
+| Dimension | Status |
+|---|---|
+| How they actually talk | COVERED / PARTIAL / MISSING |
+| Beliefs & editorial stance | COVERED / PARTIAL / MISSING |
+| Aesthetic crimes (what they hate) | COVERED / PARTIAL / MISSING |
+| Writing mechanics | COVERED / PARTIAL / MISSING |
+| Emotional calibration | COVERED / PARTIAL / MISSING |
+| Hard NOs | COVERED / PARTIAL / MISSING |
 
 **Verdict:**
-- **SUFFICIENT** → Proceed to Phase 4. No VCF needed. *(This is Scenario C — online material alone was enough.)*
-- **PARTIAL** → Proceed to Phase 4 with what exists. Send the user only the missing VCF sections.
-- **INSUFFICIENT** → Send the full VCF before analyzing.
-
-If sending VCF sections, list exactly which ones and why. Do not send the whole form if only part is needed.
+- **SUFFICIENT** → Proceed to Phase 5 (Analysis). No interview needed.
+- **PARTIAL** → Run a targeted mini-interview (only the rounds covering MISSING/PARTIAL dimensions), then Phase 5.
+- **INSUFFICIENT** → Run the full voice interview (Phase 4), then Phase 5.
 
 ---
 
-### PHASE 4 — VOICE ANALYSIS
+### PHASE 4 — VOICE INTERVIEW
 
-Analyze all collected material and produce the Voice Profile.
+**Why a conversation instead of a form:** A questionnaire produces safe, considered answers — the person performing their best self. A real-time conversation where vague answers get challenged and interesting threads get followed reveals how someone actually thinks and communicates. The interview itself IS the voice sample.
+
+**Interview rules:**
+1. **ONE question at a time.** Wait for their response before asking the next.
+2. **Push back on vague answers.** If they say "I like to keep things simple," ask: "Simple how? Give me an example of simple done right and simple done lazy."
+3. **Ask for specific examples.** "Can you show me a sentence or message that captures what you mean?"
+4. **Call out contradictions.** If they said one thing earlier and something different now, name it.
+5. **Follow interesting threads.** If something unexpected surfaces, go deeper before moving on.
+6. **Don't accept "I don't know" easily.** Reframe the question or approach from a different angle.
+7. **Keep the tone direct and curious** — like a sharp colleague who genuinely wants to understand. Not adversarial, not polite-for-the-sake-of-polite.
+
+**5 rounds, ~25 questions total (~20 min). Adapt based on what's already covered by research.**
+
+---
+
+#### ROUND 1: HOW YOU TALK (~5 questions)
+*Goal: Capture natural communication patterns — not what they think they sound like, but how they actually speak.*
+
+Open with: "Tell me what you actually do — explain it like I'm a smart friend who doesn't work in your industry."
+
+Then probe:
+- Something on your mind lately — a client situation, a pattern you're noticing, something you're figuring out
+- When someone in your field says something you disagree with, how do you respond? Walk me through a recent example
+- How do people close to you describe the way you communicate? What would they say is distinctive?
+- What's something you recently explained to someone where the explanation just clicked — you nailed it?
+
+---
+
+#### ROUND 2: BELIEFS & OPINIONS (~5 questions)
+*Goal: Capture editorial stance — what they believe that's interesting, contrarian, or distinctive. This shapes every content angle.*
+
+- What do you believe about your industry that most people in it would disagree with?
+- What's a piece of "best practice" advice in your space that you think is wrong or outdated?
+- When you see other people in your space posting content, what makes you think "this person gets it" vs. "this person is faking it"?
+- What hill would you die on professionally?
+- What's something you've changed your mind about in the last year?
+
+---
+
+#### ROUND 3: AESTHETIC CRIMES & HARD NOs (~5 questions)
+*Goal: The negative space of their voice — what they'd NEVER do or sound like. This is the most critical dimension and the one most often missing from online material.*
+
+- What makes you cringe when you read someone else's content? Give me specific words, phrases, or patterns.
+- What type of content do you find lazy or uninspired? What specifically makes it feel that way?
+- If I wrote something as you and it had [corporate buzzword / bro-marketing phrase / fake vulnerability], would you notice? What would bother you most?
+- Is there a topic or approach you'd never touch? Something that's off-limits?
+- Think of the worst piece of content you've seen recently. What specifically made it bad?
+
+---
+
+#### ROUND 4: WRITING MECHANICS (~5 questions)
+*Goal: How they structure ideas, their relationship with language, their natural rhythm.*
+
+- When you explain a complex idea, do you give the conclusion first then explain, or build up to it?
+- How do you use humor? Frequent, rare, dry, self-deprecating, situational? Give me an example.
+- Do you prefer short punchy statements or longer explanations? What does your natural rhythm feel like?
+- How do you start a message when you're writing something you actually care about? Not the formula — what do you instinctively reach for?
+- Words or phrases you use all the time? And words that feel foreign — they'd never come out of your mouth?
+
+---
+
+#### ROUND 5: EMOTIONAL CALIBRATION (~4 questions)
+*Goal: Fine-tune the emotional register — what they want people to feel, how vulnerable they get, where the line is.*
+
+- When someone reads something you wrote, what do you want them to feel? Not "informed" — the actual emotional reaction.
+- How personal do you get? Where's the line between sharing a real experience and oversharing?
+- Who's a communicator you genuinely respect? What specifically about how they express themselves?
+- If I nailed your voice perfectly, what would the output feel like? And if I got it slightly wrong, what would be the tell?
+
+---
+
+**After the interview:** "That's everything I need. Give me a few minutes to analyze this." → Proceed to Phase 5.
+
+**If running a targeted mini-interview** (partial coverage from research): Run only the rounds covering MISSING/PARTIAL dimensions. Tell the user: "Your spoken material covered [X, Y]. I just need to dig into [Z] to complete the picture."
+
+**Voice memo alternative:** If someone says they prefer recording over typing, give them Round 1 + Round 3 prompts as a single voice memo brief (~10 min recording). These two rounds are the most critical. Then run the remaining rounds as conversation.
+
+---
+
+### PHASE 5 — VOICE ANALYSIS
+
+Analyze all collected material (research + interview + documents) and produce the Voice Profile.
+
+**Output is optimized for machine consumption.** Structure every section so another AI instance can parse and apply it without interpretation. Rules must be specific, actionable, and labeled by priority.
+
+---
 
 #### PART 1: VOICE DNA
 
+**Core Identity**
+2-3 sentences capturing the essence of this person's voice. This is the anchor — every rule below traces back to this.
+
 **Tone Profile**
-- Primary tone (describe the emotional texture — e.g., "dry wit wrapped in genuine curiosity")
-- Secondary tones that appear situationally
+- Primary tone (describe emotional texture — e.g., "dry wit wrapped in genuine curiosity")
+- Secondary tones that appear situationally (when does the tone shift, and to what?)
 - What is notably absent from their tone
-- Support each claim with 2–3 verbatim quotes from the material
+- Support each claim with 2-3 verbatim quotes from the material
 
 **Emotional Baseline**
 - Default register (how do they sound most of the time?)
-- When do they get most animated? Quote a moment.
-- When do they pull back? Quote a moment.
-- What emotions do they avoid expressing?
+- When they get most animated — quote a moment
+- When they pull back — quote a moment
+- Emotions they avoid expressing
 
-**Natural Rhythm and Sentence Patterns**
-- Do they build to a point, or state it upfront then explain?
+**Natural Rhythm**
+- Build-to-point or state-upfront-then-explain?
 - Analogy type: technical / personal / nature / pop culture / other
-- Sentence length: short and punchy / long and winding / mixed
-- Any verbal tics (in spoken material) or written tics (in articles)
-- Do they qualify statements or make them flat?
+- Sentence length pattern: short punchy / long winding / mixed
+- Verbal tics or written tics
+- Do they qualify statements or state them flat?
 
 **Vocabulary Signature**
 - Words and phrases they use repeatedly (their language, not industry defaults)
 - Words they conspicuously avoid
 - How they describe their own work in their own terms
-- Technical depth: how deep do they go? Do they explain jargon?
+- Technical depth: do they explain jargon or assume the reader knows?
 - Humor: frequency and style
 
 ---
 
-#### PART 2: WRITING RULES
+#### PART 2: BELIEFS & EDITORIAL STANCE
 
-**DO'S (6–10 specific rules, each with a why and example from their material)**
+*Why this section exists: Two people with identical sentence rhythm but opposite beliefs will produce completely different content. Editorial stance IS voice.*
 
-**DON'TS (6–10 specific rules, each with what it would sound like if broken)**
+- Contrarian takes they'd defend (with quotes)
+- Conventional wisdom they reject (with their reasoning)
+- What they think separates good from bad in their space
+- Topics or angles they naturally gravitate toward
+- Topics or angles they'd never touch (and why)
+
+---
+
+#### PART 3: WRITING RULES
+
+**Label every rule with one of:**
+- **HARD RULE** — Never violate. These are rare.
+- **STRONG TENDENCY** — Follow 70-80% of the time. Breaking it occasionally is fine.
+- **LIGHT PREFERENCE** — Nice to have. Context determines when to apply.
+
+**DO'S (6-10 rules)**
+Each with: the rule, why it matters for this person, a real example from their material.
+
+**DON'TS (6-10 rules)**
+Each with: what it would sound like if broken, why it breaks their voice specifically.
+
+**HARD NOs**
+Things they would never write, say, or sound like. Non-negotiable. Pulled directly from their aesthetic crimes and interview answers.
 
 **Sentence Structure Guide**
 - Ideal sentence length
 - When to use short sentences
-- How to open a post (what signals "this is them")
+- How to open (what signals "this is them")
 - How to close (their natural landing style)
 
 **POV Rules**
@@ -236,173 +368,132 @@ Analyze all collected material and produce the Voice Profile.
 
 **Words to Use / Words to Avoid**
 
-| Use This | Not This |
-|----------|----------|
-| [their word] | [the AI/corporate version] |
+| Use This | Not This | Priority |
+|----------|----------|----------|
+| [their word] | [the AI/corporate version] | HARD / STRONG / LIGHT |
 
-(List 10–15 rows)
+(15-20 rows)
 
 ---
 
-#### PART 3: AI PROMPT FRAMEWORK
+#### PART 4: AI PROMPT FRAMEWORK
 
-A custom instructions block ready to paste into any AI session:
+A complete instructions block optimized for machine consumption. Ready to paste at the start of any AI content session.
 
 ```
 You are writing as [NAME].
 
-VOICE CORE
-[3–4 sentences describing their voice in a way AI can operationalize]
+CORE IDENTITY
+[2-3 sentences — the essence of their voice]
 
-ALWAYS:
-[6–8 specific, actionable rules]
+EDITORIAL STANCE
+[3-4 key beliefs that shape their content angles]
 
-NEVER:
-[6–8 specific, actionable rules]
+HARD RULES (never violate):
+[List — non-negotiable]
+
+STRONG TENDENCIES (follow 70-80% of the time):
+[List — break occasionally for variety]
+
+LIGHT PREFERENCES (context-dependent):
+[List — apply when it fits naturally]
 
 SENTENCE STYLE:
-[2–3 rules on length, structure, rhythm]
+[2-3 rules on length, structure, rhythm]
 
 NATURAL VOCABULARY:
-[List of their words/phrases to pull from]
+[Words/phrases to pull from — their actual language]
 
 BANNED VOCABULARY:
-[List of words that immediately break their voice]
+[Words that immediately break their voice]
+
+HARD NOs:
+[Things they'd never write, topics they'd never touch, tones they'd never use]
+
+ANTI-OVERFITTING RULES:
+- Spirit over letter. Internalize the sensibility, don't mechanically apply every pattern.
+- A piece that uses 3 tendencies naturally beats a piece that forces in 10 awkwardly.
+- Real writers aren't perfectly consistent. Introduce natural variation.
+- Don't start every piece the same way just because there's a "signature open."
+- Format matters: a LinkedIn post ≠ a newsletter ≠ a DM. Adapt rules to format.
+- If it sounds like an AI trying hard to imitate someone, pull back. Less imitation, more inhabitation.
 
 LITMUS TEST:
-Before outputting: Does this sound like [NAME] speaking out loud?
-If it sounds like a B2B content template, rewrite it.
+Before outputting: Does this sound like [NAME] wrote it on a good day?
+If it sounds like a B2B content template, rewrite.
+If it sounds like an AI wearing a costume, simplify.
+
+WHAT MATTERS MOST:
+If you forget everything else, remember these 3 things:
+1. [Their single most important belief about communication]
+2. [The one pattern that makes their voice theirs]
+3. [The #1 thing they never do]
 ```
 
-**"Sounds Like Them" vs "Doesn't Sound Like Them" examples (3 pairs):**
-Pull from their actual material. For each pair:
-- Original (from their material — sounds like them)
+**"Sounds Like Them" vs "Doesn't Sound Like Them" (3 pairs)**
+From actual material:
+- Original (sounds like them)
 - AI version of the same idea (sounds generic)
 - What makes the original theirs
 
-**Quality checklist for reviewing AI drafts (8–10 checks specific to this person):**
-Pull from the voice analysis — not generic checks.
+**Quality Checklist for AI Drafts (8-10 checks specific to this person)**
+Pulled from the voice analysis — not generic.
 
 ---
 
-### PHASE 5 — DELIVERY
+#### PART 5: EVIDENCE BANK
 
-Present the full Voice Profile to the user.
+Key verbatim quotes from the interview and/or source material, organized by dimension. This is the source of truth the rules above are derived from. When a rule feels ambiguous, reference the original quote.
+
+```
+[HOW THEY TALK]
+- "[exact quote]" — demonstrates [X]
+- "[exact quote]" — demonstrates [Y]
+
+[WHAT THEY BELIEVE]
+- "[exact quote]" — demonstrates [X]
+
+[WHAT THEY HATE]
+- "[exact quote]" — demonstrates [X]
+
+[EMOTIONAL REGISTER]
+- "[exact quote]" — demonstrates [X]
+
+[WRITING MECHANICS]
+- "[exact quote]" — demonstrates [X]
+```
+
+10-15 key quotes total — the most revealing, not exhaustive.
+
+---
+
+### PHASE 6 — DELIVERY
+
+Present the full Voice Profile.
 
 End with:
 
 ```
 Voice Profile complete.
 
-Scenario: [A — online research + VCF / B — document input / C — online research only]
+Scenario: [A / B / C]
+Data sources: [research only / interview only / research + interview / document]
+
 Top 3 voice signatures:
 1. [One-liner]
 2. [One-liner]
 3. [One-liner]
 
-Data sufficiency: [SUFFICIENT / PARTIAL — sections sent via VCF / DOCUMENT-BASED — see flag if written-only]
+What matters most:
+1. [Their core belief about communication]
+2. [The pattern that makes them them]
+3. [The thing they never do]
 
-How to use this:
-- Paste the AI Prompt Framework (Part 3) at the start of any content session
-- Reference the Writing Rules when reviewing any AI-generated draft
-- Update this profile every 4 weeks or after 5+ new recordings/transcripts
+Data sufficiency: [SUFFICIENT / PARTIAL — flag specific gaps]
 
-Save this profile somewhere you can easily copy from.
+How to use: Paste the AI Prompt Framework (Part 4) at the start of any content session.
+Update this profile every 4 weeks or after 5+ new recordings/transcripts.
 ```
-
----
-
-## VOICE CAPTURE FRAMEWORK (VCF)
-
-Send only the sections flagged as MISSING or PARTIAL in Phase 3 (Scenario A/C) or Step 2 (Scenario B). Include the intro below.
-
-**Intro to send the user:**
-
-```
-To complete your Voice Profile, I need your input on a few things I couldn't find from your material.
-This takes [X] minutes (based on which sections below apply to you).
-Answer as naturally as possible — voice memos are better than typing if you prefer.
-```
-
----
-
-### VCF Input 1: How You Actually Talk (~8 min)
-
-**Option A — Voice Memo (recommended)**
-Record 7–8 minutes answering these naturally, like leaving a voice note for a trusted colleague:
-- What do you actually do day-to-day? Explain it like I'm a smart friend who doesn't work in your industry.
-- Something that's on your mind recently — a client situation, a pattern you're noticing, something frustrating, something you're figuring out.
-- When someone asks what you do at a dinner party, what do you actually say?
-
-Filler words and incomplete sentences are fine. Do not perform.
-
-**Option B — Written (if you dislike recording)**
-10 minutes. No editing. Answer exactly how you'd say it:
-- Tell me about something interesting that happened with a client or in your work recently. What was the situation? What did you say? What stood out?
-- What frustrates you about your industry? Something you wish more people understood.
-- When someone asks what you do, how do you explain it? The real version, not the LinkedIn version.
-
----
-
-### VCF Input 2: You Outside of Work (~7 min)
-
-Answer 3 of these 5 questions — pick whichever feel easiest:
-1. Describe your morning or commute today. What did you do, notice, think about?
-2. Tell me about something mildly annoying that happened this week. How did you react?
-3. What made you laugh recently?
-4. What are you personally interested in outside work? How do you describe it to people who share that interest?
-5. Tell me about a small moment that felt good recently — something that made you feel calm, grateful, or just good.
-
----
-
-### VCF Input 3: Communication Values (~6 min)
-
-**Part A: What matters to you when you communicate? Pick your top 3 and explain each with a real example.**
-- Clear over clever
-- Direct over diplomatic
-- Real over polished
-- Simple over impressive
-- Challenging over comfortable
-- Story-driven over data-driven
-- Data-driven over story-driven
-- Warm over sharp
-- Sharp over warm
-- Humor as connection
-
-**Part B: What do you never want to sound like? Pick 2–3 and explain why each bothers you.**
-Options: corporate fluff / bro-marketing / academic / overly humble / fake inspirational / sales-y / guru energy / therapy-speak / safe and boring
-
----
-
-### VCF Input 4: Emotional Calibration (~4 min)
-
-**Q1: When people read something you wrote, what do you want them to feel? Pick 2–3.**
-Smarter / Reassured / Challenged / Energized / Understood / Clearer / Validated / Provoked (in a good way)
-
-**Q2:** A piece of writing or content that moved you recently. What was it? What specifically made it land?
-
-**Q3:** A communicator whose style you genuinely respect. Who are they? What do you admire about how they express themselves?
-
----
-
-### VCF Input 5: Raw Materials (~5 min)
-
-Send 2–4 of these — whatever is easiest to grab:
-- [ ] A voice memo explaining something (work-related or not)
-- [ ] Slack or chat messages where you explained something clearly
-- [ ] An email you wrote that felt natural
-- [ ] A LinkedIn post or comment that actually sounds like you
-- [ ] Notes or voice memos you made for yourself
-
-We're looking for unfiltered material — not polished, just real.
-
----
-
-Voice profile complete — scenario used: [A/B/C]
-Quality check: flag any section that felt thin or uncertain with specific missing input.
-If thin: state exactly what is missing and what it affects.
-
-Next step → trigger: run icp-analyzer for [client]
 
 ---
 
@@ -410,25 +501,27 @@ Next step → trigger: run icp-analyzer for [client]
 
 **Correctness:**
 ```
-□ AI Prompt Framework (Part 3) contains a NEVER list specific to this person — not generic AI banned words? Yes → pass. No → add the person-specific banned vocabulary.
-□ "Sounds Like Them" vs "Doesn't Sound Like Them" examples pulled from actual material — not invented? Yes → pass. No → pull from real quotes.
-□ Voice DNA section includes verbatim quotes from the material as evidence for each claim? Yes → pass. No → add the quotes.
+□ Every rule in the AI Prompt Framework labeled HARD RULE / STRONG TENDENCY / LIGHT PREFERENCE?
+□ "Sounds Like Them" vs "Doesn't Sound Like Them" examples from actual material — not invented?
+□ Voice DNA includes verbatim quotes as evidence for each claim?
+□ Beliefs & Editorial Stance present with specific opinions — not generic?
 ```
 
 **Completeness:**
 ```
-□ All three parts delivered: Voice DNA, Writing Rules, AI Prompt Framework? Yes → pass. No → add the missing part.
-□ Words to Use / Words to Avoid table has at least 10 rows? Yes → pass. No → extend it.
-□ Data sufficiency verdict stated (SUFFICIENT / PARTIAL / DOCUMENT-BASED)? Yes → pass. No → state it.
+□ All five parts delivered: Voice DNA, Beliefs, Writing Rules, AI Prompt Framework, Evidence Bank?
+□ Words to Use / Words to Avoid table has 15+ rows with priority labels?
+□ Anti-overfitting rules included in AI Prompt Framework?
+□ "What Matters Most" top 3 filled with specifics — not placeholders?
 ```
 
 **Context-fit:**
 ```
-□ Voice rules are specific to this person — not generic "write short sentences" advice? Yes → pass. No → rewrite using examples from their actual material.
-□ The AI Prompt Framework passes the litmus test: would a content session using only Part 3 produce output that sounds like this person? Yes → pass. No → add more specificity to the ALWAYS/NEVER lists.
-□ Scenario documented (A/B/C) and any data limitations flagged? Yes → pass. No → add the flag.
+□ Rules are specific to this person — not generic "write short sentences" advice?
+□ AI Prompt Framework passes the litmus test: would a session using only Part 4 produce output that sounds like this person?
+□ Scenario and data limitations documented?
 ```
 
 **Consequence:**
-If a content session uses this Voice Profile and the output "doesn't sound like me" — what is the most likely missing rule?
-→ Name the gap before delivering. If the answer is "no banned vocabulary list" or "no rhythm examples from their actual speech" — fix it.
+If a content session uses this profile and output "doesn't sound like me" — what is the most likely missing rule?
+→ Name the gap before delivering. If the answer is "no frequency labels" or "no beliefs section" or "no anti-overfitting guide" — fix it.
