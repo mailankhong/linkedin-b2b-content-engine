@@ -1,6 +1,6 @@
 ---
 name: formatting-profile
-description: Capture a client's LinkedIn visual formatting preferences — how posts look on the feed. Covers line breaks, sentence length, punctuation, emphasis, post length, structure, CTA style, and emoji. Does NOT cover voice, tone, or content — those live in voice-analyzer. Optional Foundation skill, runs after profile-optimizer. Triggers include "run formatting-profile for [client]", "capture formatting preferences", or when a client has strong formatting opinions.
+description: Capture a client's LinkedIn visual formatting preferences — how posts look on the feed. Covers line breaks, sentence length, punctuation, emphasis, post length, structure, and emoji. Does NOT cover voice, tone, content, or CTA strategy — those live in voice-analyzer and copy-developer respectively. Optional Foundation skill, runs after profile-optimizer. Triggers include "run formatting-profile for [client]", "capture formatting preferences", or when a client has strong formatting opinions.
 ---
 
 # Formatting Profile
@@ -17,7 +17,7 @@ Insufficient input → stop. State gap, impact, fix option. Never invent or fabr
 
 ---
 
-**Purpose:** Capture only how posts look on the feed — the 8 visual formatting dimensions that shape scannability and rhythm. This skill contains nothing about tone, voice, vocabulary, vulnerability, or content. Those live in voice-analyzer.
+**Purpose:** Capture only how posts look on the feed — the 7 visual formatting dimensions that shape scannability and rhythm. This skill contains nothing about tone, voice, vocabulary, content, or CTA strategy. Those live in voice-analyzer and copy-developer respectively.
 
 **Pipeline position:** Optional. Runs after profile-optimizer. Can also run standalone at any time.
 
@@ -37,62 +37,88 @@ If the user has provided only a request to run this skill with no document:
 
 ## SCENARIO A — INTERVIEW
 
-Ask all 8 questions together in a single message:
+Ask ONE question per message. Wait for the answer before asking the next. Keep each message short and scannable — just the question, the options, and nothing else. The member should only need to pick a letter.
+
+Start with a brief intro message:
 
 ```
-Quick formatting check for [client] — 8 preferences, purely about how posts look on the feed:
-
-1. Line breaks:
-   A) Lots of white space — airy and scannable
-   B) Moderate spacing
-   C) Dense paragraphs
-
-2. Sentence length:
-   A) Short and punchy — under 15 words
-   B) Mixed short and medium
-   C) Flowing and complex
-
-3. Punctuation:
-   A) Minimal — periods and commas only
-   B) Em dashes for flow
-   C) Ellipses for pauses
-   D) Mix
-
-4. Emphasis:
-   A) Bold key points
-   B) ALL CAPS
-   C) Arrows and bullets
-   D) Clean text only
-   E) Mix — specify which
-
-5. Post length default:
-   A) Under 100 words
-   B) 100–200 words
-   C) 200–400 words
-   D) 400+ words
-   E) Varies by type
-
-6. Structure default:
-   A) Numbered lists
-   B) Bullet points
-   C) Story prose
-   D) Problem → Solution → Result
-   E) Mix — specify when
-
-7. CTA style:
-   A) Direct ask — comment, DM, book a call
-   B) Soft question
-   C) No CTA — pure value
-   D) Varies
-
-8. Emoji:
-   A) Never
-   B) 1–2 maximum
-   C) Moderate
-   D) Frequent
+Quick formatting check — 7 questions about how your posts should look on the feed. Just pick the option that fits. Let's go.
 ```
 
-After answers: proceed directly to OUTPUT. Do not ask follow-up questions unless a specific answer is contradictory or blank — in that case, ask only about that dimension.
+Then ask each question one at a time:
+
+**Message 1:**
+```
+LINE BREAKS — how much white space between lines?
+
+A) Lots of white space — airy and scannable
+B) Moderate spacing
+C) Dense paragraphs
+```
+
+**Message 2:**
+```
+SENTENCE LENGTH — how long do your sentences run?
+
+A) Short and punchy — under 15 words
+B) Mixed short and medium
+C) Flowing and complex
+```
+
+**Message 3:**
+```
+PUNCTUATION — what do you use most?
+
+A) Minimal — periods and commas only
+B) Em dashes for flow
+C) Ellipses for pauses
+D) Mix of the above
+```
+
+**Message 4:**
+```
+EMPHASIS — how do you highlight key points?
+
+A) Bold key points
+B) ALL CAPS for emphasis
+C) Arrows and bullets
+D) Clean text only — no emphasis markers
+E) Mix — tell me which ones
+```
+
+**Message 5:**
+```
+POST LENGTH — what's your default?
+
+A) Under 100 words — short and sharp
+B) 100–200 words
+C) 200–400 words
+D) 400+ words — long form
+E) Varies by post type
+```
+
+**Message 6:**
+```
+STRUCTURE — how do you organize a post?
+
+A) Numbered lists
+B) Bullet points
+C) Story prose — no lists
+D) Problem → Solution → Result
+E) Mix — tell me when you use which
+```
+
+**Message 7:**
+```
+EMOJI — how much?
+
+A) Never
+B) 1–2 maximum
+C) Moderate throughout
+D) Frequent
+```
+
+After all 7 answers: proceed directly to OUTPUT. Do not ask follow-up questions unless a specific answer is contradictory — in that case, ask only about that dimension.
 
 ---
 
@@ -100,10 +126,10 @@ After answers: proceed directly to OUTPUT. Do not ask follow-up questions unless
 
 Parse the provided questionnaire or document.
 
-Extract only the 8 formatting dimensions above.
-Ignore all sections about tone, vocabulary, storytelling, vulnerability, inspiration, or any content preferences — those belong in voice-analyzer.
+Extract only the 7 formatting dimensions above.
+Ignore all sections about tone, vocabulary, storytelling, vulnerability, inspiration, CTA strategy, or any content preferences — those belong in voice-analyzer and copy-developer.
 
-Flag any of the 8 dimensions that are:
+Flag any of the 7 dimensions that are:
 - Blank or unanswered → apply documented default, flag it
 - Contradictory (e.g., "short sentences" + "flowing and complex") → flag the conflict, suggest the resolution
 
@@ -143,13 +169,12 @@ List usage: [when yes, when no — e.g., "numbered lists for step-by-step only; 
 
 ---
 
-CTA AND ENGAGEMENT
-Default close: [specific — e.g., "direct question the ICP has a strong opinion on"]
-Emoji rule: [specific — e.g., "never" / "one at most, only in CTA line"]
+EMOJI
+Emoji rule: [specific — e.g., "never" / "one at most, only at end of post"]
 
 ---
 
-GAPS FLAGGED: [any of the 8 dimensions left blank — with default applied and labeled as DEFAULT]
+GAPS FLAGGED: [any of the 7 dimensions left blank — with default applied and labeled as DEFAULT]
 CONFLICTS FLAGGED: [any contradictions — with recommended resolution]
 ```
 
@@ -167,14 +192,14 @@ Foundation fully complete.
 
 **Correctness:**
 ```
-□ All 8 dimensions captured with specific rules — not just option letters? (e.g., "one blank line between every paragraph" not just "A")? Yes → pass. No → convert options to explicit rules.
+□ All 7 dimensions captured with specific rules — not just option letters? (e.g., "one blank line between every paragraph" not just "A")? Yes → pass. No → convert options to explicit rules.
 □ Any contradictions flagged and resolved — not silently applied one way? Yes → pass. No → flag the conflict before saving.
 □ Document contains zero voice, tone, vocabulary, or content preferences — those belong in voice-analyzer? Yes → pass. No → remove them.
 ```
 
 **Completeness:**
 ```
-□ All 8 dimensions present in the output: line breaks, sentence length, punctuation, emphasis, post length, structure, CTA style, emoji? Yes → pass. No → fill the missing ones.
+□ All 7 dimensions present in the output: line breaks, sentence length, punctuation, emphasis, post length, structure, emoji? Yes → pass. No → fill the missing ones.
 □ Any blank answers applied with a documented default and labeled as DEFAULT? Yes → pass. No → apply the default and label it.
 □ Scenario documented (A — interview / B — document analysis)? Yes → pass. No → add it.
 ```
