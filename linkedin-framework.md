@@ -50,7 +50,6 @@ Apply to every post. The only override is a documented `formatting-profile.md` t
 
 **Numbers, not words.** "7 clients" not "several clients." "3 months" not "a few months." "47% of founders" not "most founders."
 
-**No em dashes.** Em dashes read as AI. Use a period. Start a new line. Never use an em dash as a substitute for either.
 
 **Active voice.** "We closed the deal" not "the deal was closed." "I made the call" not "the call was made."
 
@@ -94,20 +93,80 @@ Apply to every post. The only override is a documented `formatting-profile.md` t
 
 ---
 
-## 4. AI-Tell Red Flags
+## 4. Avoid AI Traits
+
+Single source of truth for AI decontamination. Every draft must pass these checks before delivery. AI-polished LinkedIn content gets 5x less engagement than human-sounding content. These rules apply to all clients, all workflows, all skills.
+
+### 4A. Filler removal
+
+**Filler words — remove on sight:**
+actually, basically, essentially, literally, simply, just (when not meaning "only"), really, truly, honestly, in fact, of course, obviously, clearly, certainly, definitely, importantly, interestingly, ultimately, fundamentally, incredibly, absolutely, indeed, notably, furthermore, moreover, additionally, consequently, for context
+
+Test: remove the word. If meaning is identical, delete it.
+
+**Filler sentences — remove on sight:**
+Any sentence where removing it doesn't change what the reader learns or does. Specifically:
+- Transition sentences that announce what comes next ("Let me explain." / "Here's why this matters.")
+- Setup sentences before a CTA that justify the offer
+- Redundant sentences that restate what the previous line already said
+- Sentences that describe the post's own structure ("In this post I'll cover...")
+
+Test: remove the sentence. Read without it. If nothing is lost, it was filler.
+
+**Redundancy check:**
+If two consecutive lines say the same thing from a different angle, cut one. If removing a word or phrase doesn't change the sentence, cut it.
+
+### 4B. Banned vocabulary
 
 Remove every instance. Not reduce — remove.
 
-**Vocabulary (never use):**
-in today's landscape / in today's fast-paced world / it's important to note / as we navigate / the reality is / here's the thing / let me be honest / make no mistake / let that sink in / read that again / full stop / game-changer / next-level / deep dive / that said / leverage (as a verb) / utilize / synergies / circle back / in conclusion / it's worth noting / key takeaways / I wanted to share / I'm excited to announce (unless genuinely excited) / groundbreaking / revolutionary / transformative / cutting-edge / robust / scalable / best practices / touch base / actionable insights / move the needle / think outside the box
+**Verbs:** leverage (as a verb), utilize, delve, harness, navigate, embrace, elevate, unlock, cultivate, foster, streamline, underscore, embark, empower, elucidate, facilitate
 
-**Structural patterns — flag and rewrite:**
-- Em dashes used for dramatic effect or as a substitute for a period
-- Every paragraph the same length — real writing has variation
-- Overly perfect parallel structure: three bullets that all begin and end the same way, with identical rhythm
-- Questions used as the opening hook
-- Posts that open with "I" as the very first word
-- Conclusions that restate everything just covered
+**Adjectives:** groundbreaking, revolutionary, transformative, cutting-edge, robust, scalable, pivotal, seamless, comprehensive, innovative, meticulous, profound, dynamic, holistic, game-changer, next-level
+
+**Nouns:** landscape (as metaphor), realm, tapestry, synergy, testament, paradigm, ecosystem, journey (as metaphor), catalyst, cornerstone, deep dive, key takeaways, actionable insights, best practices
+
+**Phrases:** in today's landscape / in today's fast-paced world / it's important to note / as we navigate / the reality is / here's the thing / let me be honest / make no mistake / let that sink in / read that again / full stop / that said / it's worth noting / in conclusion / I wanted to share / I'm excited to announce (unless genuinely excited) / circle back / touch base / move the needle / think outside the box / the truth is / and honestly? / something shifted / everything changed
+
+### 4C. Banned structures
+
+**1. No em dashes.** Use a period or start a new line. Em dashes are the #1 AI punctuation tell. Usage tripled on LinkedIn in one year.
+
+**2. No AI contrast structures.** Never: "Most [people] do X. The winners do Y." / "Nobody is X" + "Most people are Y." Every time you write "Most..." or "Nobody...", stop and rewrite with a specific observation or result.
+
+**3. No rule of three.** AI defaults to triplets: "simple, practical, and powerful" / "tools, templates, and training." Pick one or two. Three adjectives, examples, or parallel clauses in a row = rewrite.
+
+**4. No dual adjective pairs.** "Unique and intense" / "highly original and impressive." Pick the stronger one. One adjective does the work.
+
+**5. Vary sentence length.** Uniform 15-25 word sentences is AI's #1 statistical detection signal. Mix short (5 words) with long (30+). If every sentence lands at the same beat, rewrite.
+
+**6. No semicolons as connectors.** Replace with a period and new sentence. Semicolons in LinkedIn copy signal artificial sophistication.
+
+**7. No unearned profundity.** "Something shifted." / "Everything changed." / "That was the moment." Delete unless the previous line earns the weight with a specific detail.
+
+**8. No formulaic reveal.** "Let me explain." / "Here's why." / "Here's what happened." Just say it. Don't announce that you're about to.
+
+**9. No humble brag confession.** "I [achievement]. But here's what nobody tells you..." State the insight directly. The achievement can be context, not the hook.
+
+**10. No vague attribution.** "Experts argue..." / "Studies show..." / "Industry reports suggest..." Name the source or cut the claim.
+
+**11. Use contractions.** "do not" → "don't." "I am" → "I'm." Too-clean grammar signals AI. Write like you talk.
+
+**12. No all-positive tone.** Every post needs an edge, a tradeoff, or a limit. Real people acknowledge when something doesn't work. If there's no "but" or "except" anywhere, add one.
+
+**13. No excessive bold.** Bold only the one thing you want remembered per section. If everything is bold, nothing is.
+
+**14. No correlative crutches.** "not only...but also" / "whether...or" / "on one hand...on the other." Rewrite as direct statements.
+
+**15. No conclusions that restate the post.** Last lines push forward (CTA, implication, next step). Never summarize backward.
+
+**16. No uniform paragraph length.** If every paragraph is roughly the same size, vary them. Real writing is uneven.
+
+**17. No overly perfect parallel structure.** Three bullets that begin and end identically with the same rhythm → break the pattern.
+
+**18. No questions as opening hooks.** 17% of AI posts open with a question. Open with a specific claim or scene instead.
+
+**19. Never open with "I" as the first word.** "I" signals self-focus before the reader has any reason to care.
 
 ---
 
@@ -128,9 +187,8 @@ Run before every delivery. Fix every failed item.
 □ One idea per line? Yes → pass. No → break up.
 □ No paragraph over 3 lines? Yes → pass. No → split.
 □ Every claim that has a number uses the number? Yes → pass. No → add it.
-□ Zero em dashes? Yes → pass. No → replace each with a period or line break.
 □ Active voice throughout? Yes → pass. No → rewrite passive sentences.
-□ Zero AI vocabulary from the list above? Yes → pass. No → remove every instance.
+□ Passed all Avoid AI Traits checks (Section 4)? Yes → pass. No → fix every violation.
 □ Each section follows logically from the one before? Yes → pass. No → reorder.
 ```
 
@@ -185,8 +243,8 @@ Use to calibrate expectations and evaluate post performance after publishing.
 
 **Correctness:**
 ```
-□ All 8 formatting rules applied in the draft (short sentences, white space, numbers, no em dashes, active voice, no jargon, hashtags at end, no links in body)? Yes → pass. No → fix each violation.
-□ Zero AI-tell vocabulary from Section 4? Yes → pass. No → remove every instance.
+□ All 7 formatting rules applied in the draft (short sentences, white space, numbers, active voice, no jargon, hashtags at end, no links in body)? Yes → pass. No → fix each violation.
+□ Passed all Avoid AI Traits checks (Section 4: filler, vocabulary, structures)? Yes → pass. No → fix every violation.
 □ CTA matches the category default from Section 3? Yes → pass. No → fix.
 ```
 
