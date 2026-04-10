@@ -1,8 +1,6 @@
-# Skill: Fireflies Transcript Extractor
+# Fireflies Transcript Extractor
 
-**Purpose:** Extract a specific person's lines (verbatim + timestamps) from a Fireflies call transcript. For transcript collection only — not for idea extraction.
-
-> **Note:** For idea extraction, always use the full original transcript. The client's lines alone don't always give enough context for clear content ideas.
+Extracts a specific person's lines (verbatim + timestamps) from a Fireflies call transcript. This is for transcript collection only — building the raw material archive. Not for idea extraction (that uses the full transcript with all speakers for context).
 
 ---
 

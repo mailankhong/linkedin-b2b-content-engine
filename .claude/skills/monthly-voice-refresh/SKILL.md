@@ -34,7 +34,7 @@ HEADLESS MODE ACTIVE
 
 ## STEP 1 — TRANSCRIPT PULL
 
-Search Fireflies for all transcripts from the **past 4 weeks** for this client.
+Search **both Fireflies and Google Drive** for all transcripts from the **past 4 weeks** for this client. Run both searches in parallel.
 
 Use the same search term mapping as fireflies-transcript-miner:
 
@@ -45,21 +45,30 @@ Use the same search term mapping as fireflies-transcript-miner:
 | alex-coldiq | "coldiq", "alex" |
 | mai-lan-linkedin | "mai-lan", "content call" |
 
-Search patterns to try (substitute client terms from mapping above):
+**Fireflies search patterns** (substitute client terms from mapping above):
 - "[client name] content call"
 - "[client name] weekly"
 - "content call [client name]"
 - "weekly [client name]"
 
-Use the Fireflies MCP `fireflies_search` or `fireflies_get_transcripts` tool.
+**Google Drive search patterns** (Gemini-recorded calls — search by document name):
+- "Content [client name]"
+- "Mai Lan [client name]"
 
-**If no transcripts found in past 4 weeks:**
-- Flag: "No Fireflies transcripts found for [client] in the past 4 weeks — voice analysis skipped."
+**Mai Lan's own content (mai-lan-linkedin):** Also search for DWY client calls:
+- "Content SEOPROFY"
+- "Content PIP"
+
+**Fireflies:** Use `fireflies_search` or `fireflies_get_transcripts` MCP tool.
+**Google Drive:** Use `mcp__google-docs__searchGoogleDocs` with `searchIn: "name"` and `modifiedAfter` set to 4 weeks ago (ISO 8601). Read matched documents with `mcp__google-docs__readGoogleDoc` to extract transcript text.
+
+**If no transcripts found in past 4 weeks (across both sources):**
+- Flag: "No transcripts found for [client] in the past 4 weeks — voice analysis skipped."
 - End the skill. Do not run voice analysis with no data.
 - Send Discord notification with the skip flag (see Step 5).
 
-**If Fireflies MCP call fails:**
-- Flag: "Fireflies unavailable — [error details]"
+**If one source fails, continue with the other. If both fail:**
+- Flag: "Fireflies + Google Drive unavailable — [error details]"
 - End the skill. Send Discord notification with the failure flag.
 
 **Save all transcripts to:**

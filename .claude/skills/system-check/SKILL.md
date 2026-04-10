@@ -3,11 +3,9 @@ name: system-check
 description: Pre-run diagnostic that tests every component of the content machine before a production round. Tests env vars, all Apify actors, Reddit, WebSearch, Discord, Google Docs MCP, Gemini MCP, and Fireflies MCP. Outputs a pass/fail checklist and a GO / NO-GO decision. Run this before any production round. Trigger: "run system check".
 ---
 
-# Skill: System Check
+# System Check
 
-Run this before any weekly production round. No client context required.
-
-Takes approximately 2-3 minutes. Tests every live dependency the machine uses.
+A production round that fails mid-run wastes more time than one that never starts. This skill tests every live dependency — env vars, Apify actors, Reddit, WebSearch, Discord, Google Docs MCP, Gemini MCP, Fireflies MCP — before you commit to a full run. Takes 2-3 minutes. No client context required.
 
 ---
 
@@ -102,7 +100,7 @@ Run a WebSearch for: `B2B LinkedIn content strategy after:2026-03-01`
 
 ## STEP 6 — DISCORD WEBHOOK
 
-Tests: Step 7 of weekly-production-run
+Tests: Discord notifications used by remote-trigger reminders and any skill that pings Discord
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}" -X POST "${DISCORD_WEBHOOK_URL}" \
@@ -118,7 +116,7 @@ curl -s -o /dev/null -w "%{http_code}" -X POST "${DISCORD_WEBHOOK_URL}" \
 
 ## STEP 7 — GOOGLE DOCS MCP
 
-Tests: Step 6 of weekly-production-run (document creation)
+Tests: visual-brief, lead-magnet-builder, fireflies-transcript-miner (Google Drive transcript reads)
 
 Call `mcp__google-docs__getRecentGoogleDocs` or `mcp__google-docs__listSharedDrives` — any call that confirms the MCP is responding.
 
@@ -140,7 +138,7 @@ Call `mcp__gemini__gemini-query` with prompt: `"Reply with the single word: PASS
 
 ## STEP 9 — FIREFLIES MCP
 
-Tests: Step 0 of weekly-production-run
+Tests: fireflies-transcript-miner
 
 Call `mcp__fireflies__fireflies_get_transcripts` — request last 7 days.
 

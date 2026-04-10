@@ -1,40 +1,17 @@
 ---
 name: fireflies-transcript-miner
-description: Search Fireflies for call transcripts related to a specific client and extract content intelligence — ideas, pain points, wins, and specific requests. Can run standalone or be called automatically by weekly-production-run.
+description: Search Fireflies and Google Drive for call transcripts related to a specific client and extract content intelligence — ideas, pain points, wins, and specific requests.
 ---
 
-# Skill: Fireflies Transcript Miner
+# Fireflies Transcript Miner
 
-PRE-FLIGHT REQUIRED
-Run preflight.md before proceeding.
-Client: [name provided by user or calling skill]
-Required fields: client name, client niche (for relevance check in verification).
+Call transcripts are the highest-signal content source available. Unlike Reddit or YouTube where you're mining someone else's audience, transcripts capture your client's actual conversations — the way they explain their product, the objections they hear, the wins they celebrate. One 30-minute call typically contains 3-5 post-worthy moments that the client doesn't even realize are content because they're too close to the material.
 
-**Trigger:** "run fireflies mining for [client]" OR called automatically by weekly-production-run
+This skill searches Fireflies and Google Drive for recent transcripts, extracts content intelligence (ideas, pain points, wins, specific requests), and passes them into the content pipeline.
 
----
-
-## MODE DETECTION
-
-Determine mode before starting:
-
-- **INTERACTIVE MODE** — triggered manually by user
-- **HEADLESS MODE** — called by weekly-production-run
-
-Headless mode is active if the calling skill is weekly-production-run. Otherwise default to interactive.
-
----
-
-## HEADLESS MODE
-
-```
-HEADLESS MODE ACTIVE
-— Never ask questions
-— Extract silently and pass insights forward
-— If transcript quality is poor or unclear: flag it in output and include what was found anyway
-— Never block execution
-— Log all failures and continue
-```
+**Pre-flight:** Run preflight.md. Client: [name provided by user or calling skill].
+**Required:** Client name, client niche.
+**Trigger:** Manual ("run fireflies mining for [client]").
 
 ---
 
@@ -55,23 +32,49 @@ Search patterns to use (substitute client name from mapping above):
 - "content call [client name]"
 - "weekly [client name]"
 
+**Google Drive search patterns** (Gemini-recorded calls saved to Google Drive):
+- "Content [client name]"
+- "Mai Lan [client name]"
+
+These two naming conventions cover all call recordings. For Alex, search both "Content Alex" and "Mai Lan Alex".
+
+**Mai Lan's own content (mai-lan-linkedin):** Also search for DWY client calls that contain content material for Mai Lan:
+- "Content SEOPROFY"
+- "Content PIP"
+
 ---
 
-## STEP 2 — SEARCH FIREFLIES (7-day window)
+## STEP 2 — SEARCH FIREFLIES + GOOGLE DRIVE (7-day window)
 
-Search Fireflies for transcripts from the **past 7 days** matching the search terms above.
+Search **both** Fireflies and Google Drive for transcripts from the **past 7 days** matching the search terms above. Run both searches in parallel.
+
+### 2A — Fireflies
 
 Use the Fireflies MCP `fireflies_search` or `fireflies_get_transcripts` tool.
 
-**If no transcripts found in 7 days:**
-- Automatically expand search to **past 14 days**
+### 2B — Google Drive
+
+Use `mcp__google-docs__searchGoogleDocs` with `searchIn: "name"` and `modifiedAfter` set to 7 days ago (ISO 8601). Run one search per Google Drive search pattern from Step 1.
+
+Google Drive results are transcription documents — read the document content with `mcp__google-docs__readGoogleDoc` to extract the transcript text for the extraction step.
+
+### Fallback logic
+
+**If no transcripts found in 7 days (across both sources):**
+- Automatically expand search to **past 14 days** on both Fireflies and Google Drive
 - Flag the expansion in output: "No transcripts found in past 7 days — expanded search to 14 days"
-- If still none found: output "No Fireflies transcripts found for [client] in past 14 days" and end the skill
+- If still none found: output "No transcripts found for [client] in past 14 days" and end the skill
 
 **If Fireflies MCP call fails:**
 - Output: "Fireflies unavailable — [error details]"
-- In headless mode: end skill silently, pass empty insights to calling skill
-- In interactive mode: inform the user and end the skill
+- Continue with Google Drive results only
+
+**If Google Drive search fails:**
+- Output: "Google Drive unavailable — [error details]"
+- Continue with Fireflies results only
+
+**If both fail:**
+- Inform the user and end the skill.
 
 ---
 
@@ -108,12 +111,13 @@ Direct asks. Include:
 
 ## STEP 4 — OUTPUT
 
-### HEADLESS OUTPUT (passed to calling skill)
+Present the full extraction below, then ask the user how to use it.
 
 ```
-FIREFLIES TRANSCRIPT SEARCH — [CLIENT NAME]
+TRANSCRIPT SEARCH — [CLIENT NAME]
 Search window: [7 or 14] days
-Transcripts found: [N]
+Sources searched: Fireflies, Google Drive
+Transcripts found: [N] ([n] Fireflies, [n] Google Drive)
 
 [If N = 0:]
 No transcripts found. Proceeding without transcript insights.
@@ -123,6 +127,7 @@ TRANSCRIPTS FOUND
 -----------------
 [For each transcript:]
 - Title: [transcript title]
+  Source: [Fireflies / Google Drive]
   Date: [date]
   Duration: [duration]
 
@@ -145,15 +150,9 @@ STRENGTH FLAG
 Strongest insights for idea generation:
 [List 1-3 highest-signal items with reason — "strongest because: [direct quote or clear signal]"]
 [Or: All insights are low-signal — flagged for review before use]
-
-STATUS: Transcript insights added to personal material pool
 ```
 
----
-
-### INTERACTIVE OUTPUT (presented to user)
-
-Present the full extraction above, then ask:
+After presenting, ask:
 
 ```
 Found [N] transcript(s) for [client]. Insights extracted across [N] categories.
@@ -210,3 +209,5 @@ Run before closing.
 ## CHANGELOG
 
 v1.0 — March 2026 — initial build
+v1.1 — April 2026 — added Google Drive as second transcript source (Gemini-recorded calls); search patterns "Content [client]" and "Mai Lan [client]"; mai-lan-linkedin also searches DWY clients (SEOPROFY, PIP); graceful fallback if either source fails
+v1.2 — April 2026 — removed dual-mode (headless/interactive) design after weekly-production-run was retired; skill is always interactive
