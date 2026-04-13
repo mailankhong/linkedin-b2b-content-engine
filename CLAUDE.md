@@ -45,7 +45,7 @@ Run `formatting-profile` if the client has formatting preferences or a completed
 | 1 | `weekly-idea-session` | Generate idea batch — spawns 6 parallel research workers, quality gate, ICP tier check |
 | 2 | `hook-generator` | Generate 20+ hook variations for an approved idea |
 | 3 | `copy-developer` | Develop approved idea into full post — runs hook-generator first, routes lead magnets |
-| 4 | `post-grader` | Score post on 5-dimension rubric (/50) — below 38 returns to copy-developer with specific fixes |
+| 4 | `post-grader` | Score post on 5-dimension rubric — uses client grading profile (weighted scoring, dimension floors, known failure patterns) if available, otherwise default 38/50 flat scoring |
 | 5 | `visual-brief` | Build structured visual brief for posts needing a designed asset |
 | 6 | `lead-magnet-writer` | Write lead magnet post — surfaces at weekly session end and at copy-developer entry |
 | 7 | `lead-magnet-builder` | Build the actual resource promised in the lead magnet post |

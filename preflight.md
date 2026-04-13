@@ -165,6 +165,13 @@ It is not shown to the user unless Apify returns 0 results — then surface it f
 - Not passed to Apify as a search parameter
 - If missing: derive from ICP Demographics (Industry + Role) — this is the one case where derivation is acceptable, because Niche is a summary field, not a structured one
 
+### Grading profile — post-grader, copy-developer
+
+- Check client folder for `grading-profile.md`
+- If present: load silently. Post-grader will use weighted scoring, dimension floors, and known failure patterns from this file.
+- If missing: post-grader uses default flat scoring (5 dimensions, equal weight, 38/50 threshold). No warning needed — this is expected for new clients.
+- Do not create a grading profile during preflight. It is built from real editorial feedback, not from onboarding data.
+
 ---
 
 ## Step 5 — Auto-Update on User-Provided Information
@@ -260,6 +267,20 @@ Required fields for content generation:
 ## PAST POSTS
 [Post archive — plain text, one post per block]
 [Optional but strongly recommended — required for Method 4 quality comparison]
+
+---
+
+## GRADING PROFILE
+[grading-profile.md — client-specific scoring calibration for post-grader]
+
+Contains: dimension weights, dimension floors, category overrides, clarity interpretation, known failure patterns.
+
+Created after 3-5 production sessions with real editorial feedback. New clients start with informed defaults based on ICP and niche — the profile gets refined as feedback accumulates.
+
+Required fields for post-grader:
+- Dimension weights (1.0x–2.0x per dimension)
+- Dimension floors (minimum acceptable score per dimension)
+- Clarity interpretation (compactness / accessibility / specificity)
 ```
 
 ### Onboarding checklist for every new client
@@ -270,6 +291,7 @@ Required fields for content generation:
 □ Content Pillars       → run content-pillars
 □ Voice Profile         → run voice-analyzer
 □ Past Posts            → paste manually, or defer to Method 4 Apify pull
+□ Grading Profile       → create with defaults after onboarding, refine after 3-5 production sessions
 ```
 
 The machine enforces this checklist silently — it only surfaces missing items when a method that needs them is triggered. It does not run a full validation on session start unprompted.

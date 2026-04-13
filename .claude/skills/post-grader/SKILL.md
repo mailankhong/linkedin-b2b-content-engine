@@ -16,9 +16,40 @@ Missing ICP or Voice Profile → stop. State gap, impact, fix option.
 
 ---
 
+## Grading Profile (client-specific calibration)
+
+Before scoring, check the client folder for a `grading-profile.md` file. If it exists, it overrides the default scoring behavior with client-specific weights, dimension floors, and clarity interpretation.
+
+**What the grading profile controls:**
+- **Dimension weights** (1.0x–2.0x multiplier) — which dimensions matter most for this client's audience and editorial feedback history
+- **Dimension floors** — minimum acceptable score per dimension, regardless of total. A post can pass the total threshold but still fail if a critical dimension is below its floor
+- **Category overrides** — per-category floor adjustments (e.g., Connect posts have a lower Conversion Intent floor because trust-building > pipeline signaling)
+- **Clarity interpretation** — what "clear" means for this specific client (compactness, accessibility, or specificity)
+- **Known failure patterns** — the recurring editorial issues from real feedback sessions, so the grader knows what to watch for before scoring
+
+**If no grading profile exists:** Use the default flat scoring — 5 dimensions, equal weight, pass threshold 38/50. This is the case for new clients who haven't been through enough editorial cycles yet.
+
+**How weighted scoring works:**
+
+1. Score each dimension 1–10 using the standard rubric below (this doesn't change)
+2. Multiply each raw score by its weight from the grading profile
+3. Sum the weighted scores
+4. Calculate weighted pass threshold: 38 × (sum of all weights / 5)
+5. Check each dimension against its floor — any dimension below its floor triggers NEEDS REVISION regardless of total
+
+Example with Alex's profile (weights: Hook 1.5x, Clarity 1.2x, ICP 1.0x, Voice 1.5x, Conversion 0.8x):
+- Raw scores: Hook 7, Clarity 8, ICP 8, Voice 7, Conversion 8
+- Weighted: 10.5 + 9.6 + 8.0 + 10.5 + 6.4 = 45.0
+- Weighted threshold: 38 × (6.0/5) = 45.6
+- Verdict: NEEDS REVISION (45.0 < 45.6)
+- Plus: Hook 7 < floor of 8 → floor violation flagged
+- Without weights this would be 38/50 → PASS. With weights, the weak Hook and Voice (Alex's critical dimensions) correctly trigger a revision.
+
+---
+
 ## Scoring Rubric
 
-Score each dimension 1–10. Total out of 50. Pass threshold: 38/50.
+Score each dimension 1–10 using the rubric below. Apply weights from the grading profile after scoring.
 
 ---
 
@@ -114,9 +145,30 @@ A post with clear voice, real specificity, and genuine insight starts at 8. Rese
 
 ## Output Format
 
+**If grading profile exists (weighted scoring):**
+
+```
+TOTAL SCORE: [weighted sum] / [weighted threshold] ([raw sum]/50 unweighted)
+VERDICT: [PASS / NEEDS REVISION]
+GRADING PROFILE: [client name] — applied
+
+SCORES:                    Raw   Weight  Weighted
+Hook Strength:             [N]   ×[W]    [N×W]     [floor: X — OK/FLOOR VIOLATION]
+Clarity/Specificity:       [N]   ×[W]    [N×W]     [floor: X — OK/FLOOR VIOLATION]
+ICP Relevance:             [N]   ×[W]    [N×W]     [floor: X — OK/FLOOR VIOLATION]
+Voice Match:               [N]   ×[W]    [N×W]     [floor: X — OK/FLOOR VIOLATION]
+Conversion Intent:         [N]   ×[W]    [N×W]     [floor: X — OK/FLOOR VIOLATION]
+
+[If category override applied: "Category override: [category] — Conversion Intent floor lowered to [N]"]
+[Clarity interpretation: [compactness/accessibility/specificity] — per grading profile]
+```
+
+**If no grading profile (default flat scoring):**
+
 ```
 TOTAL SCORE: [N] / 50
 VERDICT: [PASS (38+) / NEEDS REVISION (<38)]
+GRADING PROFILE: none — using default flat scoring
 
 SCORES:
 Hook Strength:       [N]/10
@@ -128,7 +180,8 @@ Conversion Intent:   [N]/10
 
 **If PASS:**
 Strong post. Ready to publish.
-[Note any dimension at 7 or below — optional improvement if user wants.]
+[Note any dimension at 7 or below, or any dimension close to its floor — optional improvement if user wants.]
+[If a floor was barely met (score = floor): flag as "at risk" — one revision away from failing.]
 
 **If NEEDS REVISION — run Structured Diagnosis:**
 
@@ -184,19 +237,22 @@ REWRITE DIRECTIVE:
 **Full NEEDS REVISION output:**
 
 ```
-TOTAL SCORE: [N] / 50
+TOTAL SCORE: [weighted sum] / [weighted threshold] ([raw sum]/50 unweighted)
 VERDICT: NEEDS REVISION
+GRADING PROFILE: [client name or "default"]
+FAIL REASON: [weighted total below threshold / floor violation on [dimension] / both]
 
-SCORES:
-Hook Strength:       [N]/10
-Clarity/Specificity: [N]/10
-ICP Relevance:       [N]/10
-Voice Match:         [N]/10
-Conversion Intent:   [N]/10
+SCORES:                    Raw   Weight  Weighted  Floor
+Hook Strength:             [N]   ×[W]    [N×W]     [X — OK/VIOLATION]
+Clarity/Specificity:       [N]   ×[W]    [N×W]     [X — OK/VIOLATION]
+ICP Relevance:             [N]   ×[W]    [N×W]     [X — OK/VIOLATION]
+Voice Match:               [N]   ×[W]    [N×W]     [X — OK/VIOLATION]
+Conversion Intent:         [N]   ×[W]    [N×W]     [X — OK/VIOLATION]
 
 DIAGNOSIS:
 Root Cause:    [Dimension] ([N]/10) — [why it's the root]
 Pattern Check: [Prior occurrence or "No prior data"]
+               [If grading profile lists a known failure pattern that matches: "KNOWN PATTERN: [pattern from profile]"]
 Hypothesis:    [Process failure that produced this result]
 
 REWRITE DIRECTIVE:
@@ -254,7 +310,8 @@ If this post goes live at the current score: what is the single most likely unde
 ---
 
 [If PASS:]
-Post approved — [score]/50
+Post approved — [weighted score]/[weighted threshold] ([raw]/50)
+Grading profile: [client name or "default"]
 Dimension scores: Hook [N] | Clarity [N] | ICP [N] | Voice [N] | Conversion [N]
 
 Next steps:
@@ -265,9 +322,10 @@ C) All posts done → trigger: end session for [client]
 ---
 
 [If NEEDS REVISION:]
-Post needs work — [score]/50. Pass threshold: 38/50.
+Post needs work — [weighted score]/[weighted threshold] ([raw]/50). Grading profile: [client name or "default"]
+Fail reason: [weighted total / floor violation / both]
 Root cause: [dimension + score + why it's dragging other scores]
-Pattern: [prior occurrence from learning-log or "first time"]
+Pattern: [prior occurrence from learning-log or "first time" + known pattern from grading profile if matched]
 Hypothesis: [process failure]
 Rewrite directive: [numbered specific fixes with line references]
 
