@@ -108,7 +108,7 @@ Users shouldn't need to memorize skill names. When a request comes in, match it 
 | "run an audit" / "monthly review" | `content-auditor` |
 | "check patterns" / "what keeps getting changed" | `pattern-recognition` |
 | "repurpose this for other platforms" / "turn this into a thread" | `repurpose-from-linkedin` |
-| "pull engagement data" / "how did their posts do" | `engagement-loop` |
+| "pull engagement data" / "how did their posts do" / "run analytics" | `performance-analytics` |
 | "search transcripts" / "find call recordings" | `fireflies-transcript-miner` |
 | "run system check" / "test all connections" | `system-check` |
 
@@ -141,7 +141,7 @@ Not all work requires the same intelligence. When running batch production or op
 - `system-check` — ping each integration, binary pass/fail
 - `foundation-refresh-ping` — timestamp comparison + reminder
 - `feedback-capture` — session logging (what was produced, changed, rejected)
-- `engagement-loop` data pull phase — Apify calls, metric parsing, period segmentation, delta math
+- `performance-analytics` data pull phase — Apify calls, metric parsing, period segmentation, delta math
 - `weekly-idea-session` Phase 2 — all 6 research workers are data-gathering
 - `monthly-voice-refresh` fetch phase — searching Fireflies + Google Drive, saving transcripts
 

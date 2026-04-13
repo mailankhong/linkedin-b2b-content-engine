@@ -1,9 +1,9 @@
 ---
-name: engagement-loop
-description: Pull LinkedIn engagement data and feed it back into the learning log so pattern-recognition has real numbers, not session notes. Three data sources combine — native export (impressions only), Apify (bulk reactions/comments/reposts), and WebFetch on individual post URLs (per-post reactions/comments/reposts split). Computes period-over-period and conditional year-over-year. Triggers include "run engagement loop for [client]", "run weekly engagement loop for [client]", "run monthly engagement loop for [client]", "analyze linkedin performance for [client]", or scheduled execution.
+name: performance-analytics
+description: Pull LinkedIn performance data and feed it back into the learning log so pattern-recognition has real numbers, not session notes. Three data sources combine — native export (impressions only), Apify (bulk reactions/comments/reposts), and WebFetch on individual post URLs (per-post reactions/comments/reposts split). Computes period-over-period and conditional year-over-year. Triggers include "run performance analytics for [client]", "run weekly analytics for [client]", "run monthly analytics for [client]", "analyze linkedin performance for [client]", "how did their posts do", or scheduled execution.
 ---
 
-# Engagement Loop
+# Performance Analytics
 
 Most content systems run forever on session notes and gut feel. Pattern recognition without real engagement data is just opinion with extra steps. This skill closes the loop — it pulls actual post performance, compares it to the client's own baseline, and writes the result back to the system so pattern-recognition is mining numbers, not vibes.
 
@@ -43,9 +43,9 @@ Missing LinkedIn URL → stop. State gap, impact, fix option. Never invent or fa
 | **B — Monthly** | First Monday of month | Native export + Apify (or WebFetch as fallback) + WebFetch for content scraping | 5 min — drop the export file | Full picture: impressions, engagement rate, the 3-way split, follower delta, demographics |
 
 **Trigger routing:**
-- `run weekly engagement loop for [client]` → Scenario A
-- `run monthly engagement loop for [client]` → Scenario B
-- `run engagement loop for [client]` → ask which one
+- `run weekly analytics for [client]` → Scenario A
+- `run monthly analytics for [client]` → Scenario B
+- `run performance analytics for [client]` → ask which one
 
 **Why both:** Weekly Apify keeps pattern-recognition fed with trend signal between monthly fidelity checks. The monthly native export adds the impressions dimension and lets you compute true engagement rate. Apify alone gives you trends without reach context. Native alone gives you reach without engagement breakdown. Together they give you a real feedback loop.
 
@@ -67,7 +67,7 @@ Returns per post: `text, total_reactions, comments, reposts, posted_at`. **No im
 
 If Apify call fails:
 ```
-Apify call failed for engagement-loop — cannot pull post history.
+Apify call failed for performance-analytics — cannot pull post history.
 Method stopped. No engagement data written this run.
 Run system-check to diagnose.
 ```
@@ -180,7 +180,7 @@ Check `clients/[name]/analytics/` for the most recent `linkedin-export-*.xlsx` o
 
 If not found:
 ```
-Monthly engagement loop for [client] needs the native LinkedIn export.
+Monthly performance analytics for [client] needs the native LinkedIn export.
 
 To get it:
 1. Open LinkedIn → Me → Posts & Activity → Analytics → Content
@@ -228,7 +228,7 @@ If `total_engagements`, `impressions`, or `post_date` is missing → halt and re
 ```
 Native export parse failed — column "[field]" not found in [sheet name].
 LinkedIn may have changed the export schema. Headers found: [list]
-Stopping. Update engagement-loop column mapping before retry.
+Stopping. Update performance-analytics column mapping before retry.
 ```
 
 ### Step 3 — Build the post list and join the 3-way engagement split
@@ -531,7 +531,7 @@ NEXT
 
 **Don't rank by engagement rate.** Engagement rate punishes long posts that earn high absolute engagement. Score (comments + reposts) is the ranking metric. Engagement rate is reported as a separate dimension.
 
-**Don't recommend.** This skill reports. Pattern-recognition recommends. Mixing the two creates noise — the engagement loop should be a clean data layer.
+**Don't recommend.** This skill reports. Pattern-recognition recommends. Mixing the two creates noise — performance analytics should be a clean data layer.
 
 **Don't skip the limitation banner on Scenario A reports.** Every weekly Apify-only report must say impressions are unavailable. Omitting it = inviting wrong conclusions about reach.
 
@@ -595,7 +595,7 @@ is_first_monday = is_monday AND (day_of_month <= 7)
 
 If `is_first_monday`:
 1. Run Scenario A (weekly Apify) to completion as normal.
-2. Then run Scenario B (monthly native export) — but in **passive mode**: check `clients/[name]/analytics/` for any `linkedin-export-*.xlsx` modified in the last 14 days. If found, parse it and run the monthly analysis. If not found, surface a single Discord ping: *"Monthly engagement loop for [client] needs the native LinkedIn export. Drop the file in clients/[client]/analytics/ and reply 'run monthly engagement for [client]' when ready."* Do not block.
+2. Then run Scenario B (monthly native export) — but in **passive mode**: check `clients/[name]/analytics/` for any `linkedin-export-*.xlsx` modified in the last 14 days. If found, parse it and run the monthly analysis. If not found, surface a single Discord ping: *"Monthly performance analytics for [client] needs the native LinkedIn export. Drop the file in clients/[client]/analytics/ and reply 'run monthly engagement for [client]' when ready."* Do not block.
 3. Then run [foundation-refresh-ping](../foundation-refresh-ping/SKILL.md) for the same client.
 
 If NOT `is_first_monday`: only Scenario A runs. Exit cleanly.
@@ -630,5 +630,5 @@ v1.1 — April 2026 — corrected the architecture after verifying that LinkedIn
 
 ---
 
-Engagement loop complete — [N] posts analyzed, [N] high-confidence backfills, [N] inferred via WebFetch.
+Performance analytics complete — [N] posts analyzed, [N] high-confidence backfills, [N] inferred via WebFetch.
 Next step → trigger: run pattern-recognition for [client] (recommended every 5 sessions, or after a monthly native export run)
