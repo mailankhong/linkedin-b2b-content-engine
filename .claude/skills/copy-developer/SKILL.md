@@ -56,7 +56,7 @@ Present top 5 hooks with a recommendation. Wait for selection before proceeding.
 
 ## STEP 1 — SELECT CATEGORY AND STRUCTURE
 
-Identify category. Select matching template from `templates-library.md`. State the category, template name, and structure before writing.
+Identify category. Select matching template from `templates-library.md`.
 
 | Category | Post Types | Structure |
 |---|---|---|
@@ -65,6 +65,51 @@ Identify category. Select matching template from `templates-library.md`. State t
 | Prove/Social Proof | Client success stories, results announcements, case studies | Before → Challenge → What we did → Result (specific) → Takeaway |
 | Connect/Relationship | Personal stories, mistakes and lessons, question starters, journey posts | Scene → What happened → What I learned → What you can take from it |
 | Respond/Amplify | Industry responses, event recaps, milestone updates, fresh learning drops | Signal → POV → Why it matters now → What to do with it |
+
+---
+
+## STEP 1B — STRUCTURE SELECTION (pick before writing)
+
+Most ghostwriting rewrites happen because the structure was wrong, not the writing. A story-driven post rewritten as a list post is a new draft, not an edit. Choosing the structure upfront saves a full revision cycle.
+
+After identifying the category, present **2-3 structural options** for the post. Each option is a different way to deliver the same idea with the same hook. The user picks one before any body copy is written.
+
+**How to generate options:**
+
+1. Take the approved hook + category from Step 1
+2. Pull 2-3 compatible templates from `templates-library.md` within that category (or from adjacent categories if the idea spans two)
+3. For each template, write a **3-line structural sketch** — not a draft, just the skeleton:
+   - Line 1: How the post opens (after the hook)
+   - Line 2: What the body does (lists steps? tells a story? stacks evidence?)
+   - Line 3: How it closes and what the CTA earns
+
+**Present like this:**
+
+```
+STRUCTURE OPTIONS for: [idea title]
+Category: [category] | Hook: [first line of selected hook]
+
+A) [Template name] — [one-sentence description]
+   Opens with: [setup]
+   Body does: [movement]
+   Closes with: [landing + CTA type]
+
+B) [Template name] — [one-sentence description]
+   Opens with: [setup]
+   Body does: [movement]
+   Closes with: [landing + CTA type]
+
+C) [Template name] — [one-sentence description]
+   Opens with: [setup]
+   Body does: [movement]
+   Closes with: [landing + CTA type]
+
+Recommendation: [A/B/C] — [why in one sentence]
+```
+
+Wait for user selection. Do not write the post body until a structure is confirmed.
+
+**Skip condition:** If the idea strongly dictates a single structure (e.g., a case study is always Prove, a hot take response is always Respond), state the structure, explain why alternatives don't fit, and proceed. Do not force 3 options when only 1 makes sense.
 
 ---
 

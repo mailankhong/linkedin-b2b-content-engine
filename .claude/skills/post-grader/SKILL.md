@@ -130,13 +130,82 @@ Conversion Intent:   [N]/10
 Strong post. Ready to publish.
 [Note any dimension at 7 or below — optional improvement if user wants.]
 
-**If NEEDS REVISION:**
-This post scored [N]/50. Threshold is 38/50.
+**If NEEDS REVISION — run Structured Diagnosis:**
 
-Dimensions below threshold:
-- [Dimension]: [Score]/10 — [Specific, actionable fix. Not "improve the hook." Tell them what to change: "The hook describes the topic — replace with a specific number or story from the post body. Example from this draft: use '[specific line from the post]' as the opener instead."]
+Generic "fix the hook" feedback produces generic revisions. When a post fails, the grader must diagnose *why* the failure happened — not just *where* the score is low. This 4-step diagnosis replaces vague dimension notes with a rewrite directive that gets it right on the next pass.
 
-Return to copy-developer with these notes. Revise, then re-grade.
+**Step 1 — Root Cause (which dimension is dragging the rest down?):**
+Scores rarely fail independently. A weak hook often masks a clarity problem (the post has no specific detail to hook with). A low voice match often means the structure was wrong for how this person talks. Identify the **primary failing dimension** — the one that, if fixed, would lift at least one other score.
+
+```
+ROOT CAUSE: [Dimension] ([Score]/10)
+Why it's the root: [One sentence — how this dimension's failure is causing or worsening other low scores]
+```
+
+**Step 2 — Pattern Check (has this happened before?):**
+Read the client's `learning-log.md` (if it exists). Search for prior sessions where the same dimension failed or the same type of fix was applied.
+
+```
+PATTERN CHECK:
+- Prior occurrence: [Yes — session date + what happened / No — first time]
+- If yes: [What was done last time, and did it work?]
+- Recurring pattern: [Yes — this is a known drift area / No]
+```
+
+If a pattern is found, the rewrite directive in Step 4 must address the root pattern, not just this instance. If learning-log.md doesn't exist or has no relevant entries, state "No prior data" and proceed.
+
+**Step 3 — Hypothesis (what specifically went wrong in the writing process?):**
+Name the most likely process failure. This is not "the hook is weak" — it's *why* the hook ended up weak.
+
+Common hypotheses:
+- Voice Profile was read but not applied to sentence structure (only vocabulary was matched)
+- The idea lacked a concrete detail and copy-developer didn't flag it with [INSERT REAL DATA]
+- Structure choice didn't match the idea type — a story idea was forced into a list format
+- The CTA was bolted on rather than earned by the body
+- Hook describes the topic instead of creating tension — a category mismatch
+
+```
+HYPOTHESIS: [One sentence — the process failure that produced this score]
+```
+
+**Step 4 — Rewrite Directive (specific instructions for copy-developer):**
+Not "improve the hook." Not "add more specificity." The directive must name:
+- The exact line(s) to change
+- What to replace them with (or the type of replacement needed)
+- Which Voice Profile rule or ICP detail to lean on
+
+```
+REWRITE DIRECTIVE:
+1. [Specific instruction referencing an exact line or section of the draft]
+2. [Specific instruction if a second fix is needed]
+3. [If pattern was found: instruction to prevent recurrence]
+```
+
+**Full NEEDS REVISION output:**
+
+```
+TOTAL SCORE: [N] / 50
+VERDICT: NEEDS REVISION
+
+SCORES:
+Hook Strength:       [N]/10
+Clarity/Specificity: [N]/10
+ICP Relevance:       [N]/10
+Voice Match:         [N]/10
+Conversion Intent:   [N]/10
+
+DIAGNOSIS:
+Root Cause:    [Dimension] ([N]/10) — [why it's the root]
+Pattern Check: [Prior occurrence or "No prior data"]
+Hypothesis:    [Process failure that produced this result]
+
+REWRITE DIRECTIVE:
+1. [Specific fix with line reference]
+2. [Second fix if needed]
+3. [Pattern prevention if applicable]
+```
+
+Return to copy-developer with the rewrite directive. Revise, then re-grade.
 
 ---
 
@@ -197,9 +266,10 @@ C) All posts done → trigger: end session for [client]
 
 [If NEEDS REVISION:]
 Post needs work — [score]/50. Pass threshold: 38/50.
-Dimensions that failed: [dimension + score + specific actionable note]
-Limitation encountered: [what was missing that caused the fail]
-Suggested fix: [specific input that would improve this dimension]
+Root cause: [dimension + score + why it's dragging other scores]
+Pattern: [prior occurrence from learning-log or "first time"]
+Hypothesis: [process failure]
+Rewrite directive: [numbered specific fixes with line references]
 
-Returning to copy-developer now with these notes.
+Returning to copy-developer now with rewrite directive.
 [loops automatically — max 2 retries]

@@ -83,6 +83,44 @@ All miners return a standardized METHOD RESULT block when called by weekly-idea-
 
 ---
 
+## Orchestrator — Natural Language Routing
+
+Users shouldn't need to memorize skill names. When a request comes in, match it to the right skill automatically using the intent map below. If the request maps clearly to one skill, run it. If ambiguous, state which skill you'd route to and why — then proceed on confirmation.
+
+| User says something like... | Route to |
+|---|---|
+| "write a post about X" / "develop this idea" / "turn this into a post" | `copy-developer` |
+| "what should [client] post this week" / "generate ideas" / "start the weekly session" | `weekly-idea-session` |
+| "grade this" / "is this post good" / "score this" / "review my post" | `post-grader` |
+| "give me hooks for X" / "I need opening lines" | `hook-generator` |
+| "make a visual brief" / "this needs a visual" / "design for this post" | `visual-brief` |
+| "build [client]'s voice profile" / "analyze their voice" | `voice-analyzer` |
+| "who is [client]'s audience" / "build the ICP" | `icp-analyzer` |
+| "define pillars" / "what should they talk about" | `content-pillars` |
+| "mine Reddit for ideas" / [drops Reddit URL] | `reddit-miner` |
+| "analyze this video" / [drops YouTube URL] | `youtube-miner` |
+| "find viral visuals" / [drops image/screenshot] | `viral-visual-miner` |
+| "what's trending" / "live debates in [niche]" | `real-time-signal` |
+| "repurpose old posts" / "what worked before" | `repurposing-archive` |
+| "reverse-engineer this post" / "what makes this work" | `reverse-engineering` |
+| "optimize their profile" / "rewrite their headline" | `profile-optimizer` |
+| "lead magnet post" / "gated content post" | `lead-magnet-writer` → `lead-magnet-builder` |
+| "run an audit" / "monthly review" | `content-auditor` |
+| "check patterns" / "what keeps getting changed" | `pattern-recognition` |
+| "repurpose this for other platforms" / "turn this into a thread" | `repurpose-from-linkedin` |
+| "pull engagement data" / "how did their posts do" | `engagement-loop` |
+| "search transcripts" / "find call recordings" | `fireflies-transcript-miner` |
+| "run system check" / "test all connections" | `system-check` |
+
+**Multi-skill sequences** — some requests imply a chain:
+- "write and grade a post" → `copy-developer` → `post-grader` (this already happens automatically)
+- "full session for [client]" → `weekly-idea-session` → pick ideas → `copy-developer` for each
+- "onboard [client]" → `voice-analyzer` → `icp-analyzer` → `content-pillars`
+
+**Fallback:** If the request doesn't match any row, ask: "Which of these sounds closest to what you need?" and list the 2-3 most likely skills with one-line descriptions.
+
+---
+
 ## Environment Variables
 
 | Variable | Required | Used by |
