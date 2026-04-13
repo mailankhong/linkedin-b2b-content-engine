@@ -237,12 +237,14 @@ Read `Google Drive Folder ID` from `clients/[client-id]/client-profile.md`.
 
 Save the voice refresh report to the client's Google Drive folder using the Google Docs MCP.
 
+**IMPORTANT:** Follow `google-docs-formatting.md` in the engine root. Do NOT pass markdown text to `createDocument` via `initialContent` — it renders as raw markdown syntax. Instead: create an empty document, insert clean text (markdown syntax stripped), then apply native paragraph styles (HEADING_2, HEADING_3) and text styles (bold, italic) via the Google Docs API.
+
 **Document title:** `Voice Refresh — [Client Display Name] — [Month YYYY]`
 (e.g., "Voice Refresh — Amir Ashkenazi — March 2026")
 
 **Folder ID:** value of `Google Drive Folder ID` field in client-profile.md
 
-**Document content:** full contents of the `voice-refresh-[YYYY-MM].md` report generated in Step 4.
+**Document content:** full contents of the `voice-refresh-[YYYY-MM].md` report generated in Step 4, formatted natively per the procedure above.
 
 **If Google Drive Folder ID is missing from client-profile.md:**
 - Flag: "Google Drive Folder ID missing from client-profile.md — report saved locally only."

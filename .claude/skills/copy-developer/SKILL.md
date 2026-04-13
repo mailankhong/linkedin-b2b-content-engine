@@ -140,6 +140,44 @@ No humor documented → include none.
 
 ---
 
+## STEP 2B — CONFIDENCE CHECKPOINT (before writing the body)
+
+A mediocre draft that goes through the full grader loop wastes more time than catching the problem here. Before writing a single line of body copy, run this self-assessment. It takes 10 seconds and can save a full revision cycle.
+
+**Check these 3 things:**
+
+```
+1. MATERIAL CHECK — Do I have enough concrete material to write this at 38+ level?
+   □ At least one specific number, result, or named example available? 
+   □ A real story, scene, or moment I can open with (not a hypothetical)?
+   □ The idea has a clear "so what" for the ICP — not just interesting, but useful?
+
+   If 2+ boxes are empty → STOP. Flag what's missing:
+   "This idea needs [specific number/a client story/a concrete example] before 
+   I can write it above threshold. Provide it, or I'll flag with [INSERT REAL DATA]
+   and the post will need that filled before publishing."
+
+2. VOICE CHECK — Can I write this in voice with what the profile gives me?
+   □ Voice Profile has clear rules for this type of content?
+   □ I can hear how this person would say the key claim — not just the words, 
+     but the rhythm and attitude?
+   
+   If no → Flag: "The Voice Profile doesn't cover [this type of content/this tone]. 
+   I'll write my best interpretation but flag the voice-uncertain sections for review."
+
+3. STRUCTURE CHECK — Does the selected structure from Step 1B actually fit this material?
+   □ The material I have fills the structure naturally — no sections will be padded?
+   □ The structure earns the CTA — the reader will feel the ask is justified?
+   
+   If no → Revisit Step 1B. Pick a structure that fits what you actually have, 
+   not what you wish you had.
+```
+
+All 3 pass → proceed to Step 3.
+Any flag raised → surface it to the user before writing. Do not write a draft you already know will score below threshold.
+
+---
+
 ## STEP 3 — POST STRUCTURE RULES
 
 **Hook (2 lines max):**

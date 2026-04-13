@@ -131,6 +131,32 @@ Users shouldn't need to memorize skill names. When a request comes in, match it 
 
 ---
 
+## Model Routing Guide
+
+Not all work requires the same intelligence. When running batch production or optimizing token spend, use this to decide where plan mode / Opus adds value vs where standard execution is sufficient.
+
+**Routine phases (standard model is fine):**
+- All API calls: Apify, Fireflies, Google Drive, WebSearch, Discord webhooks
+- `fireflies-transcript-extractor` — pure speaker line extraction, regex filtering, formatting
+- `system-check` — ping each integration, binary pass/fail
+- `foundation-refresh-ping` — timestamp comparison + reminder
+- `feedback-capture` — session logging (what was produced, changed, rejected)
+- `engagement-loop` data pull phase — Apify calls, metric parsing, period segmentation, delta math
+- `weekly-idea-session` Phase 2 — all 6 research workers are data-gathering
+- `monthly-voice-refresh` fetch phase — searching Fireflies + Google Drive, saving transcripts
+
+**Judgment phases (full intelligence, plan mode if available):**
+- All content writing: `copy-developer`, `hook-generator`, `lead-magnet-writer`
+- All analysis/synthesis: `post-grader` diagnosis, `pattern-recognition`, `content-auditor`
+- Research *interpretation*: the analysis step inside every miner (reddit, youtube, viral-visual, real-time-signal, reverse-engineering) — the fetch is routine, the insight extraction is not
+- Voice work: `voice-analyzer`, `monthly-voice-refresh` analysis phase
+- Prioritization: `weekly-idea-session` Phases 3–6 (quality gate, coverage checks, batch sizing)
+- Cross-platform adaptation: `repurpose-from-linkedin` — each format requires platform-native restructuring
+
+**Rule of thumb:** If the step reads data from an API or file → routine. If the step decides what the data *means* or creates something new from it → judgment.
+
+---
+
 ## Skill Design Standards
 
 When creating a new skill or updating an existing one, apply these principles (from the Vibe Skill Creator framework):
@@ -165,3 +191,4 @@ When creating a new skill or updating an existing one, apply these principles (f
 - When in doubt about workflow, reference `guide.md`.
 - At session start: pull latest from GitHub before doing anything.
 - At session end: push all changes to GitHub automatically.
+- When writing to Google Docs: never pass markdown text to `createDocument` or `appendToGoogleDoc` — it renders as raw syntax. Follow `google-docs-formatting.md`: create an empty doc, insert clean text (stripped of markdown), then apply native styles (`applyParagraphStyle` for headings, `applyTextStyle` for bold/italic).

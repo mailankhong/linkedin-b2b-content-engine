@@ -69,6 +69,8 @@ After all workers complete:
 - Deduplicate angles that are substantially the same idea from different sources
 - Pool all passing angles for Phase 3
 
+**Model routing note:** Phase 2 workers are data-gathering tasks — fetching from APIs, extracting pain points from threads, parsing video transcripts. These run fine on standard models. Phases 3–6 (personal material extraction, quality gate, coverage checks, prioritization) require judgment: evaluating ICP fit, spotting generic angles, balancing the batch. If using plan mode or model switching, the split point is here — research below this line, synthesis above.
+
 ---
 
 ## PHASE 3 — PERSONAL MATERIAL
