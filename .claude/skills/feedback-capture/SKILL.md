@@ -45,7 +45,15 @@ Observe the session and extract:
 - Ideas that made it through the quality gate but were dropped from the batch — with reason if the user gave one
 - Hooks from hook-generator that were not selected — note which and why if stated
 
-**4. Engagement data (if provided)**
+**4. Grading outcomes (if post-grader ran)**
+- Did the post pass or fail? What was the score vs threshold?
+- Which dimensions hit or violated their floor?
+- Which known failure patterns from the grading profile were triggered?
+- If the post failed and was revised: what changed between the first and final grade?
+- If the user overrode the grader (published a post that scored below threshold): note this — it may indicate the floor is too strict.
+- If the user rejected a post that passed: note this — it may indicate the floor is too lenient or a missing failure pattern.
+
+**5. Engagement data (if provided)**
 - If the user shared performance data for a previously published post during this session: capture it
 - Fields: post date / approximate impressions / likes / comments / reposts / outcome (if stated)
 
@@ -90,6 +98,15 @@ CHANGES MADE:
 REJECTED:
 - Ideas dropped: [list with reason if given, or "None"]
 - Hooks not selected: [list with reason if given, or "Not noted"]
+
+GRADING OUTCOME:
+- Score: [weighted/threshold (raw/50) or "Grader did not run"]
+- Verdict: [PASS / NEEDS REVISION / Grader did not run]
+- Floor violations: [dimension(s) that hit below their floor, or "None"]
+- Known failure patterns triggered: [pattern name(s) from grading-profile.md, or "None"]
+- Revision cycles: [0 / 1 / 2 — how many grader loops before pass]
+- User override: [Yes — user published below threshold / Yes — user rejected above threshold / No]
+- Override reason: [if stated by user, or "Not stated"]
 
 ENGAGEMENT DATA:
 - Post referenced: [topic / date if stated]
@@ -137,7 +154,7 @@ Reminder: run content-auditor monthly.
 
 **Completeness:**
 ```
-□ All 4 capture areas present: What was produced, Changes made, What was rejected, Engagement data (or "none provided")? Yes → pass. No → add the missing sections.
+□ All 5 capture areas present: What was produced, Changes made, What was rejected, Grading outcome (or "Grader did not run"), Engagement data (or "none provided")? Yes → pass. No → add the missing sections.
 □ Entry appended to learning-log.md — not just presented in chat? Yes → pass. No → write it to the file.
 □ Total sessions count updated? Yes → pass. No → update it.
 ```
@@ -151,4 +168,4 @@ Reminder: run content-auditor monthly.
 
 **Consequence:**
 If pattern-recognition runs on this log in 5 sessions: what will be missing that would prevent a useful pattern from emerging?
-→ Answer before closing. If the answer is "voice edits weren't captured" or "hook type not logged" — add those fields before saving.
+→ Answer before closing. If the answer is "voice edits weren't captured" or "grading outcomes not logged" or "hook type not logged" — add those fields before saving.

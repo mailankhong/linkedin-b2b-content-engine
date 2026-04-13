@@ -66,6 +66,17 @@ Analyze all log entries across these five dimensions:
 - Are ideas from certain research methods (Reddit, YouTube, real-time signal, etc.) consistently making it to final batch?
 - Are ideas from certain methods consistently getting rejected? This signals a signal quality problem with that method for this client.
 
+**F. Grading profile calibration**
+Read the GRADING OUTCOME section of each log entry. This dimension determines whether the grading profile is accurately calibrated to what the client and their reviewers actually accept or reject.
+
+Analyze:
+- **Floor accuracy:** Are specific dimension floors being violated repeatedly (same dimension fails 3+ sessions)? This means either the copy-developer has a blind spot OR the floor is correctly catching a real problem. Cross-reference: if the post was revised after the floor violation and the revision was accepted → floor is working. If the user overrode the floor (published anyway) → floor may be too strict.
+- **Missing failure patterns:** Is the user consistently rejecting posts or requesting specific changes that the grading profile's Known Failure Patterns section doesn't cover? A recurring edit that doesn't map to any known pattern = candidate for a new pattern.
+- **Weight accuracy:** Are posts passing the weighted threshold but then getting rejected by the user? This suggests a dimension that matters to the client is under-weighted. Conversely: are posts failing the threshold but getting accepted by the user? The weight may be too high.
+- **Category override gaps:** Are Connect or Respond posts being graded too harshly or too leniently on Conversion Intent? Are Teach posts for accessibility-focused clients (Bharath, Amir) hitting the right Clarity floor?
+
+Pattern threshold: same as other dimensions — 3+ occurrences = confirmed pattern.
+
 ---
 
 ## STEP 3 — OUTPUT: PATTERN REPORT
@@ -128,6 +139,33 @@ Examples of client folder updates:
 
 ---
 
+### Grading Profile Updates (applies with your confirmation)
+
+For each pattern from Dimension F (Grading Profile Calibration) that points to a specific fix:
+
+```
+RECOMMENDED GRADING PROFILE UPDATE [N]:
+What to change: [weight / floor / category override / known failure pattern / clarity interpretation]
+Current value: "[current setting]"
+Proposed value: "[new setting]"
+Why: [which pattern this addresses — e.g., "Hook floor of 8 was violated in 4/5 sessions but all 4 posts were revised and accepted after hook rewrite → floor is correctly calibrated, no change needed" OR "User accepted 3 posts that scored Voice Match 6, below the floor of 8 → floor may be too strict, propose lowering to 7"]
+Evidence: [session dates and specific observations]
+
+Confirm to apply? Yes / No
+```
+
+**Types of grading profile updates:**
+
+- **Add a known failure pattern:** A recurring edit the user makes that doesn't map to any existing pattern. Example: "User rewrites every CTA that starts with 'DM me' — add 'DM me as CTA opener' to known failure patterns."
+- **Adjust a dimension weight:** A dimension consistently over- or under-predicts what the client accepts. Example: "Posts passing with Voice Match 7 are consistently rejected → Voice Match weight should increase from 1.0x to 1.3x."
+- **Adjust a floor:** A floor that's consistently violated but the post gets accepted anyway (too strict), or a floor that passes but the client rejects (too lenient).
+- **Add a category override:** A post category is being graded too harshly on a dimension. Example: "Amir's Respond posts keep failing on Conversion Intent, but he doesn't want strong CTAs on hot takes → add Respond override."
+- **Update clarity interpretation:** The client's feedback consistently targets a different aspect of clarity than what's documented.
+
+Wait for explicit confirmation before writing each change. Do not batch-apply.
+
+---
+
 ### Skill File Updates (presents for review only — never applies automatically)
 
 For each pattern that suggests a skill file needs to change:
@@ -162,6 +200,7 @@ PATTERN RECOGNITION RUN: [Date]
 Sessions analyzed: [N]
 Patterns identified: [N]
 Client folder updates applied: [N — list what was changed]
+Grading profile updates applied: [N — list what was changed, or "None" / "No grading profile exists"]
 Skill file updates surfaced: [N — list what was recommended, not applied]
 ---
 ```
@@ -170,6 +209,7 @@ Skill file updates surfaced: [N — list what was recommended, not applied]
 
 Pattern recognition complete.
 Client folder updates applied: [N — list]
+Grading profile updates applied: [N — list, or "None"]
 Skill file updates surfaced for review: [N — list]
 
 → Next run: after 5 more sessions, or manually with "run pattern recognition for [client]"
@@ -187,7 +227,7 @@ Skill file updates surfaced for review: [N — list]
 
 **Completeness:**
 ```
-□ All 5 dimensions analyzed: what gets changed, hook types rewritten, post types underperforming, voice drift, research method quality? Yes → pass. No → analyze the missing dimensions.
+□ All 6 dimensions analyzed: what gets changed, hook types rewritten, post types underperforming, voice drift, research method quality, grading profile calibration? Yes → pass. No → analyze the missing dimensions.
 □ Pattern run logged to learning-log.md? Yes → pass. No → append the log entry.
 □ "No patterns found" sections stated explicitly for dimensions with no signal? Yes → pass. No → add them.
 ```
