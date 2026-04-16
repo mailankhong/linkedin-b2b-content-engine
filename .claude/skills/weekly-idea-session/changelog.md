@@ -1,5 +1,22 @@
 # Changelog — weekly-idea-session
 
+## v3.0 — 2026-04-17
+
+**Summary of changes:**
+Major restructure. Research is now always-on (no opt-in question). New Phase 2.5 (Evergreen Pool) mines 5 ranked ideas from confirmed client materials. Phase 7 output restructured into three sections: Section A (Evergreen Pool, 5 ideas), Section B (Research Pool, all scraped angles ranked), Section C (Recommended Weekly Combination, default 6 ideas mixing 3 evergreen + 3 research). Phase 1 no longer asks questions — defaults to 1 week / 6 ideas / research on, overrides only from explicit user request. Phase 5 adds evergreen-research balance check. Verification updated for three-section output.
+
+**Why:**
+When running "weekly ideation," the output should always combine pillar-grounded evergreen content (long shelf life on LinkedIn, compounds over time) with timely research-sourced content (captures live market signals). Without both, the feed is either always chasing news (decays fast) or always recycling the same themes (misses market moments).
+
+**Known edge cases:**
+- Client-provided materials (whitepapers, case studies, presentations) are evergreen source material and should be prioritized when fresh.
+- Some clients have AI-contaminated post archives (repurposing-archive may need to be skipped per client directive).
+
+**Gotchas:**
+- Evergreen pool stays at 5 regardless of multi-week runs — evergreen is reusable.
+- Research pool is uncapped — output everything, ranking is what matters.
+- Never go all-evergreen or all-research in Section C. Minimum 1 from each pool.
+
 ## v2.1 — 2026-04-17
 
 **Summary of changes:**

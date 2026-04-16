@@ -1,6 +1,6 @@
 ---
 name: weekly-idea-session
-description: Self-serve weekly content planning session. Spawns 6 parallel research workers, merges results, runs quality gate and ICP tier check, adds personal material, outputs a sized and prioritized idea batch. Triggers include "start my weekly session", "generate ideas for this week", "weekly idea batch", "what should I post this week".
+description: Self-serve weekly content planning session. Always runs both evergreen mining (from confirmed materials) and 6 parallel research workers (live signals). Outputs three pools — 5 evergreen ideas, all research angles ranked, and a recommended weekly combination mixing both. Triggers include "start my weekly session", "generate ideas for this week", "weekly idea batch", "what should I post this week", "run weekly ideation for [client]".
 ---
 
 # Weekly Idea Session
@@ -18,26 +18,23 @@ Missing content pillars → stop. State gap, impact, fix option. Never invent or
 
 ## PHASE 1 — INTAKE
 
-Ask both questions. Do not proceed until both are answered.
+Defaults: 1 week, 6 ideas per week, research always on. Do not ask these questions — just proceed. Override defaults only if the user explicitly states a different duration or idea count in their request (e.g. "run weekly ideation for 2 weeks" or "give me 8 ideas").
+
+State the session parameters once and move to Phase 2:
 
 ```
-Before we build this week's ideas, two quick questions:
-
-1. How many posts do you want to publish this week?
-   Be honest. 2 is fine. 3 puts you in the top 10% of LinkedIn creators.
-
-2. Should I run research to find new ideas?
-   I'll pull from 6 sources in parallel — audience conversations, long-form content,
-   live industry debates, your post archive, high-performing post structures,
-   and viral visual frameworks.
-   Yes / No
+Running weekly idea session for [client].
+Duration: [1 week / N weeks per user request]
+Ideas per week: [6 / N per user request]
+Research: on
+Evergreen pool: 5 ideas
 ```
 
 ---
 
-## PHASE 2 — RESEARCH (if user said Yes)
+## PHASE 2 — RESEARCH
 
-State which workers are running. Spawn all 6 simultaneously.
+Research always runs. State which workers are launching and spawn all 6 simultaneously.
 
 ```
 Running 6 research methods in parallel — this takes a moment.
@@ -69,7 +66,29 @@ After all workers complete:
 - Deduplicate angles that are substantially the same idea from different sources
 - Pool all passing angles for Phase 3
 
-**Model routing note:** Phase 2 workers are data-gathering tasks — fetching from APIs, extracting pain points from threads, parsing video transcripts. These run fine on standard models. Phases 3–6 (personal material extraction, quality gate, coverage checks, prioritization) require judgment: evaluating ICP fit, spotting generic angles, balancing the batch. If using plan mode or model switching, the split point is here — research below this line, synthesis above.
+**Model routing note:** Phase 2 workers are data-gathering tasks — fetching from APIs, extracting pain points from threads, parsing video transcripts. These run fine on standard models. Phases 2.5–6 (evergreen mining, personal material extraction, quality gate, coverage checks, prioritization) require judgment: evaluating ICP fit, spotting generic angles, balancing the batch. If using plan mode or model switching, the split point is here — research below this line, synthesis above.
+
+---
+
+## PHASE 2.5 — EVERGREEN POOL
+
+While research workers run (or after they complete), build 5 ranked evergreen ideas from confirmed client materials. These are pillar-grounded, long-shelf-life ideas that don't depend on news hooks.
+
+**Sources (mine all of these):**
+- Content pillars — each pillar should have at least 1 evergreen idea in the batch of 5
+- Onboarding form answers — core problems, customer outcomes, objections, differentiators
+- Voice profile — editorial stances, strong opinions, personal history anchors
+- ICP document — named pain points per persona tier
+- Case studies and social proof — approved client results
+- Client-provided materials — whitepapers, presentations, new case studies, pitch decks, internal docs. Check the client folder for any recently added files and prioritize fresh material — it carries specificity that older pillar angles don't.
+
+**Rules:**
+- 5 ideas per run (regardless of how many weeks the session covers — evergreen is reusable across weeks)
+- All marked `Recommended post date: Any day (evergreen)`
+- Each idea must map to a content pillar
+- Rank by: ICP Tier 1 fit → specificity (HIGH preferred) → pillar coverage (don't cluster on one pillar)
+- Apply Phase 4 quality gate to each evergreen idea — 2/3 minimum to include
+- Do not repeat the same 5 evergreen ideas across consecutive weekly sessions — rotate fresh angles from the source material
 
 ---
 
@@ -165,6 +184,28 @@ Want me to suggest a swap — or is this intentional for this week?
 
 Do not force a rebalance. Flag and ask.
 
+### Evergreen-Research Balance Check (applied to Section C only)
+
+| Source | Default target per 6-idea week | Current count |
+|--------|-------------------------------|---------------|
+| Evergreen | ~3 | [count] |
+| Research | ~3 | [count] |
+
+Adjust based on what's available:
+- If the research week has 5+ HOT signals, shift to 2 evergreen + 4 research.
+- If the research week is thin (few HOT, mostly WARM), shift to 4 evergreen + 2 research.
+- Never go all-evergreen or all-research. Minimum 1 from each pool.
+
+All ideas from one pool → flag:
+```
+This week's combination is 100% [evergreen/research]. A balanced week needs both:
+- Evergreen posts build long-term authority and compound over time on the feed
+- Research posts capture timely signals and show the client is paying attention to the market
+Want me to swap one in from the other pool?
+```
+
+Do not force a rebalance. Flag and ask.
+
 ---
 
 ## PHASE 6 — LEAD MAGNET PROMPT
@@ -188,22 +229,23 @@ Yes → flag that idea for the lead magnet path → lead-magnet-writer + lead-ma
 
 ## PHASE 7 — OUTPUT
 
-Present the batch sized to the user's weekly post count from Phase 1.
+Present results in three sections. The Recommended Weekly Combination (Section C) is the actionable output — the pools (A and B) provide context and options.
 
-Format for each idea:
+### Standard per-idea format (used across all sections)
 
 ```
 IDEA [N]: [Title / angle in one sentence]
 
+Pool: [Evergreen / Research]
 ICP Tier: [Tier 1 / Tier 2 / Tier 3]
 Category: [Teach / Lead / Prove / Connect / Respond]
-Source: [Personal material / Reddit / YouTube / Real-time signal / Archive repurpose / Reverse-engineered / Visual anchor]
+Source: [Personal material / Reddit / YouTube / Real-time signal / Archive repurpose / Reverse-engineered / Visual anchor / Content pillar / Onboarding / Case study / Client-provided material]
 Specificity: [HIGH / MEDIUM — with note if enrichment needed]
 Quality gate: [3/3 / 2/3 — with note on weak dimension if applicable]
 Recommended post date: [Month DD] or earlier | Any day (evergreen) | [Month DD] (pre-event) or [Month DD] (same-day reaction)
 ```
 
-**Why this field is required:** News-reactive ideas decay at different rates. A "5-7 day first-mover window from April 15" means nothing to a client scheduling across a full week — they'll pick it Monday and post it Thursday when the window closed Tuesday. The skill has the research context; the client does not. Translate every decay window into a concrete post-by date. For ideas with no decay, state "Any day (evergreen)" — consistency means the client can scan the field and know status at a glance.
+**Why Recommended post date is required:** News-reactive ideas decay at different rates. A "5-7 day first-mover window from April 15" means nothing to a client scheduling across a full week — they'll pick it Monday and post it Thursday when the window closed Tuesday. The skill has the research context; the client does not. Translate every decay window into a concrete post-by date. For ideas with no decay, state "Any day (evergreen)" — consistency means the client can scan the field and know status at a glance.
 
 **How to set the date:**
 - News hook with a stated decay window: today + decay days = latest recommended post date. Subtract 1-2 days for margin.
@@ -211,10 +253,42 @@ Recommended post date: [Month DD] or earlier | Any day (evergreen) | [Month DD] 
 - Stat that will be superseded by a scheduled refresh: use the refresh date minus 1 as the latest.
 - No decay / pillar-grounded: "Any day (evergreen)".
 
+---
+
+### Section A — Evergreen Pool (5 ideas, ranked)
+
+Present the 5 evergreen ideas from Phase 2.5, ranked by ICP Tier 1 fit and specificity. State which content pillar each maps to. These ideas can be used any week — they don't expire.
+
+---
+
+### Section B — Research Pool (all scraped angles, ranked)
+
+Present ALL research-sourced angles ranked by:
+1. Urgency (HOT → WARM → Evergreen-adjacent)
+2. ICP Tier 1 relevance
+3. Pillar fit
+
+Do not cap this section — output everything the research workers found. The user will not use all of them; the ranking is what matters. Typical count: 15-25 angles.
+
+---
+
+### Section C — Recommended Weekly Combination
+
+Present [6 × N weeks] ideas as the recommended content plan. Default: 6 ideas for 1 week.
+
+**Default mix:** 3 evergreen + 3 research. Adjust based on what's available:
+- If the research week has 5+ HOT signals, shift to 2 evergreen + 4 research.
+- If the research week is thin (few HOT, mostly WARM), shift to 4 evergreen + 2 research.
+- Never go all-evergreen or all-research. Minimum 1 from each pool.
+
+Each idea tagged with `[Evergreen]` or `[Research]` so the source is visible at a glance.
+
+Apply coverage checks (Phase 5) to this section specifically — TOFU/MOFU/BOFU, ICP tiers, pillar mix, category diversity, and evergreen-research balance.
+
 End with summary:
 
 ```
-This week's batch: [N] ideas
+This week's combination: [N] ideas ([X] evergreen + [Y] research)
 Tier coverage: [X] Tier 1 | [Y] Tier 2 | [Z] Tier 3
 Lead magnet: [Yes — [idea title] / No]
 Methods that could not run: [list with reason, or "None"]
@@ -244,18 +318,22 @@ Or bring them all — develop one at a time.
 
 **Context-fit:**
 ```
-□ At least one idea comes from personal material (client conversation, real result, specific experience) — not purely from research? Yes → pass. No → ask for personal material again before delivering.
+□ Section A (Evergreen Pool) contains exactly 5 ideas? Yes → pass. No → fill or trim.
+□ Section B (Research Pool) contains all scraped angles with ranking? Yes → pass. No → add missing angles.
+□ Section C contains at least 1 evergreen and 1 research idea? Yes → pass. No → flag the imbalance before delivering.
+□ At least one idea comes from personal material (client conversation, real result, specific experience) — not purely from external research? Yes → pass. No → ask for personal material again before delivering.
 □ Every idea is mapped to a content pillar from the client's documented pillars? Yes → pass. No → map or discard the unmapped idea.
-□ Category mix represents at least 3 of 5 categories? Yes → pass. No → flag the imbalance before delivering.
+□ Category mix in Section C represents at least 3 of 5 categories? Yes → pass. No → flag the imbalance before delivering.
 ```
 
 **Consequence:**
-If the client develops all ideas in this batch and publishes them this week: what is the most likely gap?
-→ Answer before delivering. If the answer is "no Prove posts, so no pipeline signal this week" or "all research angles, nothing personal — will feel generic" — flag it explicitly.
+If the client develops all Section C ideas and publishes them this week: what is the most likely gap?
+→ Answer before delivering. Check: is the batch too research-heavy (will age poorly on the feed)? Too evergreen (missing timely market signal)? No Prove posts (no pipeline signal)? All from one source type (will feel generic)?
 
 ---
 
-Idea batch ready — [N] ideas this week.
+Idea session complete — [N] ideas this week ([X] evergreen + [Y] research in recommended combination).
+Pools delivered: Evergreen (5) | Research ([N] angles)
 Methods that ran: [list]
 Methods that failed: [list with reason and what was missing]
 Methods with thin results: [list with specific gap and suggested fix]
