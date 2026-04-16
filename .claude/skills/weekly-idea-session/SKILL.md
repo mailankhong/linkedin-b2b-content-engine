@@ -200,7 +200,16 @@ Category: [Teach / Lead / Prove / Connect / Respond]
 Source: [Personal material / Reddit / YouTube / Real-time signal / Archive repurpose / Reverse-engineered / Visual anchor]
 Specificity: [HIGH / MEDIUM — with note if enrichment needed]
 Quality gate: [3/3 / 2/3 — with note on weak dimension if applicable]
+Recommended post date: [Month DD] or earlier | Any day (evergreen) | [Month DD] (pre-event) or [Month DD] (same-day reaction)
 ```
+
+**Why this field is required:** News-reactive ideas decay at different rates. A "5-7 day first-mover window from April 15" means nothing to a client scheduling across a full week — they'll pick it Monday and post it Thursday when the window closed Tuesday. The skill has the research context; the client does not. Translate every decay window into a concrete post-by date. For ideas with no decay, state "Any day (evergreen)" — consistency means the client can scan the field and know status at a glance.
+
+**How to set the date:**
+- News hook with a stated decay window: today + decay days = latest recommended post date. Subtract 1-2 days for margin.
+- Calendar-locked event (earnings, conference, product launch): use the event date itself for pre-event posts, or the next day for same-day reactions.
+- Stat that will be superseded by a scheduled refresh: use the refresh date minus 1 as the latest.
+- No decay / pillar-grounded: "Any day (evergreen)".
 
 End with summary:
 
@@ -227,7 +236,8 @@ Or bring them all — develop one at a time.
 
 **Completeness:**
 ```
-□ Each idea has all 5 output fields: ICP Tier, Category, Source, Specificity, Quality gate? Yes → pass. No → fill the missing fields.
+□ Each idea has all 6 output fields: ICP Tier, Category, Source, Specificity, Quality gate, Recommended post date? Yes → pass. No → fill the missing fields.
+□ Every idea's Recommended post date is a concrete date or "Any day (evergreen)" — never a vague decay window? Yes → pass. No → resolve the date before delivering.
 □ Summary block includes tier coverage, lead magnet decision, and methods that failed? Yes → pass. No → add it.
 □ Any workers that returned FAILED or PARTIAL have a note explaining why? Yes → pass. No → add the note.
 ```
