@@ -334,6 +334,10 @@ User says "this doesn't sound like me":
 User wants different structure:
 → Name the closest template. Rewrite using it.
 
+Visual brief reveals story gaps:
+→ After a visual brief is built for this post, use it as a structural audit for the copy. The visual's need to stand alone forces every beat of the argument to be explicit. If the visual covers beats the copy hand-waves, implies, or skips entirely — the copy has gaps.
+→ Check each section of the visual against the copy. Every beat the visual needs should have a concrete counterpart in the copy. If the visual makes an argument explicit that the copy only implies, make it explicit in the copy too. The visual brief is the completeness check.
+
 User approves with no changes:
 → Confirm post-grader has run. If not, remind once.
 

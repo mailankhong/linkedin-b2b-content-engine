@@ -5,6 +5,18 @@ Most LinkedIn visuals are pretty but pointless — they look designed but don't 
 **Pre-flight:** Run preflight.md. Client: [name provided by user].
 **Required:** Voice Profile (for brand tone in copy elements), content pillars (for visual positioning).
 
+---
+
+## THE STANDALONE RULE
+
+A visual that accompanies a post must tell the complete story on its own. The audience should be able to understand the full idea and get value from the visual without reading the post copy next to it.
+
+If the visual only shows a stat, a timeline, or a single data point without the surrounding context, analysis, or takeaway, it's a stat card. Stat cards don't deliver value. They show a number and leave the reader to figure out why it matters. That's the post's job being offloaded onto a graphic that can't do it.
+
+Every story has a different structure, so there is no fixed formula for what "complete" means. But the test is simple: if someone sees this visual as a screenshot in their feed with no post text visible, do they get the full idea? Can they understand it easily and walk away with something useful? If the answer is no, the visual is incomplete — go back and add the missing story beats before specifying colors and fonts.
+
+---
+
 ## Quality Gate
 
 Insufficient input → stop. State gap, impact, fix option. Never invent or fabricate.
@@ -253,6 +265,12 @@ After visual is complete:
 □ Brief maps to the correct content pillar from the client's strategy? Yes → pass. No → update Section 1.
 □ Target audience (ICP tier) stated and the visual format matches how that tier consumes content? Yes → pass. No → adjust.
 □ "What to avoid" field in Section 3 is specific to this client's brand — not generic design advice? Yes → pass. No → make it client-specific.
+```
+
+**Standalone story:**
+```
+□ If someone sees this visual as a screenshot with no post text, do they get the full idea and walk away with something useful? Yes → pass. No → the visual is incomplete. Identify which story beats are missing and add them before finalizing the brief.
+□ Does the visual deliver value on its own — not just display data? (A stat without context, analysis, or takeaway = stat card = fail.) Yes → pass. No → add the missing context.
 ```
 
 **Consequence:**
