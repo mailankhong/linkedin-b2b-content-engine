@@ -20,6 +20,21 @@ Missing Voice Profile or ICP → stop. State gap, impact, fix option. Never inve
 
 ---
 
+## Mobile Truncation Model
+
+LinkedIn truncates based on rendered pixel width, not character count. A 90-character hook in narrow letters fits one line; a 30-character line in ALL CAPS fills it. This is why "under 100 characters" is unreliable.
+
+Rule of thumb per visible mobile line: **~110 width units**. Caps, wide letters (M, W), and emojis eat width. Narrow letters (i, l, t) fit more.
+
+**Visible hook budget:**
+- Text-only post: 3 visible lines (~330 units)
+- Post + media (image, carousel, video): 2 visible lines (~220 units)
+- Post + chart/data viz: 2 lines, and the hook should prime the reader to look at the image
+
+Before shipping, read the hook on a phone screen. If the tension sits below "...more," rewrite.
+
+---
+
 ## Phase 1: Input
 
 Ask all five questions before generating:
@@ -29,6 +44,8 @@ Ask all five questions before generating:
 3. What's the goal? (engagement / authority / lead gen / conversion)
 4. Do you have specific numbers or results to include?
 5. Who's the target reader?
+
+Also ask: **Will the post have media attached?** (image, carousel, video, chart) — this changes the hook budget and the recommended format shape.
 
 ---
 
@@ -180,7 +197,55 @@ Best triggers: Curiosity, Fear (of missing the implication)
 
 ---
 
-## Phase 5: Specificity Filter
+## Phase 5: Format Shape
+
+Template tells you *what* to say. Trigger tells you *what emotion*. Format shape tells you *how it renders on mobile*. Every hook takes exactly one of four structural shapes.
+
+### 1. DENSE
+Continuous text, no line breaks. Maximum information inside the visible window. Best for data-heavy posts, case studies, algorithm insights — anywhere the hook needs context plus a payoff that requires a full sentence to land.
+**Rule:** 140-160 characters total. Zero line breaks. Must span 2-3 mobile lines.
+
+*Example:* "An 8k-follower account hit 58,666 impressions on a post our designer begged us not to ship. The reason has nothing to do with design."
+
+### 2. PUNCHY + CONTEXT
+Line 1 is a short claim or pattern interrupt. Blank line. Line 2 is the rehook — a parenthetical, teaser, or reason to keep reading.
+**Rule:** Line 1 ≤50 chars. Line 2 ≤50 chars. Exactly one line break. Rotate sub-variants across the batch — don't use the same sub-variant for every Punchy hook.
+
+Sub-variants:
+- **Plain:** Line 2 is a direct teaser or claim
+- **Parenthesis wrap on line 2:** Makes it feel like a quiet aside or confession
+- **Strategic ALL CAPS on one word in line 1:** Visual weight without shouting — one word max
+- **After-stack setup:** Both lines begin with "After [cost/sacrifice]..." and end in trailing dots
+
+### 3. SINGLE-LINE BOMB
+One charged sentence. "...more" cuts in almost immediately. Maximum curiosity gap. High risk, high reward — only works when the line is genuinely strong enough to stand alone.
+**Rule:** ≤50 characters total. Zero line breaks. If the line is generic or predictable, pick a different format.
+
+*Example:* "SEO has been dying since 1997."
+
+### 4. STACKED
+2-3 short lines separated by blank lines. Creates a pattern the reader wants broken or explained. Triggers completion bias.
+**Rule:** Each line ≤60 chars (≤50 for 3-line variants). Must follow one of the sub-variants below — Stacked is not free-form.
+
+Sub-variants:
+- **Before/After Timeline** — compressed state-to-state gap with metrics. Format per line: `[year/time]: [state]. [metric]. [one emotional phrase].`
+- **Parallel Regret Stack** — 2-3 lines in identical grammatical structure, each naming a specific avoidance behavior and a one-word emotional cause
+- **Data-Question Opener** — question pointing to attached chart (the only format where `?` is allowed in a hook). Requires a data visualization
+- **Stacked Jargon Cut-Off** — three parallel lines in industry terminology, third line cut off mid-sentence. In-group language only
+- **Problem-Cost-Twist** — problem → cost/contradiction → payoff that forces the click
+
+### Format + Media pairing
+- **Text-only:** lean Dense or Punchy+Context. Hook carries everything.
+- **Strong media attached (image, carousel, video):** lean Single-Line Bomb or Punchy+Context. Leave more unresolved — the image creates a second tension layer.
+- **Chart/graph/table attached:** use Stacked Data-Question Opener.
+- **Video:** Single-Line Bomb or short Punchy+Context. Hook gives the video context, not a summary.
+
+### Rewrite before relabel
+If a hook violates its format's length rule, **rewrite to fit**. Relabeling to a different format is a last resort. If 2 rewrite attempts fail, drop the hook and write a different angle. Never ship hooks with "OVER LIMIT" warnings, "reclassified" notes, or any indication the format was broken. The user sees only the final, valid set.
+
+---
+
+## Phase 6: Specificity Filter
 
 Run every candidate hook through all 5. Only hooks passing 4/5 make the shortlist.
 
@@ -192,7 +257,7 @@ Run every candidate hook through all 5. Only hooks passing 4/5 make the shortlis
 
 ---
 
-## Phase 6: Rank and Recommend
+## Phase 7: Rank and Recommend
 
 After filtering, present top 3–5 with brief reasoning:
 
@@ -214,6 +279,13 @@ Why: [contrarian angle, distinctive]
 - Voice profile present → match hook to their sentence rhythm and vocabulary. Why: A hook that doesn't sound like the author creates a jarring disconnect when the reader clicks through. Voice mismatch between hook and body is a top-3 reason posts underperform.
 - Short hooks (1 line) outperform long hooks (3+ lines). Why: On mobile, 3+ line hooks push the tension below the fold. The reader has to click "see more" just to find out what the post is about — that's a double ask.
 - Best hooks make you curious enough to click "see more" — that is the only test. Everything else is preference.
+- **Compression beats explanation.** The best before/after hooks reduce an entire journey to two lines: "2023: 0 followers. $0 made. / 2026: 317k followers. $2M+ made." 12 years in 22 words. Do not add context or soften the gap. Let the numbers do the work.
+- **The period between contrasting sentences is load-bearing.** "Most GTM stacks are bloated. Mine is not." The full stop makes the counter-claim land like a verdict. A comma softens it to forgettable.
+- **Parenthetical self-correction creates authentic tension.** "I'm 28 with 4 businesses and (still) no home." The (still) does more emotional work than the numbers. Use for admissions where the main line might read as brag.
+- **Result credential + constraint signals taste over volume.** "We pay 60 salaries from LinkedIn, so it's fair to say..." The result earns the right to the lesson. Always pair authority with a filtering mechanism — "if you forced me to pick," "the one that actually mattered."
+- **Soft warnings outperform hard accusations for corrective content.** "Please don't turn all your content into Q&A blogs. I get why marketing teams obsess over it." Validate the behavior before correcting it — the reader feels seen, not scolded.
+- **Mirror hook — name the reader's internal state directly.** "You know what's holding you back. I do too." Five words, and the reader feels met. The more intimate and specific the state named, the harder to scroll past.
+- **Register must match the author's documented voice.** Lowercase reads authentic only when the voice is consistently informal (personal brands, creators). In B2B/professional contexts, lowercase reads careless. Default to the capitalization used in the client's Voice Profile — never apply lowercase unless the Voice Profile specifies it.
 
 **B2B Rules:**
 - "B2B founders" beats "people." "Closed 14 deals" beats "grew revenue."
@@ -225,14 +297,54 @@ Why: [contrarian angle, distinctive]
 
 ---
 
+## Banned Phrases and Patterns
+
+Never ship a hook containing anything on these lists. Running every candidate past this list is part of Pre-output Validation below.
+
+**Banned phrases — AI and LinkedIn clichés:**
+"game-changer," "unlock potential," "paradigm shift," "synergy," "cutting-edge," "leverage," "optimize," "streamline," "dive deep," "deep dive," "move the needle," "low-hanging fruit," "let that sink in," "read that again," "I'm excited to share," "here's the thing," "here's why," "here's what I learned," "the truth is," "what happened next shocked me," "then it hit me," "the real game-changer"
+
+**Banned phrases — manufactured drama:**
+"they called me crazy," "that changed everything," "this changed everything," "that night I couldn't sleep," "2am revelations," "Delete. Delete. Delete.," "Insane? Maybe."
+
+**Banned rhetorical structures:**
+- "It's not X, it's Y" / "Not X… but Y" / "not because X, but because Y" — reader sees the trick
+- Rhetorical question used as a takeaway: "The lesson? Trust the data." → rewrite as direct statement
+- Fragment + answer: "The difference? One kills creativity…" → rewrite as full sentence
+
+**Banned storytelling patterns:**
+- Crisis → sleepless night → revelation → transformation (the most predictable AI formula)
+- Day-by-day breakdowns with manufactured drama
+- Perfect sentence cadence using repetitive fragments for artificial suspense
+
+**Em dashes are banned in hooks.** Use commas, periods, semicolons, colons, or rephrase. Em dashes are a universal client rule across the engine.
+
+---
+
+## Pre-output Validation (MANDATORY)
+
+Before presenting ANY hook to the user, run each candidate through this gate:
+
+1. **Character count matches format?** Dense 140-160. Punchy+Context lines ≤50 each. Single-Line Bomb ≤50. Stacked lines ≤60 (≤50 for 3-line variants).
+2. **Line break count matches format?** Dense 0. Bomb 0. Punchy+Context 1. Stacked 1-2.
+3. **No banned phrases, rhetorical structures, or storytelling patterns?**
+4. **No em dashes?**
+5. **Contains something specific to this author** — a number, named result, or lived experience that passes the swap test?
+
+Fail any check: rewrite to fit. If 2 rewrites fail, drop the hook and write a different angle. Never output a hook with "OVER LIMIT" warnings, character notes, or reclassification labels. The user sees only the final, valid set.
+
+---
+
 ## Quality Check (run before delivering)
 
 ```
 □ At least 20 variations generated? Yes → pass. No → generate more.
 □ Variety across all 3 emotional triggers? Yes → pass. No → add missing trigger.
+□ Variety across format shapes (at least 3 of the 4)? Yes → pass. No → add missing shape.
 □ Top picks pass specificity filter (4/5)? Yes → pass. No → filter again.
 □ Any top pick fail the swap test (competitor cannot post it)? Yes → pass. No → make more specific.
 □ Zero generic openers: "In today's world..." / "As a [role]..."? Yes → pass. No → remove them.
+□ Every hook passes Pre-output Validation (character count, line breaks, banned phrases, em dashes, specificity)? Yes → pass. No → fix before shipping.
 ```
 
 ---
@@ -243,7 +355,8 @@ Why: [contrarian angle, distinctive]
 ```
 □ Top 3–5 hooks all pass the specificity filter at 4/5 criteria? Yes → pass. No → filter again.
 □ Zero hooks open with "I" as the first word? Yes → pass. No → rewrite those hooks.
-□ Zero hooks open with a question? Yes → pass. No → rewrite as a statement with a gap.
+□ Zero hooks open with a question (except Stacked Data-Question Opener with chart attached)? Yes → pass. No → rewrite as a statement with a gap.
+□ Every hook has a format label that matches its actual character count and line break count? Yes → pass. No → rewrite, don't relabel.
 ```
 
 **Completeness:**
@@ -258,6 +371,7 @@ Why: [contrarian angle, distinctive]
 □ At least one hook could only be written by this specific person (contains their number, experience, or named result)? Yes → pass. No → add it.
 □ Hooks use the client's vocabulary, not generic B2B language? Yes → pass. No → rewrite using their "Use This" word list.
 □ Category-specific formulas from Phase 2 are represented in the top picks? Yes → pass. No → promote one.
+□ Format shape fits the media context (text-only vs image/carousel/video/chart)? Yes → pass. No → rewrite in the right shape.
 ```
 
 **Consequence:**
