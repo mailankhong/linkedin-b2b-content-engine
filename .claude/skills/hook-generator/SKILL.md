@@ -199,6 +199,8 @@ Best triggers: Curiosity, Fear (of missing the implication)
 
 ## Phase 5: Format Shape
 
+> Before generating hooks, load `references/EXAMPLES.md` to calibrate against 131 real hooks from 21 creators across all four formats. Use the examples to pattern-match rhythm, compression, and creator voice — not length. Character limits below always override example lengths.
+
 Template tells you *what* to say. Trigger tells you *what emotion*. Format shape tells you *how it renders on mobile*. Every hook takes exactly one of four structural shapes.
 
 ### 1. DENSE

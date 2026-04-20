@@ -1,5 +1,14 @@
 # Changelog — hook-generator
 
+## v2.2 — 2026-04-20
+
+**Summary of major changes:**
+Added `references/EXAMPLES.md` — 131 annotated hook examples from 21 working LinkedIn creators, categorized by the four format shapes (44 Dense, 76 Punchy+Context, 3 Single-Line Bomb, 8 Stacked). Each example includes mobile width scores and cites which rule(s) it demonstrates. SKILL.md Phase 5 now instructs Claude to load this file before generating hooks, so format pattern-matching works from real calibration data instead of principles alone. Sourced from the Distinctiva LinkedIn Hook Writer package.
+
+**Known edge cases:**
+- EXAMPLES.md cites rules by number (Rule 2, Rule 8, etc.) from the Distinctiva skill's original numbering. Our SKILL.md has different rule numbering, so treat the rule citations in examples as directional, not lookup references.
+- Character limits in SKILL.md always override any length seen in EXAMPLES.md.
+
 ## v2.1 — 2026-04-20
 
 **Summary of major changes:**
