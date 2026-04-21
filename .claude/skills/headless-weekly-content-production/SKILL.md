@@ -129,36 +129,91 @@ Run `weekly-idea-session` with headless overrides. Generate **6 ideas** for ever
 
 ---
 
-## STEP 2 — COPY DEVELOPMENT (×6 ideas, 1:1)
+## STEP 2 — POST PRODUCTION (×6 ideas, 1:1)
 
-No filter. No selection. Every idea from Step 1 becomes one post. Run `copy-developer` six times with the overrides below.
+No filter. No selection. Every idea from Step 1 becomes one post. Process each idea through the sub-steps below.
 
-### Override map (auto-answer every gate)
+### 2A — Lead magnet judgment
 
-| Gate in copy-developer / hook-generator | Override |
-|-----------------------------------------|----------|
-| copy-developer entry — Standard or lead magnet? | **Standard. Always.** |
-| hook-generator Phase 1 — 5 questions | **Auto-fill from idea metadata: topic=idea title, category=idea category, goal=client CTA strategy from `cta-templates.md`, numbers=from research signal if present else "no number", target reader=idea ICP tier, media=yes (visual-brief runs in Step 3).** |
-| Step 0 — Hook selection | **Auto-pick the hook with highest specificity: contains a number, named result, or concrete scene. Tie-break: most concrete noun.** |
+Before picking a hook, evaluate the idea for lead magnet potential using these criteria. This is a per-idea decision made by Claude's judgment, not a global rule.
+
+**Route to `lead-magnet-writer` + `lead-magnet-builder` when the idea:**
+- Promises a specific, giveable resource (template, playbook, checklist, swipe file, system blueprint, guide)
+- Has enough depth to justify a downloadable asset, not just a tip or quick take
+- Targets ICP Tier 1 or Tier 2 (lead quality matters, not pure engagement)
+- Solves a concrete pain with a concrete deliverable
+
+**Keep standard when the idea is:**
+- Opinion, POV, or contrarian take
+- Story, narrative, or behind-the-scenes
+- Reactive — responds to industry news, debates, or trends
+- Social proof or case study without a downloadable takeaway
+- Framework that doesn't compress into a reusable asset
+
+**If lead magnet** → run `lead-magnet-writer` to draft the promotional post, then `lead-magnet-builder` to build the resource. Save the resource as its own Google Doc in the client's Drive folder titled `[Resource Name] — [Client Display Name] — [Month YYYY]`. Skip 2B and 2C. Continue to 2E with the promotional post as the input.
+
+**If standard** → continue to 2B.
+
+### 2B — Hook generation
+
+Run `hook-generator` as an independent step with full priority. It is the most important line of the post, so it runs first and stand-alone — not inside copy-developer.
+
+Override hook-generator Phase 1 by auto-filling from idea metadata:
+- topic = idea title
+- category = idea category
+- goal = client CTA strategy from `cta-templates.md`
+- numbers = from research signal if present, else "no number"
+- target reader = idea ICP tier
+- media = yes (visual-brief runs in Step 3)
+
+Generate 20+ hooks, then narrow to the top 2–3 options.
+
+### 2C — Hook selection
+
+From the top 2–3, pick the single best hook using this standard:
+- **Highest specificity** — contains a number, named result, concrete scene, or named person
+- **Earns the click without clickbait** — promises something the post can deliver
+- **Matches client voice** — not a generic "X people fail because Y" template
+- **Passes the mobile feed test** — strong enough in the first two lines before LinkedIn's "see more" truncation
+
+Record the selected hook AND the reason for the pick. Both go into the Google Doc.
+
+### 2D — Copy development
+
+Run `copy-developer` with the pre-selected hook. Override these gates:
+
+| Gate in copy-developer | Override |
+|------------------------|----------|
+| Entry — Standard or lead magnet? | **Standard. Lead magnets already routed in 2A.** |
+| Step 0 — Run hook-generator internally | **Skip. Hook already selected in 2C. Pass it in directly.** |
 | Step 1B — Structure selection (2–3 options) | **Accept copy-developer's top recommendation. Do not present options.** |
-| Step 2B — Confidence checkpoint (2+ empty boxes) | **Do not stop. Fill missing data with `[INSERT REAL DATA — flag for client review]`. Continue.** |
+| Step 2B — Confidence checkpoint (2+ empty boxes) | **Do not stop. Fill gaps with `[INSERT REAL DATA — flag for client review]`. Continue.** |
 | `[INSERT REAL DATA]` placeholders | **Never fabricate. Leave the flag. Note in summary.** |
 
-### Grading loop (post-grader, runs automatically after each draft)
+### 2E — Grading
 
-1. **Threshold source** — check for `clients/[client-id]/grading-profile.md`. If present, use its weighted scoring + dimension floors. If absent, use default flat 38/50.
-2. **On first fail** — auto-loop once. Feed the grader's specific dimension feedback back to copy-developer. Rewrite only the failing dimensions. Do not rebuild from scratch.
-3. **On second fail** — accept the attempt. Flag as `NEEDS REVIEW` with the grader's notes. Do not attempt a third rewrite.
+Run `post-grader` automatically on the finished draft (both standard posts and lead magnet promotional posts). Capture the score AND a one-line reason per dimension — both feed the Google Doc in Step 5.
+
+1. **Threshold source** — check for `clients/[client-id]/grading-profile.md`. If present, use its weighted scoring and dimension floors. If absent, use default flat 38/50.
+2. **On first fail** (below threshold) — auto-loop once. Feed the grader's specific dimension feedback back to copy-developer. Rewrite only the failing dimensions.
+3. **On second fail** — accept the attempt. Flag as `NEEDS REVIEW` with the grader's notes. No third attempt.
 4. **Max attempts** — 2 total per post.
 
 ### Log per post
 
 ```
 POST [N]: [Title]
+Type: STANDARD / LEAD MAGNET
 Status: ACCEPTED / NEEDS REVIEW
+Selected hook: [hook text]
+Hook pick reason: [one line]
 Score: [X]/50 (attempt 1) | [X]/50 (attempt 2, if run)
-Dimension breakdown: [scores per dimension]
+Dimension breakdown:
+  [Dimension 1]: [X]/[max] — [one-line reason]
+  [Dimension 2]: [X]/[max] — [one-line reason]
+  ...
 Flags: [INSERT REAL DATA count, if any]
+Resource file (lead magnet only): [Google Doc URL]
 ```
 
 ---
@@ -251,22 +306,41 @@ Transcripts used for personal material
 [List of transcript titles from Step 0, or: No transcripts found in past 14 days]
 ```
 
-### PER-POST SECTION (×6)
+### PER-POST SECTION — ranked by score across the week
+
+After all 6 posts are graded, sort by score descending. Assign to day slots:
+
+- **MONDAY** — highest score
+- **TUESDAY** — 2nd
+- **WEDNESDAY** — 3rd
+- **THURSDAY** — 4th
+- **FRIDAY** — 5th
+- **BONUS / BACKUP** — 6th (lowest, or held in reserve)
+
+Write one section per slot in that order, using the day name as the section heading:
 
 ```
-POST [N]: [Post Title]
+MONDAY — [Post Title]
 
+Type: STANDARD / LEAD MAGNET
 Category: [Teach / Lead / Prove / Connect / Respond]
 ICP Tier: [1 / 2 / 3]
 Status: [ACCEPTED / NEEDS REVIEW]
 
+SCORE: [X]/50 (client weighted profile OR default flat)
+  Hook Strength:       [X]/10 — [one-line reason]
+  Clarity/Specificity: [X]/10 — [one-line reason]
+  ICP Relevance:       [X]/10 — [one-line reason]
+  Voice Match:         [X]/10 — [one-line reason]
+  Conversion Intent:   [X]/10 — [one-line reason]
+  [If NEEDS REVIEW: grader's overall notes + recommended fix]
+
+SELECTED HOOK
+[The hook chosen in 2C]
+Reason: [why this beat the other 2 options]
+
 FULL POST COPY
 [Complete post, formatted as it appears on LinkedIn, with line breaks preserved]
-
-POST GRADE
-Overall score: [X]/50
-Dimension scores: [breakdown]
-[If NEEDS REVIEW: grader notes + recommended fix]
 
 VISUAL BRIEF
 [Full 5-section brief]
@@ -274,7 +348,12 @@ VISUAL BRIEF
 VISUAL ASSETS
 Image: [IMAGE GENERATED — (description/link) / NEEDS MANUAL IMAGE]
 Gamma: [GAMMA GENERATED — (link) / NEEDS GAMMA / N/A — not a carousel post]
+
+LEAD MAGNET RESOURCE (lead magnet posts only)
+[Google Doc link to the built resource]
 ```
+
+Repeat for TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, and BONUS / BACKUP.
 
 ---
 
@@ -292,10 +371,21 @@ Google Doc: [URL]
 
 Ideas generated: 6
 Posts developed: 6
+  Standard: [N]
+  Lead magnet: [N]
 Posts accepted: [N] / 6
 Posts needing review: [N] / 6
-Images generated: [N] / 6
+Images generated: [N] / [N applicable]
 Gamma carousels: [N] generated / [N] total carousel posts
+Lead magnet resources built: [N] (links inside the main doc)
+
+Day slots (ranked by score):
+  MONDAY:    [Post Title] — [X]/50
+  TUESDAY:   [Post Title] — [X]/50
+  WEDNESDAY: [Post Title] — [X]/50
+  THURSDAY:  [Post Title] — [X]/50
+  FRIDAY:    [Post Title] — [X]/50
+  BONUS:     [Post Title] — [X]/50
 
 Items needing attention:
 — NEEDS REVIEW: [post titles, or: none]
@@ -314,14 +404,16 @@ Step 0 note: [transcripts found count, or: no transcripts found in past 14 days]
 Run before closing the session. All checks are binary.
 
 **Correctness**
-- [ ] All 6 ideas from Step 1 have a matching post section in the Google Doc
-- [ ] Every post has a grade score recorded
+- [ ] All 6 ideas from Step 1 have a matching day slot section in the Google Doc (MONDAY through FRIDAY + BONUS)
+- [ ] Every post has a grade score and a one-line reason per dimension recorded
 - [ ] Posts scoring below threshold after two attempts are marked NEEDS REVIEW with grader notes
+- [ ] Lead magnet posts have a built resource linked from their section
+- [ ] Day slot order matches score order (highest → MONDAY, lowest → BONUS)
 
 **Completeness**
-- [ ] Google Doc contains an Ideas section and 6 post sections
-- [ ] Every post section contains: copy, grade, visual brief, asset status
-- [ ] Summary block printed in chat with Google Doc URL
+- [ ] Google Doc contains an Ideas section and 6 day slot sections
+- [ ] Every post section contains: type, score with per-dimension reasons, selected hook + pick reason, copy, visual brief, asset status
+- [ ] Summary block printed in chat with Google Doc URL and day slot ranking
 
 **Context-fit**
 - [ ] Voice Profile was loaded during preflight and applied by copy-developer
@@ -335,6 +427,13 @@ If the client opens this Google Doc tomorrow and wants to publish all 6 posts th
 ---
 
 ## CHANGELOG
+
+v2.1 — April 2026 — workflow precision and grading display.
+- Step 2 restructured into 2A (lead magnet judgment per idea) → 2B (hook-generator stand-alone) → 2C (hook selection with rationale) → 2D (copy-developer with pre-selected hook) → 2E (post-grader with per-dimension reasons).
+- Lead magnet routing is now per-idea, decided by Claude's judgment against specific criteria, not a global "standard always" rule. Resource builds (lead-magnet-builder output) save as separate Google Docs in the client's folder, linked from the main weekly doc.
+- hook-generator runs as its own step with full priority, not internally inside copy-developer. Top 2–3 hooks narrowed, Claude picks the best one with stated rationale.
+- Step 5 Google Doc now ranks posts by score and slots them into MONDAY through FRIDAY + BONUS / BACKUP. Highest score → Monday, descending through the week.
+- Per-post grading now shows the score AND a one-line reason per dimension, not just the numeric breakdown.
 
 v2.0 — April 2026 — rebuild of retired `weekly-production-run` skill.
 - Renamed to `headless-weekly-content-production`
