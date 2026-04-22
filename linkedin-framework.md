@@ -265,3 +265,62 @@ Use to calibrate expectations and evaluate post performance after publishing.
 **Consequence:**
 If this post is published without checking against this framework: which rule is most likely to have been violated?
 → Name it before delivering. If the answer is "em dash is present" or "the CTA is a summary restatement" — fix it now.
+
+---
+
+## 7. Viral-Engineered Content Rules
+
+Layer on top of sections 1–4. Apply universally across clients. Encodes viral-specific patterns for accounts pursuing follower growth alongside niche lead-gen.
+
+**When to apply:** Every post. These are not optional overlays — they are defaults, same as sections 1–4.
+
+**When to cite:** When applying any rule from Section 7, cite it by subsection (e.g., "Rule 7A — action verbs on both lines" or "Rule 7D — save-worthy trigger"). Explicit citation compounds team learning and makes edits reviewable.
+
+### 7A. Hook Constraints (reinforces §1)
+
+- **Max 8 words per line.** Two lines is the target. Each line must skim in one glance.
+- **Line 1 = bold statement; Line 2 = payoff with a number or metric.** Example: "100 GTM rules. One cheat sheet. / Skip 6 months of trial and error."
+- **Action verbs on both lines, always.** Stop, Start, Kill, Ditch, Rebuild, Bet, Trigger, Skip, Master, Retire. Weak verbs (has, is, are, will) describe without compelling action — they read as information, not as a reason to click "see more."
+- **Digits and symbols belong in hooks.** `+`, `%`, `→`, `$`, `x`, raw numbers. High-skim visibility.
+- **White space in the preview matters.** Don't fill the 210-character preview with text. Short line + short line + break outperforms a paragraph-hook.
+
+### 7B. Body Formatting (reinforces §2)
+
+- **55 characters max per line** of body text. Militant on mobile skim.
+- **Cascading format** — one thought per line.
+- **Caption/visual flexibility.** Caption does not have to restate everything in the visual. If converting the visual to caption makes the post too long, trust the graphic. If short, either works. Do not dogmatically apply either extreme.
+
+### 7C. Infographic and Visual Rules
+
+- **Vertical orientation beats horizontal** for cheat sheets and workflow graphics.
+- **Action-verb subheadings, not noun labels.** "Python scoring / Waterfall enrichment" → "Build a scoring script / Implement waterfall enrichment." Action-verb subheadings drive curiosity and comprehension.
+- **Title describes what the asset does for the reader, not what it is.** "Claude Code Cheat Sheet" → "Every command you need to master Claude Code."
+- **Crystal-clear sections with clear subheadings is the real bottleneck — NOT small text.** Crammed infographics with small text can still perform well if section structure is obvious at a glance. Do not over-index on font size; over-index on subheading clarity and action verbs.
+- **Design graphic FIRST, then write caption.** Caption context should come from the graphic, not the other way around.
+- **Visual must stand alone and carry full value.** A reader screenshotting the graphic with no caption should get the full argument.
+
+### 7D. Viral Visual Emotional Triggers (B2B)
+
+Every graphic must be engineered to trigger at least one of three B2B save emotions. If none, redesign before delivery.
+
+1. **Want to save it.** Dense reference assets — commands, frameworks, checklists, tool stacks, numbered systems (10 X, 7 Y, 100 Z), before/after contrasts, full workflows.
+2. **Want to look smart.** Contrarian-but-defensible takes, named frameworks, insider vocabulary made digestible, mental models that make the sharer look informed.
+3. **Want to not miss information.** "Every X you need," "The complete Y guide," "100 Z rules in one image," trend summaries, FOMO-inducing compilations.
+
+**Production input:** Scrape viral infographics, cheat sheets, and carousels across LinkedIn, Instagram, and X as primary input for visual design. Reference first, then build. The `viral-visual-miner` skill is the starting point; invest production time in maintaining and expanding reference libraries per client.
+
+**Standalone test:** If the visual is pretty but triggers none of the three emotions above, it will not go viral regardless of copy quality.
+
+### 7E. Content Mix Strategy
+
+- **50/50 blend:** half viral-broad, half expert/niche, plus 1–2 personal posts per month.
+- **Alternative (growth-prioritized):** go super-broad; funnel depth-seekers to newsletter or YouTube via post-end CTA.
+- **"Dumb it down" = over-explain basics, NOT over-simplify substance.** Assume readers don't know internal jargon (MCP, memory, "content relevant to your offer"). Spell out the anatomy. Authority is preserved by social proof (revenue figures, case studies), not by jargon density.
+- **Actionable beats informational for viral.** Every viral-leaning post needs a do-this-then-this spine. Informational-only posts need a "here's how to do it" attached.
+
+### 7F. Links, Gates, and Repurposing
+
+- **Links in posts no longer kill reach** for established accounts (Richard van der Blom algorithm data). Test removing "comment SYSTEM" gates — pull links into the post directly.
+- **Resource-giveaway posts with 3+ links outperform.** Compile weekly lead magnets into mega-giveaway posts periodically.
+- **Repost old content every 2 months minimum** with a refreshed hook. Two months is the floor, not the target.
+- **Personal posts flop on LinkedIn post-2025 algorithm update.** Algorithm favors knowledge clusters over first-degree connections. Post personal content on Instagram instead, or on LinkedIn with the 3-part vulnerability hook ("Age 19, couldn't X. Age 24, failed at Y. Age 29, crossed $7M ARR.").
