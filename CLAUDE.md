@@ -9,14 +9,16 @@ A portable, multi-client system for creating authentic, strategic LinkedIn conte
 Enter at any stage. Bring what you have.
 
 ```
-ideas → hooks → copy → grade → visual
-  ↓        ↓       ↓      ↓       ↓
-weekly  hook-   copy-  post-  visual-
-idea-   gen-    dev-   grader brief
-session erator  eloper
+ideas → hooks → copy → scrub → grade → visual
+  ↓        ↓       ↓       ↓       ↓       ↓
+weekly  hook-   copy-   ai-    post-   visual-
+idea-   gen-    dev-    trait- grader  brief
+session erator  eloper  scrubber
 ```
 
 Every production skill accepts a direct entry. You do not need to start over.
+
+**Mandatory gate:** `ai-trait-scrubber` always runs between `copy-developer` and `post-grader`. Post-grader refuses any draft without a scrubber pass certificate. No exceptions.
 
 ---
 
@@ -45,12 +47,13 @@ Run `formatting-profile` if the client has formatting preferences or a completed
 | 1 | `weekly-idea-session` | Generate idea batch — spawns 6 parallel research workers, quality gate, ICP tier check |
 | 2 | `hook-generator` | Generate 20+ hook variations for an approved idea |
 | 3 | `copy-developer` | Develop approved idea into full post — runs hook-generator first, routes lead magnets |
-| 4 | `post-grader` | Score post on 5-dimension rubric — uses client grading profile (weighted scoring, dimension floors, known failure patterns) if available, otherwise default 38/50 flat scoring |
-| 5 | `visual-brief` | Build structured visual brief for posts needing a designed asset |
-| 6 | `lead-magnet-writer` | Write lead magnet post — surfaces at weekly session end and at copy-developer entry |
-| 7 | `lead-magnet-builder` | Build the actual resource promised in the lead magnet post |
+| 4 | `ai-trait-scrubber` | **Mandatory gate.** Scans draft for filler, banned vocabulary, AI structures (em dashes, rule of three, false agency, narrator distance). Rewrites violations inline. Issues pass certificate required by post-grader. |
+| 5 | `post-grader` | Score post on 5-dimension rubric — uses client grading profile (weighted scoring, dimension floors, known failure patterns) if available, otherwise default 38/50 flat scoring. Refuses to grade without scrubber certificate. |
+| 6 | `visual-brief` | Build structured visual brief for posts needing a designed asset |
+| 7 | `lead-magnet-writer` | Write lead magnet post — surfaces at weekly session end and at copy-developer entry |
+| 8 | `lead-magnet-builder` | Build the actual resource promised in the lead magnet post |
 
-**Copy agent loop:** copy-developer → post-grader → if below 38/50 → back to copy-developer (max 2 loops).
+**Copy agent loop:** copy-developer → ai-trait-scrubber → post-grader → if below 38/50 → back to copy-developer (max 2 loops). The scrubber re-runs on every revision — a new draft requires a new certificate.
 
 **Lead magnet surfaces at two points only:**
 - End of weekly-idea-session: "Would you like one post to be a lead magnet?"
@@ -92,6 +95,7 @@ Users shouldn't need to memorize skill names. When a request comes in, match it 
 | "write a post about X" / "develop this idea" / "turn this into a post" | `copy-developer` |
 | "what should [client] post this week" / "generate ideas" / "start the weekly session" | `weekly-idea-session` |
 | "grade this" / "is this post good" / "score this" / "review my post" | `post-grader` |
+| "scrub this" / "de-AI this post" / "remove AI traits" / "run scrubber" | `ai-trait-scrubber` |
 | "give me hooks for X" / "I need opening lines" | `hook-generator` |
 | "make a visual brief" / "this needs a visual" / "design for this post" | `visual-brief` |
 | "build [client]'s voice profile" / "analyze their voice" | `voice-analyzer` |
@@ -113,8 +117,8 @@ Users shouldn't need to memorize skill names. When a request comes in, match it 
 | "run system check" / "test all connections" | `system-check` |
 
 **Multi-skill sequences** — some requests imply a chain:
-- "write and grade a post" → `copy-developer` → `post-grader` (this already happens automatically)
-- "full session for [client]" → `weekly-idea-session` → pick ideas → `copy-developer` for each
+- "write and grade a post" → `copy-developer` → `ai-trait-scrubber` → `post-grader` (this already happens automatically)
+- "full session for [client]" → `weekly-idea-session` → pick ideas → `copy-developer` → `ai-trait-scrubber` → `post-grader` for each
 - "onboard [client]" → `voice-analyzer` → `icp-analyzer` → `content-pillars`
 
 **Fallback:** If the request doesn't match any row, ask: "Which of these sounds closest to what you need?" and list the 2-3 most likely skills with one-line descriptions.

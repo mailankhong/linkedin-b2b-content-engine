@@ -305,23 +305,24 @@ Idea required a specific number, result, or story that wasn't provided → flag 
 
 ---
 
-## STEP 6 — PRE-GRADER GATE
+## STEP 6 — PRE-SCRUBBER GATE
 
-Confirm before handing to post-grader:
+Confirm before handing to ai-trait-scrubber:
 
 ```
 □ Hook confirmed by user
 □ All [INSERT REAL STAT/RESULT] placeholders filled or acknowledged
 □ Voice Profile applied — not just referenced
 □ Post does not start with "I"
-□ Zero AI vocabulary
 □ External links noted for first comment
 □ Hashtags at end only, 3 maximum
 □ One CTA
 □ No summary ending
 ```
 
-All confirmed → run post-grader.
+AI vocabulary, em dashes, false agency, narrator distance, rule-of-three, throat-clearing, passive voice, and the full AI-trait library are enforced by `ai-trait-scrubber` — do not self-attest those here. That's exactly the enforcement gap this split is designed to close.
+
+All confirmed → run ai-trait-scrubber. On scrubber pass → run post-grader automatically.
 
 ---
 
@@ -374,5 +375,6 @@ If this post goes live right now: what is the most likely failure?
 
 ---
 
-Draft complete. Running post-grader now.
-[post-grader runs automatically]
+Draft complete. Running ai-trait-scrubber now.
+[ai-trait-scrubber runs automatically]
+[on scrubber pass → post-grader runs automatically]

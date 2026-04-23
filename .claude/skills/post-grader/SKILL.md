@@ -14,6 +14,15 @@ A post can feel good and still flop. Feeling is not a grading system. This skill
 
 Missing ICP or Voice Profile → stop. State gap, impact, fix option.
 
+**Scrubber certificate required.** Every draft must arrive with an `ai-trait-scrubber` pass certificate. If the draft was not scrubbed, route it to `ai-trait-scrubber` first and wait for the pass before grading. Why: post-grader scores hook, clarity, ICP, voice, conversion — not filler or AI punctuation. Grading a draft that still contains AI traits produces a misleading score (voice match artificially low, conversion unclear) and wastes a revision cycle on symptoms instead of root cause. The scrubber is the single chokepoint for AI decontamination; post-grader assumes it has already run.
+
+If a draft arrives without a certificate:
+```
+No scrubber certificate on this draft. Routing to ai-trait-scrubber first.
+[hand off to ai-trait-scrubber]
+[return here with the scrubbed draft + pass certificate]
+```
+
 ---
 
 ## Grading Profile (client-specific calibration)
